@@ -1,7 +1,11 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { AppRouter } from './components/AppRouter';
 
 export const App = () => {
-    return <div className='bg-slate-100 text-4xl from-stone-600'>
-        Tour Agency
-    </div>;
+    return (
+        <BrowserRouter>
+            <AppRouter />
+        </BrowserRouter>
+    );
 };
