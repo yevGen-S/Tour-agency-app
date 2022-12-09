@@ -2,7 +2,7 @@ import Router from 'express';
 
 const router = Router();
 
-router.get('/all');
+router.get('/');
 
 router.post('/:id');
 router.get('/:id');

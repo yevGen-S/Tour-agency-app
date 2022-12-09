@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "db": "sudo docker start DB_coursework",
     "start": "ts-node --esm index.ts",
     "dev": "nodemon --esm index.ts"
   },
