@@ -12,4 +12,5 @@ export const pool = new Pool({
     host: process.env.DB_HOST,
 });
 
+
 console.log('Db connected');
