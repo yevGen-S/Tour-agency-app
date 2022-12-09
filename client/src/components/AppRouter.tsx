@@ -1,8 +1,7 @@
 import React from 'react';
-import { Route, Routes, useNavigation, redirect } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { ToursPage } from '../pages/ToursPage';
 import { authRoutes, publicRoutes } from '../routes';
-import { TOURS_PATH } from '../utils/consts';
 
 /**
  * Component represents navigation between different routes
@@ -34,10 +33,8 @@ export const AppRouter = () => {
                     );
                 })}
 
-            <Route path="*" element={<ToursPage />} />
-
+                <Route path='*' element={<ToursPage />} />
             </Routes>
-            
         </>
     );
 };

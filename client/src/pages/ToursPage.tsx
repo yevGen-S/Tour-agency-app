@@ -1,7 +1,12 @@
-import React from 'react'
+import { Container } from '@mui/material';
+import React from 'react';
 
 export const ToursPage = () => {
-  return (
-    <div>ToursPage</div>
-  )
-}
+    return (
+        <>
+            <Container maxWidth='xl' color='cyan'>
+                <div>ToursPage</div>
+            </Container>
+        </>
+    );
+};
