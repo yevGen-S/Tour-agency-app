@@ -1,15 +1,18 @@
 import Router from 'express';
+import ServiceController from '../controllers/ServiceController/ServiceController.js';
 
 const router = Router();
 
-router.post('/:id');
-router.get('/');
-router.get('/:id');
-router.patch('/:id');
-router.delete('/:id');
-router.put('/:id');
+router.get('/', ServiceController.getAllServices);
 
-router.get('/best_rated');
-router.get('/most_commented');
+router.post('/', ServiceController.addService);
+router.get('/:id', ServiceController.getService);
+
+router.get('/best_rated', ServiceController.getBestRatedServices);
+router.get('/most_commented', ServiceController.getMostCommentedServices);
+
+// router.patch('/:id');
+// router.delete('/:id');
+// router.put('/:id');
 
 export { router };
