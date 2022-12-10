@@ -4,8 +4,10 @@ import jwt from 'jsonwebtoken';
 import {
     queryAddUser,
     queryGetAllUsers,
+    queryGetUser,
     queryIsUserExists,
 } from './AuthQueries.js';
+import { Request, Response } from 'express';
 
 const generateJwt = (email: string, role: string) => {
     return jwt.sign({ email, role }, process.env.SECRET_KEY, {
@@ -26,6 +28,15 @@ class AuthController {
         try {
             const userLoginExists = pool.query(queryIsUserExists, [login]);
             return (await userLoginExists).rows[0].exists;
+        } catch (e) {
+            throw e;
+        }
+    }
+
+    async getUser(login: string) {
+        try { 
+            const user = await pool.query(queryGetUser, [login]);
+            return user.rows[0]
         } catch (e) {
             throw e;
         }
@@ -114,12 +125,41 @@ class AuthController {
         }
     }
 
-    async login(req, res) {
+    async login(req: Request, res: Response) {
         try {
+            const { login, password } = req.body;
+            let user = await this.isUserLoginExists(login);
+            
+            if (!user) {
+                throw new Error(`User with login:${login} not exists`);
+            }
+
+            user = await this.getUser(login);
+            console.log('login', user);
+
+            const comparePassword = bcrypt.compareSync(
+                password,
+                user.password
+            );
+
+            if (!comparePassword) {
+                throw new Error('Password is not valid');
+            }
+
+            const token = generateJwt(user.login, user.role);
+            return res.json({ token });
+
         } catch (e) {
-            res.status(200).json({ message: 'Login failed' });
+            res.status(400).json({Error: e});
         }
+        
     }
+
+    // async check(req, res, next) {
+    //     const token = generateJwt(req.user.id, req.user.login, req.user.role);
+    //     return res.json({ token });
+    // }
+    
 
     async getUsers(req, res) {
         try {
@@ -132,8 +172,10 @@ class AuthController {
 
     async auth(req, res) {
         try {
+            const token = generateJwt(req.user.login, req.user.role);
+            return res.status(200).json({token})
         } catch (e) {
-            console.log(e);
+            res.status(400).json({error: e});
         }
     }
 }

@@ -1,6 +1,6 @@
 export const ADMIN_PATH = '/admin'
-export const LOGIN_PATH = '/auth'
-export const REGISTRATION_PATH = '/auth'
+export const LOGIN_PATH = '/auth/login'
+export const REGISTRATION_PATH = '/auth/registration'
 export const CLIENT_PATH = '/user'
 export const TOURS_PATH = '/tours'
 export const TOUR_PATH = '/tour/:id'

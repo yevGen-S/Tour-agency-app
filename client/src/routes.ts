@@ -12,6 +12,8 @@ import { AuthPage } from './pages/AuthPage';
 import { ToursPage } from './pages/ToursPage';
 import { Tour } from './components/Tour/Tour';
 import { Services } from './components/Service/Services';
+import { Login } from './components/Auth/Login';
+import { Registration } from './components/Auth/Registration';
 
 /**
  * Routes for authentication
@@ -24,21 +26,21 @@ export const authRoutes = [
     {
         path: SERVICEP_PATH,
         component: AuthPage,
-    },
-    {
-        path: LOGIN_PATH,
-        component: AuthPage,
-    },
-    {
-        path: REGISTRATION_PATH,
-        component: AuthPage,
-    },
+    }
 ];
 
 /**
  * Public routes to see tour agency main pages
  */
 export const publicRoutes = [
+    {
+        path: LOGIN_PATH,
+        component: Login,
+    },
+    {
+        path: REGISTRATION_PATH,
+        component: Registration,
+    },
     {
         path: TOUR_PATH,
         component: Tour,

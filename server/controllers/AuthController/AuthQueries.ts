@@ -30,3 +30,17 @@ export const queryIsUserExists = `
         SELECT * FROM "User"
         WHERE login = $1)
 `;
+
+export const queryGetUser = `
+    SELECT 
+        "User"."id", 
+        "User"."login",
+        "User"."password", 
+        "User"."name", 
+        "User"."surname",
+        "Role"."type"
+    FROM "User"
+    JOIN "Role" 
+    on "User"."role_id" = "Role"."id"
+    WHERE "User"."login" = $1
+`;

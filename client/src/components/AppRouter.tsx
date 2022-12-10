@@ -8,7 +8,7 @@ import { authRoutes, publicRoutes } from '../routes';
  * @component
  */
 export const AppRouter = () => {
-    const isAuth = true;
+    const isAuth = false;
     return (
         <>
             <Routes>
