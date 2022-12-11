@@ -1,18 +1,19 @@
+import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ToursPage } from '../pages/ToursPage';
 import { authRoutes, publicRoutes } from '../routes';
+import UserStore from '../store/UserStore';
 
 /**
  * Component represents navigation between different routes
  * @component
  */
-export const AppRouter = () => {
-    const isAuth = false;
+export const AppRouter = observer(() => {
     return (
         <>
             <Routes>
-                {isAuth &&
+                {UserStore.isAuth &&
                     authRoutes.map((route) => {
                         return (
                             <Route
@@ -37,4 +38,4 @@ export const AppRouter = () => {
             </Routes>
         </>
     );
-};
+});

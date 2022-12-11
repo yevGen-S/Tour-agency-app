@@ -67,16 +67,41 @@ export const NavBar = observer(() => {
                             </NavLink>
                         </li>
 
-                        {UserStore?.user?.role === 'admin' && (
-                            <li>
-                                <NavLink
-                                    to='/admin_page'
-                                    className={navlinkStyle}
-                                >
-                                    Admin panel
-                                </NavLink>
-                            </li>
-                        )}
+                        {UserStore.isAuth &&
+                            UserStore?.user?.role === 'admin' && (
+                                <li>
+                                    <NavLink
+                                        to='/admin_page'
+                                        className={navlinkStyle}
+                                    >
+                                        Admin panel
+                                    </NavLink>
+                                </li>
+                            )}
+
+                        {UserStore.isAuth &&
+                            UserStore?.user?.role === 'client' && (
+                                <li>
+                                    <NavLink
+                                        to='/tours/booked'
+                                        className={navlinkStyle}
+                                    >
+                                        My tours
+                                    </NavLink>
+                                </li>
+                            )}
+
+                        {UserStore.isAuth &&
+                            UserStore?.user?.role === 'service provider' && (
+                                <li>
+                                    <NavLink
+                                        to='/servicepr'
+                                        className={navlinkStyle}
+                                    >
+                                        My tours
+                                    </NavLink>
+                                </li>
+                            )}
 
                         <li>
                             {UserStore.isAuth ? (
