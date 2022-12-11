@@ -4,7 +4,7 @@ export const queryGetAllUsers = `
         "User"."login", 
         "User"."name", 
         "User"."surname",
-        "Role"."type"
+        "Role"."type" as role
     FROM "User"
     JOIN "Role" 
     on "User"."role_id" = "Role"."id"

@@ -7,8 +7,8 @@ router.post('/', controller.addTour);
 router.get('/', controller.getAllTours);
 router.get('/:id', controller.getTour);
 
-router.get('/tour_points/:id', controller.getTourPoints);
-router.put('/tour_points/:id');
+router.get('/points/:id', controller.getTourPoints);
+router.put('/points/:id');
 
 router.get('/best_rated', controller.getBestRatedTours);
 router.get('/most_commented', controller.getMostCommentedTours);

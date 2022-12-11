@@ -1,13 +1,38 @@
 import { makeAutoObservable } from 'mobx';
 
-interface ITour {}
-
 class TourStore {
-    tours: [ITour];
+    tours: any;
+    /**
+     * id of selected tour
+     */
+    selectedTour: any;
+    selectedTourPoints: any;
 
     constructor() {
         makeAutoObservable(this);
-        this.tours = [{}];
+        this.tours = [];
+        this.selectedTour = {};
+    }
+
+    setSelected(tour: any) {
+        this.selectedTour = tour;
+    }
+
+    setTours(tours: any) {
+        this.tours = [...tours];
+    }
+
+    setSelectedTourPoints(tourPoinst: any) {
+        this.selectedTourPoints = [...tourPoinst];
+    }
+
+    changeTour(id: string, changeTour: any) {
+        this.tours.map((tour: any) => {
+            if (tour.id === id) {
+                return changeTour;
+            }
+            return tour;
+        });
     }
 }
 

@@ -12,7 +12,7 @@ export const registration = async (
     telephone_number: string,
     email: string,
     tour_subscription: boolean
-) => {
+)  => {
     const { data } = await $host.post('api/user/registration', {
         login,
         password,

@@ -34,7 +34,7 @@ export const NavBar = observer(() => {
     };
 
     return (
-        <nav className='bg-[#000] px-2 sm:px-4 py-2.5 rounded text-cyan-50'>
+        <nav className='bg-[#000] px-2 sm:px-4 py-2.5 rounded text-cyan-50 sticky top-0 w-full'>
             <div className='container flex flex-wrap items-center justify-between m-auto'>
                 <NavLink to='/' className='flex items-center'>
                     <span className='self-center text-[30px] font-semibold whitespace-nowrap dark:text-white'>
@@ -53,14 +53,14 @@ export const NavBar = observer(() => {
                                 className={navlinkStyle}
                                 aria-current='page'
                             >
-                                Hot destinations
+                                Destinations
                             </NavLink>
                         </li>
-                        <li>
+                        {/* <li>
                             <NavLink to='/aboutpage' className={navlinkStyle}>
                                 About
                             </NavLink>
-                        </li>
+                        </li> */}
                         <li>
                             <NavLink to='/services' className={navlinkStyle}>
                                 Services
