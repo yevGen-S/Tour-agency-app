@@ -1,5 +1,7 @@
+import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import UserStore from '../store/UserStore';
 import { LOGIN_PATH } from '../utils/consts';
 
 const navlinkStyle = `
@@ -25,7 +27,12 @@ const signUpStyle = `
     md:p-[5px]
 `;
 
-export const NavBar = () => {
+export const NavBar = observer(() => {
+    const logOut = () => {
+        UserStore.setIsAuth(false);
+        UserStore.setUser({});
+    };
+
     return (
         <nav className='bg-[#000] px-2 sm:px-4 py-2.5 rounded text-cyan-50'>
             <div className='container flex flex-wrap items-center justify-between m-auto'>
@@ -60,14 +67,38 @@ export const NavBar = () => {
                             </NavLink>
                         </li>
 
+                        {UserStore?.user?.role === 'admin' && (
+                            <li>
+                                <NavLink
+                                    to='/admin_page'
+                                    className={navlinkStyle}
+                                >
+                                    Admin panel
+                                </NavLink>
+                            </li>
+                        )}
+
                         <li>
-                            <NavLink to={LOGIN_PATH} className={signUpStyle}>
-                                Sign Up
-                            </NavLink>
+                            {UserStore.isAuth ? (
+                                <NavLink
+                                    to={LOGIN_PATH}
+                                    className={signUpStyle}
+                                    onClick={logOut}
+                                >
+                                    Sign Out
+                                </NavLink>
+                            ) : (
+                                <NavLink
+                                    to={LOGIN_PATH}
+                                    className={signUpStyle}
+                                >
+                                    Sign In
+                                </NavLink>
+                            )}
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     );
-};
+});

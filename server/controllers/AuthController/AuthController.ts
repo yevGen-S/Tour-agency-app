@@ -9,8 +9,8 @@ import {
 } from './AuthQueries.js';
 import { Request, Response } from 'express';
 
-const generateJwt = (email: string, role: string) => {
-    return jwt.sign({ email, role }, process.env.SECRET_KEY, {
+const generateJwt = (login: string, role: string) => {
+    return jwt.sign({ login, role }, process.env.SECRET_KEY, {
         expiresIn: '24h',
     });
 };
@@ -34,9 +34,9 @@ class AuthController {
     }
 
     async getUser(login: string) {
-        try { 
+        try {
             const user = await pool.query(queryGetUser, [login]);
-            return user.rows[0]
+            return user.rows[0];
         } catch (e) {
             throw e;
         }
@@ -117,7 +117,7 @@ class AuthController {
                 tour_subscription
             );
 
-            const token = generateJwt(email, role);
+            const token = generateJwt(login, role);
             return res.json({ token });
         } catch (e) {
             console.log(e);
@@ -129,18 +129,15 @@ class AuthController {
         try {
             const { login, password } = req.body;
             let user = await this.isUserLoginExists(login);
-            
+
             if (!user) {
-                throw new Error(`User with login:${login} not exists`);
+                throw new Error(`User with login not exists`);
             }
 
             user = await this.getUser(login);
             console.log('login', user);
 
-            const comparePassword = bcrypt.compareSync(
-                password,
-                user.password
-            );
+            const comparePassword = bcrypt.compareSync(password, user.password);
 
             if (!comparePassword) {
                 throw new Error('Password is not valid');
@@ -148,18 +145,10 @@ class AuthController {
 
             const token = generateJwt(user.login, user.role);
             return res.json({ token });
-
         } catch (e) {
-            res.status(400).json({Error: e});
+            res.status(400).json({ message: 'Error of login', Error: e });
         }
-        
     }
-
-    // async check(req, res, next) {
-    //     const token = generateJwt(req.user.id, req.user.login, req.user.role);
-    //     return res.json({ token });
-    // }
-    
 
     async getUsers(req, res) {
         try {
@@ -173,9 +162,12 @@ class AuthController {
     async auth(req, res) {
         try {
             const token = generateJwt(req.user.login, req.user.role);
-            return res.status(200).json({token})
+            return res.status(200).json({ token });
         } catch (e) {
-            res.status(400).json({error: e});
+            res.status(400).json({
+                message: "User can't pass authorization",
+                error: e,
+            });
         }
     }
 }

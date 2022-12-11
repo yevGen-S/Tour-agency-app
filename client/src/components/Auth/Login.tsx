@@ -1,10 +1,42 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { REGISTRATION_PATH } from '../../utils/consts';
+import React, { ChangeEvent, useState } from 'react';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { LOGIN_PATH, REGISTRATION_PATH, TOURS_PATH } from '../../utils/consts';
+import { login } from '../../http/userApi';
+import UserStore from '../../store/UserStore';
 
 const travelAgency = require('../../assets/images/travel-agency-auth-pic.png');
 
 export const Login = () => {
+    const [loginInput, setLoginInput] = useState<string>('');
+    const [passwordInput, setPasswordInput] = useState<string>('');
+
+    const location = useLocation();
+    const navigate = useNavigate();
+    const isLogin = location.pathname === LOGIN_PATH;
+
+    const handleLoginOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setLoginInput(e.target.value);
+    };
+
+    const handlePasswordOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setPasswordInput(e.target.value);
+    };
+
+    const handleSingIn = async () => {
+        try {
+            if (isLogin) {
+                const response = await login(loginInput, passwordInput);
+                console.log(response);
+
+                UserStore.setIsAuth(true);
+                UserStore.setUser(response);
+                navigate(TOURS_PATH);
+            }
+        } catch (e) {
+            alert(e);
+        }
+    };
+
     return (
         <section className='h-screen'>
             <div className='px-6 h-full text-gray-800'>
@@ -25,6 +57,7 @@ export const Login = () => {
                                     className='form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
                                     id='exampleFormControlInput2'
                                     placeholder='Email address'
+                                    onChange={handleLoginOnChange}
                                 />
                             </div>
 
@@ -35,6 +68,7 @@ export const Login = () => {
                                     className='form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
                                     id='exampleFormControlInput2'
                                     placeholder='Password'
+                                    onChange={handlePasswordOnChange}
                                 />
                             </div>
 
@@ -55,6 +89,7 @@ export const Login = () => {
                                 <button
                                     type='button'
                                     className='inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out'
+                                    onClick={handleSingIn}
                                 >
                                     Login
                                 </button>

@@ -13,6 +13,22 @@ router.put('/tour_points/:id');
 router.get('/best_rated', controller.getBestRatedTours);
 router.get('/most_commented', controller.getMostCommentedTours);
 
+/**
+ * for client
+ */
+router.post('/book_tour');
+router.post('/pay_tour');
+
+router.get('/booked_tours');
+router.get('/paid_tours')
+
+/**
+ * for admin
+ */
+router.post('/make_tour');
+router.patch('/change_tour/:id')
+router.put('/replace_tour/:id')
+
 router.patch('/:id');
 router.delete('/:id');
 router.put('/:id');

@@ -1,14 +1,19 @@
 import { makeAutoObservable } from 'mobx';
 
-interface IUser {}
+interface IUser {
+    login: string;
+    role: string;
+    iat: number;
+    exp: number;
+}
 
 class UserStore {
-    private _isAuth: boolean;
-    private user;
+    _isAuth: boolean;
+    user: IUser;
 
     constructor() {
         this._isAuth = false;
-        this.user = {};
+        this.user = { login: '', role: '', iat: 0, exp: 0 };
         makeAutoObservable(this);
     }
 
@@ -26,6 +31,10 @@ class UserStore {
 
     get getUser() {
         return this.user;
+    }
+
+    get userRole() {
+        return this.user.role;
     }
 }
 

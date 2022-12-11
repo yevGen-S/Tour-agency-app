@@ -38,7 +38,7 @@ export const queryGetUser = `
         "User"."password", 
         "User"."name", 
         "User"."surname",
-        "Role"."type"
+        "Role"."type" AS role
     FROM "User"
     JOIN "Role" 
     on "User"."role_id" = "Role"."id"
