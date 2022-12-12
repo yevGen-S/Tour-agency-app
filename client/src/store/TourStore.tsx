@@ -7,6 +7,7 @@ class TourStore {
      */
     selectedTour: any;
     selectedTourPoints: any;
+    selectedTourImage: any;
 
     constructor() {
         makeAutoObservable(this);
@@ -33,6 +34,10 @@ class TourStore {
             }
             return tour;
         });
+    }
+
+    setSelectedTourImage(src: any) {
+        this.selectedTourImage = src;
     }
 }
 

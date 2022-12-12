@@ -22,7 +22,8 @@ export const ToursPage = observer(() => {
 
     const navigate = useNavigate();
 
-    const handleOnClick = (tourId: string) => {
+    const handleOnClick = (tourId: string, imageSrc: any) => {
+        TourStore.setSelectedTourImage(imageSrc);
         navigate(`/tour/${tourId}`);
     };
 
@@ -35,28 +36,29 @@ export const ToursPage = observer(() => {
                 color='#e0c0dd'
                 className='items-center justify-center h-screen'
             >
-                <div className=' columns-2'>
-                    {TourStore.tours.map((tour: any) => {
+                <div className='grid grid-cols-2'>
+                    {TourStore.tours.map((tour: any, index: any) => {
                         return (
                             <div
                                 key={tour.id}
-                                className='text-black flex-col p-10'
+                                className='  text-black shadow-lg  rounded-xl p-2 m-5 shadow-slate-300'
                             >
-                                <img
-                                    src={
-                                        images[
-                                            Math.floor(
-                                                Math.random() * images.length
+                                <div className='overflow-hidden'>
+                                    <img
+                                        src={images[index % 4]}
+                                        alt='Tour'
+                                        onClick={() =>
+                                            handleOnClick(
+                                                tour.id,
+                                                images[index % 4]
                                             )
-                                        ]
-                                    }
-                                    alt='Tour'
-                                    onClick={() => handleOnClick(tour.id)}
-                                    className='cursor-pointer'
-                                />
+                                        }
+                                        className='cursor-pointer max-h-[300px] max-w-lg hover:scale-[1.1] ease-in duration-[400ms]'
+                                    />
+                                </div>
 
-                                <div className='justify-center items-center'>
-                                    <h1 className='text-bold'>
+                                <div className='justify-center items-center '>
+                                    <h1 className='font-bold '>
                                         {tour.Tour_name}
                                     </h1>
                                     <h3>Price: {tour.price}</h3>

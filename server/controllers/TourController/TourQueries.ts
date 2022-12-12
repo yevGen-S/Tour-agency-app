@@ -44,13 +44,13 @@ export const queryAddTours: string = `
 export const queryGetTourById: string = `
     SELECT 
         t.id, 
-        t."name", 
+        t."name" as "Tour_name", 
         t.price, 
         t.number_of_places,
         t.rating,
         t.period_start,
         t.period_end,
-        c."name" AS City
+        c."name" AS "City_name"
     FROM "Tour" t
     JOIN "City" c ON t.city_id = c.id
     WHERE t.id = $1
