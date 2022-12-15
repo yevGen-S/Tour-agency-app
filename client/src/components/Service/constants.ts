@@ -51,7 +51,9 @@ class ServiceImages {
     };
 
     getRandBeachResort = (day: number) => {
-        return this.images.beach_resort[day % this.images.beach_resort.length];
+        console.log(day % 2);
+        console.log(this.images.beach_resort[day % 2])
+        return this.images.beach_resort[day % 2];
     };
     getRandCruise = (day: number) => {
         return this.images.cruise[day % this.images.cruise.length];
