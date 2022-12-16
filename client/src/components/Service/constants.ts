@@ -35,7 +35,7 @@ class ServiceImages {
 
     getRandImage = (day: number, type: string) => {
         switch (type) {
-            case 'beach_resort':
+            case 'beach resort':
                 return this.getRandBeachResort(day);
             case 'cruise':
                 return this.getRandCruise(day);
@@ -51,9 +51,7 @@ class ServiceImages {
     };
 
     getRandBeachResort = (day: number) => {
-        console.log(day % 2);
-        console.log(this.images.beach_resort[day % 2])
-        return this.images.beach_resort[day % 2];
+        return this.images.beach_resort[day % this.images.beach_resort.length];
     };
     getRandCruise = (day: number) => {
         return this.images.cruise[day % this.images.cruise.length];

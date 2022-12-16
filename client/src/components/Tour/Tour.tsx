@@ -81,29 +81,37 @@ export const Tour = observer(() => {
 
                     {TourStore?.selectedTourPoints?.map((service: any) => {
                         return (
-                            <div className='flex flex-row p-3'>
-                                <img
-                                    src={ServiceImages.getRandImage(
-                                        service.day,
-                                        service.Service_type
-                                    )}
-                                    alt='service'
-                                    className='max-w-[500px]'
-                                />
-                                <div key={service.Service_id} className='p-10'>
-                                    <h1 className='text-bold text-[50px] font-sans'>
-                                        Day: {service?.day}
-                                    </h1>
-                                    <h1 className='text-bold text-[20px] font-sans'>
-                                        {' '}
-                                        {service?.Service_type}
-                                    </h1>
-                                    <h1 className='pt-10'>
-                                        {' '}
-                                        {service?.description}
-                                    </h1>
+                            <>
+                                <div className='flex flex-row p-3'>
+                                    <img
+                                        src={ServiceImages.getRandImage(
+                                            service.day,
+                                            service.Service_type
+                                        )}
+                                        alt='service'
+                                        className='max-w-[450px]'
+                                    />
+                                    <div
+                                        key={service.Service_id}
+                                        className='p-10'
+                                    >
+                                        <h1 className='text-bold text-[50px] font-sans'>
+                                            Day: {service?.day}
+                                        </h1>
+                                        <h1 className='text-bold text-[20px] font-sans'>
+                                            {' '}
+                                            {service?.Service_type}
+                                        </h1>
+                                        <h1 className='pt-10'>
+                                            {' '}
+                                            {service?.description}
+                                        </h1>
+                                    </div>
                                 </div>
-                            </div>
+                                <div className='h-[3px] bg-slate-300 my-5'>
+                                    {' '}
+                                </div>
+                            </>
                         );
                     })}
                 </div>

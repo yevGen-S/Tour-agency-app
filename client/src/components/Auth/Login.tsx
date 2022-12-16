@@ -26,14 +26,13 @@ export const Login = () => {
         try {
             if (isLogin) {
                 const response = await login(loginInput, passwordInput);
-                console.log(response);
 
                 UserStore.setIsAuth(true);
                 UserStore.setUser(response);
                 navigate(TOURS_PATH);
             }
-        } catch (e) {
-            alert(e);
+        } catch (e:any) {
+            alert(e.response.data.message);
         }
     };
 

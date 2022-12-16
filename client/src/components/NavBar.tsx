@@ -31,10 +31,11 @@ export const NavBar = observer(() => {
     const logOut = () => {
         UserStore.setIsAuth(false);
         UserStore.setUser({});
+        localStorage.removeItem('token');
     };
 
     return (
-        <nav className='bg-[#000] px-2 sm:px-4 py-2.5 rounded text-cyan-50 z-[999] sticky top-0 w-full'>
+        <nav className='bg-[#000] px-2 sm:px-4 py-2.5 text-cyan-50 z-[999] sticky top-0 w-screen'>
             <div className='container flex flex-wrap items-center justify-between m-auto'>
                 <NavLink to='/' className='flex items-center'>
                     <span className='self-center text-[30px] font-semibold whitespace-nowrap dark:text-white'>
@@ -56,11 +57,7 @@ export const NavBar = observer(() => {
                                 Destinations
                             </NavLink>
                         </li>
-                        {/* <li>
-                            <NavLink to='/aboutpage' className={navlinkStyle}>
-                                About
-                            </NavLink>
-                        </li> */}
+
                         <li>
                             <NavLink to='/services' className={navlinkStyle}>
                                 Services
@@ -71,7 +68,7 @@ export const NavBar = observer(() => {
                             UserStore?.user?.role === 'admin' && (
                                 <li>
                                     <NavLink
-                                        to='/admin_page'
+                                        to='/admin'
                                         className={navlinkStyle}
                                     >
                                         Admin panel

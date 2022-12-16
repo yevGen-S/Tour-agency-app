@@ -1,4 +1,4 @@
-import { $host } from '.';
+import { $authHost, $host } from '.';
 import jwt_decode from 'jwt-decode';
 
 /**
@@ -12,7 +12,7 @@ export const registration = async (
     telephone_number: string,
     email: string,
     tour_subscription: boolean
-)  => {
+) => {
     const { data } = await $host.post('api/user/registration', {
         login,
         password,
@@ -38,7 +38,6 @@ export const login = async (login: string, password: string) => {
     });
 
     localStorage.setItem('token', data.token);
-
     return jwt_decode(data.token);
 };
 
@@ -46,7 +45,14 @@ export const login = async (login: string, password: string) => {
  * authprization
  */
 export const auth = async () => {
-    const { data } = await $host.post('api/user/auth');
+    const { data } = await $authHost.get('api/user/auth');
 
     return jwt_decode(data.token);
 };
+
+// /**
+//  * book a tour
+//  */
+// export const bookTour = async () => {
+//     const { data } = await $authHost.post('api/');
+// };

@@ -8,7 +8,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Container } from '@mui/material';
 
-export const ReportOfSells = () => {
+export const Staff = () => {
     const [open, setOpen] = useState(false);
 
     const handleClickOpen = () => {
@@ -20,7 +20,7 @@ export const ReportOfSells = () => {
     };
     return (
         <Container>
-            <div className='pt-10'>ReportOfSells</div>
+            <div className='pt-10'>Staff</div>
             <div>
                 <Button variant='outlined' onClick={handleClickOpen}>
                     Open form dialog

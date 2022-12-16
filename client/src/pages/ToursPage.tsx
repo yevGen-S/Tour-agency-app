@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { fetchTours } from '../http/tourApi';
 import TourStore from '../store/TourStore';
 
-const ourToursPic = require('../assets/images/tours-page.webp');
+const ourToursPic = require('../assets/dark-main.jpeg');
 
 const tour1 = require('../assets/images/baloons.jpg');
 const tour2 = require('../assets/images/baloons2.jpg');
@@ -29,13 +29,14 @@ export const ToursPage = observer(() => {
 
     return (
         <>
-            <img src={ourToursPic} alt='Our tours' />
-
+           
+           <img src={ourToursPic} alt='Our tours' className='w-screen' />
             <Container
                 maxWidth='lg'
                 color='#e0c0dd'
                 className='items-center justify-center h-screen'
             >
+                
                 <div className='grid md:grid-cols-2 grid-cols-1'>
                     {TourStore.tours.map((tour: any, index: any) => {
                         return (
@@ -53,28 +54,21 @@ export const ToursPage = observer(() => {
                                                 images[index % 4]
                                             )
                                         }
-                                        className='cursor-pointer max-h-[300px] max-w-lg hover:scale-[1.1] ease-in duration-[150ms]'
+                                        className='cursor-pointer max-w-[600px] hover:scale-[1.1] ease-in duration-[150ms]'
                                     />
                                 </div>
 
                                 <div className='justify-center items-center p-5'>
-                                    <h1 className="font-bold font-[ui-monospace] text-[30px]">
+                                    <h1 className='font-bold font-[ui-monospace] text-[30px]'>
                                         {tour.Tour_name}
                                     </h1>
-                                    <h2 className=''>
-                                        Price: {tour.price}
-                                    </h2>
-                                    <h2 className=''>
-                                        City: {tour.City_name}
-                                    </h2>
+                                    <h2 className=''>Price: {tour.price}</h2>
+                                    <h2 className=''>City: {tour.City_name}</h2>
                                     <h2 className=''>
                                         Number of places:{' '}
                                         {tour.number_of_places}
                                     </h2>
-                                    <h2 className=''>
-                                        {' '}
-                                        Rating {tour.rating}{' '}
-                                    </h2>
+                                    <h2 className=''> Rating {tour.rating} </h2>
                                     <h2 className=''>
                                         From{' '}
                                         {tour.period_start.substring(0, 10)} to{' '}
