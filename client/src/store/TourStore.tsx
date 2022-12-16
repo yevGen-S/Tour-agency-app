@@ -9,10 +9,13 @@ class TourStore {
     selectedTourPoints: any;
     selectedTourImage: any;
 
+    sellsReport: any
+
     constructor() {
         makeAutoObservable(this);
         this.tours = [];
         this.selectedTour = {};
+        this.sellsReport = [];
     }
 
     setSelected(tour: any) {
@@ -38,6 +41,10 @@ class TourStore {
 
     setSelectedTourImage(src: any) {
         this.selectedTourImage = src;
+    }
+
+    setSellsReport(report: any) {
+        this.sellsReport = [...report];
     }
 }
 

@@ -146,7 +146,7 @@ class AuthController {
             const token = generateJwt(user.login, user.role);
             return res.json({ token });
         } catch (e) {
-            res.status(400).json({ message: 'Error of login', Error: e });
+            res.status(400).json({ message: 'Incorrect login or password', Error: e });
         }
     }
 

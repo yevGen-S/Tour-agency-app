@@ -1,15 +1,22 @@
 import { useState } from 'react';
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
+// import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Container } from '@mui/material';
+import { fetchSellsReport } from '../../../http/tourApi';
+import TourStore from '../../../store/TourStore';
+import { Table } from '../../Table/Table';
+import { observer } from 'mobx-react-lite';
 
-export const ReportOfSells = () => {
+const sourcesColumns = ['Tour name', 'Number of sold tours', 'Summary price'];
+
+export const ReportOfSells = observer(() => {
     const [open, setOpen] = useState(false);
+
+    // const [dateFrom, setDateFrom] = useState();
+    // const [dateTo, setDateTo] = useState();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -18,37 +25,54 @@ export const ReportOfSells = () => {
     const handleClose = () => {
         setOpen(false);
     };
+
+    const handleReportShow = async () => {
+        fetchSellsReport().then((data) => {
+            TourStore.setSellsReport(data);
+        });
+    };
+
     return (
-        <Container>
-            <div className='pt-10'>ReportOfSells</div>
-            <div>
+        <Container className='grid grid-cols-2'>
+            <div className='flex flex-row justify-items-center justify-center'>
+                <div className='pr-10 text-[30px]'>Report of sells</div>
                 <Button variant='outlined' onClick={handleClickOpen}>
                     Open form dialog
                 </Button>
-                <Dialog open={open} onClose={handleClose}>
-                    <DialogTitle>Subscribe</DialogTitle>
-                    <DialogContent>
-                        <DialogContentText>
-                            To subscribe to this website, please enter your
-                            email address here. We will send updates
-                            occasionally.
-                        </DialogContentText>
-                        <TextField
-                            autoFocus
-                            margin='dense'
-                            id='name'
-                            label='Email Address'
-                            type='email'
-                            fullWidth
-                            variant='standard'
-                        />
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={handleClose}>Cancel</Button>
-                        <Button onClick={handleClose}>Subscribe</Button>
-                    </DialogActions>
-                </Dialog>
             </div>
+
+            <Dialog open={open} onClose={handleClose} fullScreen>
+                <div className='flex flex-row'>
+                    <Button onClick={handleClose}>Back</Button>
+                </div>
+
+                <DialogTitle className='w-full flex justify-center'>
+                    Report of sells
+                </DialogTitle>
+
+                <DialogContent>
+                    <Button
+                        onClick={handleReportShow}
+                        className='w-full flex justify-center'
+                    >
+                        Show report
+                    </Button>
+
+                    <div className='flex w-full justify-center'>
+                        <Table
+                            columns={sourcesColumns}
+                            cellWidth={'300px'}
+                            rows={TourStore?.sellsReport?.map((row: any) => {
+                                return [
+                                    row.Tour_name,
+                                    row.Number_of_bought_tours,
+                                    row.Summary_price,
+                                ];
+                            })}
+                        />
+                    </div>
+                </DialogContent>
+            </Dialog>
         </Container>
     );
-};
+});

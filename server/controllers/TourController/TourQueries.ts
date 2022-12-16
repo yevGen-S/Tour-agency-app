@@ -83,3 +83,16 @@ export const queryGetMostCommentedTours: string = `
     GROUP BY t."name"
     ORDER BY "Number of feedbacks" DESC;
 `;
+
+
+export const queryGetSellsReport: string = `
+    SELECT 
+        DISTINCT t."name" AS "Tour_name",
+        COUNT(ct.tour_id) AS "Number_of_bought_tours", 
+        SUM(t."price") AS "Summary_price"
+    FROM clients_tours ct 
+    INNER JOIN "Tour" t ON ct.tour_id = t.id 
+    INNER JOIN "Status" s ON ct.status_id = s.id
+    WHERE s."type" = 'paid'
+    GROUP BY t."name"
+`

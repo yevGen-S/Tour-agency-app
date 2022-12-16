@@ -1,8 +1,9 @@
 export const queryAllServices: string = `
     SELECT 
-        st."type" AS "Service",
+        s.id,
+        st."type" AS "Service_type",
         s.price,
-        c.name AS "City"
+        c.name AS "city"
     FROM "Service" s
     JOIN "Service_type" st ON
     s.service_type_id = st.id

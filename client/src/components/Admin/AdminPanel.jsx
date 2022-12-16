@@ -7,7 +7,9 @@ import { ReportOfSells } from './modals/ReportOfSells';
 export const AdminPanel = () => {
     return (
         <Container className='flex justify-items-center'>
-            <div className='font-bold text-[40px]'> Admin panel </div>
+            <div className='font-bold text-[40px] flex w-full justify-center'>
+                Admin panel
+            </div>
             <Staff />
             <ReportOfSells />
             <CreateTour />

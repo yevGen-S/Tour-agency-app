@@ -14,12 +14,17 @@ export const Tour = observer(() => {
     const { id } = useParams();
 
     useEffect(() => {
-        fetchTour(id).then((data) => {
-            TourStore.setSelected(data[0]);
-        });
-        fetchTourPoints(id).then((data) => {
-            TourStore.setSelectedTourPoints(data);
-        });
+        if (!TourStore.selectedTour) {
+            fetchTour(id).then((data) => {
+                TourStore.setSelected(data[0]);
+            });
+        }
+
+        if (TourStore.selectedTourPoints.length === 0) {
+            fetchTourPoints(id).then((data) => {
+                TourStore.setSelectedTourPoints(data);
+            });
+        }
     }, [id]);
 
     return (
@@ -32,9 +37,9 @@ export const Tour = observer(() => {
             <Container
                 maxWidth='md'
                 color='#fff'
-                className='items-center justify-center absolute top-[600px] bottom-0 '
+                className='items-center justify-center absolute top-[500px] bottom-0 '
             >
-                <div className='bg-black text-white w-full h-full'>
+                <div className='md:text-[20px] bg-black text-white w-full h-full '>
                     <h1 className='text-bold font-mono text-[50px] p-5'>
                         Tour: {TourStore?.selectedTour?.Tour_name}
                     </h1>
@@ -75,14 +80,16 @@ export const Tour = observer(() => {
                 </div>
                 <div className='  w-full pt-[80px] columns-1'>
                     <h1 className='text-bold font-mono text-[45px]'>
-                        {' '}
                         Tour points
                     </h1>
 
                     {TourStore?.selectedTourPoints?.map((service: any) => {
                         return (
                             <>
-                                <div className='flex flex-row p-3'>
+                                <div
+                                    key={service.Service_id}
+                                    className='flex flex-row p-3'
+                                >
                                     <img
                                         src={ServiceImages.getRandImage(
                                             service.day,

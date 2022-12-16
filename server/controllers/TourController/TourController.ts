@@ -4,6 +4,7 @@ import {
     queryAddTours,
     queryGetBestRatedTours,
     queryGetMostCommentedTours,
+    queryGetSellsReport,
     queryGetTourById,
     queryGetTourPoints,
 } from './TourQueries.js';
@@ -113,6 +114,27 @@ class TourController {
         } catch (e) {
             res.status(400).json({
                 message: 'Error of getting tour points ',
+                error: e,
+            });
+        }
+    }
+
+    async addTourPoints(req: Request, res: Response) {
+        try {
+        } catch (e) {}
+    }
+
+    async getSellsReport(req: Request, res: Response) {
+        try {
+            const sellsReport = await pool.query(queryGetSellsReport);
+
+            res.status(200).json({
+                message: 'Success get sells report',
+                data: sellsReport.rows,
+            });
+        } catch (e) {
+            res.status(400).json({
+                message: 'Error of getting sells report!',
                 error: e,
             });
         }

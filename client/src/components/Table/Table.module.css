@@ -1,0 +1,22 @@
+.table {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.table__row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    height: fit-content;
+}
+
+.table__cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    border: 1px solid #999;
+    padding: 10px;
+}

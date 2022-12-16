@@ -21,3 +21,9 @@ export const fetchTourPoints = async (id: string | undefined) => {
     const { data } = await $host.get(`/api/tour/points/${id}`);
     return data.data;
 };
+
+export const fetchSellsReport = async () => {
+    const { data } = await $authHost.get('/api/tour/sells_report');
+
+    return data.data;
+};

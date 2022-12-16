@@ -1,14 +1,16 @@
 import Router from 'express';
 import controller from '../controllers/TourController/TourController.js';
+import roleMiddleware from '../middleware/RoleMiddleware.js';
 
 const router = Router();
 
-router.post('/', controller.addTour);
+router.get('/sells_report', controller.getSellsReport);
+
+
 router.get('/', controller.getAllTours);
 router.get('/:id', controller.getTour);
 
 router.get('/points/:id', controller.getTourPoints);
-router.put('/points/:id');
 
 router.get('/best_rated', controller.getBestRatedTours);
 router.get('/most_commented', controller.getMostCommentedTours);
@@ -20,14 +22,16 @@ router.post('/book_tour');
 router.post('/pay_tour');
 
 router.get('/booked_tours');
-router.get('/paid_tours')
+router.get('/paid_tours');
 
 /**
  * for admin
  */
-router.post('/make_tour');
-router.patch('/change_tour/:id')
-router.put('/replace_tour/:id')
+router.post('/', roleMiddleware('admin'), controller.addTour);
+router.post('/points', roleMiddleware('admin'), controller.addTourPoints);
+router.patch('/:id', roleMiddleware('admin'));
+router.put('/:id', roleMiddleware('admin'));
+router.put('/points/:id', roleMiddleware('admin'));
 
 router.patch('/:id');
 router.delete('/:id');

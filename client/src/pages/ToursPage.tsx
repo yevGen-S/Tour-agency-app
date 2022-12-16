@@ -1,6 +1,6 @@
-import { Container } from '@mui/material';
+import { CircularProgress, Container } from '@mui/material';
 import { observer } from 'mobx-react-lite';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchTours } from '../http/tourApi';
 import TourStore from '../store/TourStore';
@@ -15,9 +15,11 @@ const images = [tour1, tour2, tour3, tour4];
 
 export const ToursPage = observer(() => {
     useEffect(() => {
-        fetchTours().then((data) => {
-            TourStore.setTours(data);
-        });
+        if (TourStore.tours.length === 0) {
+            fetchTours().then((data) => {
+                TourStore.setTours(data);
+            });
+        }
     }, []);
 
     const navigate = useNavigate();
@@ -29,14 +31,12 @@ export const ToursPage = observer(() => {
 
     return (
         <>
-           
-           <img src={ourToursPic} alt='Our tours' className='w-screen' />
+            <img src={ourToursPic} alt='Our tours' className='w-screen' />
             <Container
                 maxWidth='lg'
                 color='#e0c0dd'
                 className='items-center justify-center h-screen'
             >
-                
                 <div className='grid md:grid-cols-2 grid-cols-1'>
                     {TourStore.tours.map((tour: any, index: any) => {
                         return (

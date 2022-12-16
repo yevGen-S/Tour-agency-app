@@ -16,6 +16,7 @@ const navlinkStyle = `
     md:p-0 dark:
     md:dark:hover:text-white dark:hover:bg-gray-700 
     dark:hover:text-white md:dark:hover:bg-transparent
+    select-none
 `;
 
 const signUpStyle = `
@@ -25,6 +26,7 @@ const signUpStyle = `
     border-2 border-cyan-50
     md:hover:bg-cyan-50
     md:p-[5px]
+    select-none
 `;
 
 export const NavBar = observer(() => {
@@ -36,8 +38,8 @@ export const NavBar = observer(() => {
 
     return (
         <nav className='bg-[#000] px-2 sm:px-4 py-2.5 text-cyan-50 z-[999] sticky top-0 w-screen'>
-            <div className='container flex flex-wrap items-center justify-between m-auto'>
-                <NavLink to='/' className='flex items-center'>
+            <div className='container flex flex-wrap items-center justify-between m-auto select-none'>
+                <NavLink to='/' className='flex items-center' draggable={false}>
                     <span className='self-center text-[30px] font-semibold whitespace-nowrap dark:text-white'>
                         Tour agency
                     </span>
@@ -48,18 +50,23 @@ export const NavBar = observer(() => {
                     id='navbar-default'
                 >
                     <ul className='flex flex-row p-4 mt-4 border items-center  md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0'>
-                        <li>
+                        <li draggable={false}>
                             <NavLink
                                 to='/tours'
                                 className={navlinkStyle}
                                 aria-current='page'
+                                draggable={false}
                             >
                                 Destinations
                             </NavLink>
                         </li>
 
-                        <li>
-                            <NavLink to='/services' className={navlinkStyle}>
+                        <li draggable={false}>
+                            <NavLink
+                                to='/services'
+                                className={navlinkStyle}
+                                draggable={false}
+                            >
                                 Services
                             </NavLink>
                         </li>
@@ -78,10 +85,11 @@ export const NavBar = observer(() => {
 
                         {UserStore.isAuth &&
                             UserStore?.user?.role === 'client' && (
-                                <li>
+                                <li draggable={false}>
                                     <NavLink
                                         to='/tours/booked'
                                         className={navlinkStyle}
+                                        draggable={false}
                                     >
                                         My tours
                                     </NavLink>
@@ -90,21 +98,23 @@ export const NavBar = observer(() => {
 
                         {UserStore.isAuth &&
                             UserStore?.user?.role === 'service provider' && (
-                                <li>
+                                <li draggable={false}>
                                     <NavLink
                                         to='/servicepr'
                                         className={navlinkStyle}
+                                        draggable={false}
                                     >
                                         My tours
                                     </NavLink>
                                 </li>
                             )}
 
-                        <li>
+                        <li draggable={false}>
                             {UserStore.isAuth ? (
                                 <NavLink
                                     to={LOGIN_PATH}
                                     className={signUpStyle}
+                                    draggable={false}
                                     onClick={logOut}
                                 >
                                     Sign Out
