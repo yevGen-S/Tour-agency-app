@@ -50,6 +50,28 @@ export const auth = async () => {
     return jwt_decode(data.token);
 };
 
+/**
+ * get all users (admin func)
+ */
+export const fetchAllUsers = async () => {
+    const { data } = await $authHost.get('/api/user');
+
+    return data;
+};
+
+/**
+ * func to update user
+ */
+export const updateUser = async (user: any) => {
+    const {data} = await $authHost.put(`/api/user/${user.id}`, user)
+    return data;
+}
+
+
+/**
+ * pay tour
+ */
+
 // /**
 //  * book a tour
 //  */

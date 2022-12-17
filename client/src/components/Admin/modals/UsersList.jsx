@@ -3,369 +3,378 @@ import React from 'react';
 export const UsersList = () => {
     return (
         <div>
-            <table classNameName='TK9h2c2b79uBgR_cJzCE Zy1Pypi71Xu6guex6urN NIAblPiyeuYQ0zW671xb tE23eyc5jfeQpiPRybcw PoeKYEQfG4WfmL9xM6vu'>
-                <thead classNameName='_9dH7mrOkzM4RTmidHTs jqg6J89cvxmDiFpnV56r'>
-                    <tr>
-                        <th scope='col' classNameName='_wYiJGbRZyFZeCc8y7Sf'>
-                            <div classNameName='YRrCJSr_j5nopfm4duUc Q_jg_EPdNf9eDMn1mLI2'>
-                                <input
-                                    id='checkbox-all'
-                                    aria-describedby='checkbox-1'
-                                    type='checkbox'
-                                    classNameName='E9GV5sZJIbfO_GEQ_moc _o2IXcpM0qnG3JPReKus vpDN1VEJLu5FmLkr5WCk Y3FxyuXtj2gecrGXvLEI jtAJHOc7mn7b4IKRO59D focus:ring-3 KmgKPWh7pHX4ztLneO0T BO8JrKgx4qkHG27c4wVR _GL8_lXmAgroY9ZBWGLH jqg6J89cvxmDiFpnV56r Mmx5lX7HVdrWCgh3EpTP'
-                                />
-                                <label
-                                    for='checkbox-all'
-                                    classNameName='_DVAfiyo21kM68EUVzEQ'
-                                >
-                                    checkbox
-                                </label>
-                            </div>
-                        </th>
-                        <th
-                            scope='col'
-                            classNameName='_wYiJGbRZyFZeCc8y7Sf gMXmdpOPfqG_3CKkL0VD ezMFUVl744lvw6ht0lFe upQp7iWehfaU8VTbfx_w PeR2JZ9BZHYIH8Ea3F36 sdSaZcRa4_We5kKaX4pf XIIs8ZOri3wm8Wnj9N_y'
+            <div className='overflow-x-auto relative shadow-md sm:rounded-lg'>
+                <div className='flex justify-between items-center pb-4'>
+                    <div>
+                        <div
+                            id='dropdownRadio'
+                            className='hidden z-10 w-48 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600'
+                            data-popper-placement='top'
                         >
-                            Name
-                        </th>
-                        <th
-                            scope='col'
-                            classNameName='_wYiJGbRZyFZeCc8y7Sf gMXmdpOPfqG_3CKkL0VD ezMFUVl744lvw6ht0lFe upQp7iWehfaU8VTbfx_w PeR2JZ9BZHYIH8Ea3F36 sdSaZcRa4_We5kKaX4pf XIIs8ZOri3wm8Wnj9N_y'
-                        >
-                            Position
-                        </th>
-                        <th
-                            scope='col'
-                            classNameName='_wYiJGbRZyFZeCc8y7Sf gMXmdpOPfqG_3CKkL0VD ezMFUVl744lvw6ht0lFe upQp7iWehfaU8VTbfx_w PeR2JZ9BZHYIH8Ea3F36 sdSaZcRa4_We5kKaX4pf XIIs8ZOri3wm8Wnj9N_y'
-                        >
-                            Country
-                        </th>
-                        <th
-                            scope='col'
-                            classNameName='_wYiJGbRZyFZeCc8y7Sf gMXmdpOPfqG_3CKkL0VD ezMFUVl744lvw6ht0lFe upQp7iWehfaU8VTbfx_w PeR2JZ9BZHYIH8Ea3F36 sdSaZcRa4_We5kKaX4pf XIIs8ZOri3wm8Wnj9N_y'
-                        >
-                            Status
-                        </th>
-                        <th
-                            scope='col'
-                            classNameName='_wYiJGbRZyFZeCc8y7Sf'
-                        ></th>
-                    </tr>
-                </thead>
-                <tbody classNameName='_Ybd3WwuTVljUT4vEaM3 Zy1Pypi71Xu6guex6urN NIAblPiyeuYQ0zW671xb _1jTZ8KXRZul60S6czNi XpuPpk9eXhVCrleKmXDr'>
-                    <tr classNameName='_7KA5gD55t2lxf9Jkj20 OPrb_iG5WDy_7F05BDOX'>
-                        <td classNameName='E9GV5sZJIbfO_GEQ_moc _wYiJGbRZyFZeCc8y7Sf'>
-                            <div classNameName='YRrCJSr_j5nopfm4duUc Q_jg_EPdNf9eDMn1mLI2'>
-                                {/* <input id="checkbox-1" aria-describedby="checkbox-1" type="checkbox" classNameName="E9GV5sZJIbfO_GEQ_moc _o2IXcpM0qnG3JPReKus vpDN1VEJLu5FmLkr5WCk Y3FxyuXtj2gecrGXvLEI jtAJHOc7mn7b4IKRO59D focus:ring-3 KmgKPWh7pHX4ztLneO0T BO8JrKgx4qkHG27c4wVR _GL8_lXmAgroY9ZBWGLH jqg6J89cvxmDiFpnV56r Mmx5lX7HVdrWCgh3EpTP"> */}
-                                <label
-                                    for='checkbox-1'
-                                    classNameName='_DVAfiyo21kM68EUVzEQ'
-                                >
-                                    checkbox
-                                </label>
-                            </div>
-                        </td>
-                        <td classNameName='YRrCJSr_j5nopfm4duUc Q_jg_EPdNf9eDMn1mLI2 _wYiJGbRZyFZeCc8y7Sf a6oNxeE2_RMYuJ3ruA_U e2hrZSYddULUFUtJ9wBR BHrWGjM1Iab_fAz0_91H bqENLAd5lw7DYVe46RFH'>
-                            {/* <img classNameName="hlT3pgfpx11BUFMWNdhc Mln3CkDzLcoVQAC3Uqsd RpVwy4sO7Asb86CncKJ_" src="https://flowbite.com/application-ui/demo/images/users/neil-sims.png" alt="Neil Sims avatar"> */}
-                            <div classNameName='c8dCx6gnV43hTOLV6ks5 _43MO1gcdi2Y0RJW1uHL PeR2JZ9BZHYIH8Ea3F36 XIIs8ZOri3wm8Wnj9N_y'>
-                                <div classNameName='d3C8uAdJKNl1jzfE9ynq yM_AorRf2jSON3pDsdrz __9sbu0yrzdhGIkLWNXl OyABRrnTV_kvHV7dJ0uE'>
-                                    Neil Sims
-                                </div>
-                                <div classNameName='c8dCx6gnV43hTOLV6ks5 _43MO1gcdi2Y0RJW1uHL PeR2JZ9BZHYIH8Ea3F36 XIIs8ZOri3wm8Wnj9N_y'>
-                                    neil.sims@flowbite.com
-                                </div>
-                            </div>
-                        </td>
-                        <td classNameName='_wYiJGbRZyFZeCc8y7Sf d3C8uAdJKNl1jzfE9ynq ezMFUVl744lvw6ht0lFe __9sbu0yrzdhGIkLWNXl BHrWGjM1Iab_fAz0_91H OyABRrnTV_kvHV7dJ0uE'>
-                            Front-end developer
-                        </td>
-                        <td classNameName='_wYiJGbRZyFZeCc8y7Sf d3C8uAdJKNl1jzfE9ynq ezMFUVl744lvw6ht0lFe __9sbu0yrzdhGIkLWNXl BHrWGjM1Iab_fAz0_91H OyABRrnTV_kvHV7dJ0uE'>
-                            United States
-                        </td>
-                        <td classNameName='_wYiJGbRZyFZeCc8y7Sf d3C8uAdJKNl1jzfE9ynq _43MO1gcdi2Y0RJW1uHL __9sbu0yrzdhGIkLWNXl BHrWGjM1Iab_fAz0_91H OyABRrnTV_kvHV7dJ0uE'>
-                            <div classNameName='YRrCJSr_j5nopfm4duUc Q_jg_EPdNf9eDMn1mLI2'>
-                                <div classNameName='LBw_xNY6RemSb6arrxbk ZCcDCx3VW8mhFqKa8r5J RpVwy4sO7Asb86CncKJ_ _8jNXfz935bbH_fAUIpN fhCwost7CSNRc2WSHLFW'></div>{' '}
-                                Active
-                            </div>
-                        </td>
-                        <td classNameName='_wYiJGbRZyFZeCc8y7Sf EU43bH15DCmsqkGyVBGj BHrWGjM1Iab_fAz0_91H'>
-                            <button
-                                type='button'
-                                data-modal-toggle='user-modal'
-                                classNameName='_k0lTW0vvzboctTxDi2R Q_jg_EPdNf9eDMn1mLI2 _Cj_M6jt2eLjDgkBBNgI b9aD6g2qw84oyZNsMO8j c8dCx6gnV43hTOLV6ks5 ezMFUVl744lvw6ht0lFe ijrOHNoSVGATsWYKl4Id y6GKdvUrd7vp_pxsFb57 g40_g3BQzYCOX5eZADgY mveJTCIb2WII7J4sY22F YoPCmQ0E_V5W0GGmSIdm _dylIDxYTN3qgvD4U597 KmgKPWh7pHX4ztLneO0T d8_fVOcgDmbt7UdpfeLK WuKugQzwTT7o1wwBck2R _ZsTMX_gz275093orLWM'
+                            <ul
+                                className='p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200'
+                                aria-labelledby='dropdownRadioButton'
                             >
-                                <svg
-                                    classNameName='ADSeKHR1DvUUA48Chci_ rxe6apEJoEk8r75xaVNG fhCwost7CSNRc2WSHLFW'
-                                    fill='currentColor'
-                                    viewBox='0 0 20 20'
-                                    xmlns='http://www.w3.org/2000/svg'
-                                >
-                                    <path d='M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z'></path>
-                                    <path
-                                        fill-rule='evenodd'
-                                        d='M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z'
-                                        clip-rule='evenodd'
-                                    ></path>
-                                </svg>
-                                Edit user
-                            </button>
-                            <button
-                                type='button'
-                                data-modal-toggle='delete-user-modal'
-                                classNameName='_k0lTW0vvzboctTxDi2R Q_jg_EPdNf9eDMn1mLI2 _Cj_M6jt2eLjDgkBBNgI b9aD6g2qw84oyZNsMO8j c8dCx6gnV43hTOLV6ks5 ezMFUVl744lvw6ht0lFe ijrOHNoSVGATsWYKl4Id y6GKdvUrd7vp_pxsFb57 SdPDrbResNmgnA0L4Iki mveJTCIb2WII7J4sY22F _hwGprpWFg861uOaLs98 _dylIDxYTN3qgvD4U597 wGCv_lBIef6dPW_LgqPQ g0psQAXAFirvUBcDyMSb'
+                                <li>
+                                    <div className='flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600'>
+                                        <input
+                                            id='filter-radio-example-1'
+                                            type='radio'
+                                            value=''
+                                            name='filter-radio'
+                                            className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                                        />
+                                        <label
+                                            for='filter-radio-example-1'
+                                            className='ml-2 w-full text-sm font-medium text-gray-900 rounded dark:text-gray-300'
+                                        >
+                                            Last day
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className='flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600'>
+                                        <input
+                                            checked=''
+                                            id='filter-radio-example-2'
+                                            type='radio'
+                                            value=''
+                                            name='filter-radio'
+                                            className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                                        />
+                                        <label
+                                            for='filter-radio-example-2'
+                                            className='ml-2 w-full text-sm font-medium text-gray-900 rounded dark:text-gray-300'
+                                        >
+                                            Last 7 days
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className='flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600'>
+                                        <input
+                                            id='filter-radio-example-3'
+                                            type='radio'
+                                            value=''
+                                            name='filter-radio'
+                                            className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                                        />
+                                        <label
+                                            for='filter-radio-example-3'
+                                            className='ml-2 w-full text-sm font-medium text-gray-900 rounded dark:text-gray-300'
+                                        >
+                                            Last 30 days
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className='flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600'>
+                                        <input
+                                            id='filter-radio-example-4'
+                                            type='radio'
+                                            value=''
+                                            name='filter-radio'
+                                            className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                                        />
+                                        <label
+                                            for='filter-radio-example-4'
+                                            className='ml-2 w-full text-sm font-medium text-gray-900 rounded dark:text-gray-300'
+                                        >
+                                            Last month
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className='flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600'>
+                                        <input
+                                            id='filter-radio-example-5'
+                                            type='radio'
+                                            value=''
+                                            name='filter-radio'
+                                            className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                                        />
+                                        <label
+                                            for='filter-radio-example-5'
+                                            className='ml-2 w-full text-sm font-medium text-gray-900 rounded dark:text-gray-300'
+                                        >
+                                            Last year
+                                        </label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <label for='table-search' className='sr-only'>
+                        Search
+                    </label>
+                    <div className='relative'>
+                        <div className='flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none'>
+                            <svg
+                                className='w-5 h-5 text-gray-500 dark:text-gray-400'
+                                aria-hidden='true'
+                                fill='currentColor'
+                                viewBox='0 0 20 20'
+                                xmlns='http://www.w3.org/2000/svg'
                             >
-                                <svg
-                                    classNameName='ADSeKHR1DvUUA48Chci_ rxe6apEJoEk8r75xaVNG fhCwost7CSNRc2WSHLFW'
-                                    fill='currentColor'
-                                    viewBox='0 0 20 20'
-                                    xmlns='http://www.w3.org/2000/svg'
-                                >
-                                    <path
-                                        fill-rule='evenodd'
-                                        d='M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z'
-                                        clip-rule='evenodd'
-                                    ></path>
-                                </svg>
-                                Delete user
-                            </button>
-                        </td>
-                    </tr>
+                                <path
+                                    fill-rule='evenodd'
+                                    d='M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z'
+                                    clip-rule='evenodd'
+                                ></path>
+                            </svg>
+                        </div>
+                        <input
+                            type='text'
+                            id='table-search'
+                            className='block p-2 pl-10 w-80 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                            placeholder='Search for items'
+                        />
+                    </div>
+                </div>
 
-                    <tr classNameName='_7KA5gD55t2lxf9Jkj20 OPrb_iG5WDy_7F05BDOX'>
-                        <td classNameName='E9GV5sZJIbfO_GEQ_moc _wYiJGbRZyFZeCc8y7Sf'>
-                            <div classNameName='YRrCJSr_j5nopfm4duUc Q_jg_EPdNf9eDMn1mLI2'>
-                                {/* <input id="checkbox-2" aria-describedby="checkbox-1" type="checkbox" classNameName="E9GV5sZJIbfO_GEQ_moc _o2IXcpM0qnG3JPReKus vpDN1VEJLu5FmLkr5WCk Y3FxyuXtj2gecrGXvLEI jtAJHOc7mn7b4IKRO59D focus:ring-3 KmgKPWh7pHX4ztLneO0T BO8JrKgx4qkHG27c4wVR _GL8_lXmAgroY9ZBWGLH jqg6J89cvxmDiFpnV56r Mmx5lX7HVdrWCgh3EpTP"> */}
-                                <label
-                                    for='checkbox-2'
-                                    classNameName='_DVAfiyo21kM68EUVzEQ'
-                                >
-                                    checkbox
-                                </label>
-                            </div>
-                        </td>
-                        <td classNameName='YRrCJSr_j5nopfm4duUc Q_jg_EPdNf9eDMn1mLI2 _wYiJGbRZyFZeCc8y7Sf a6oNxeE2_RMYuJ3ruA_U e2hrZSYddULUFUtJ9wBR BHrWGjM1Iab_fAz0_91H bqENLAd5lw7DYVe46RFH'>
-                            {/* <img classNameName="hlT3pgfpx11BUFMWNdhc Mln3CkDzLcoVQAC3Uqsd RpVwy4sO7Asb86CncKJ_" src="https://flowbite.com/application-ui/demo/images/users/roberta-casas.png" alt="Roberta Casas avatar"> */}
-                            <div classNameName='c8dCx6gnV43hTOLV6ks5 _43MO1gcdi2Y0RJW1uHL PeR2JZ9BZHYIH8Ea3F36 XIIs8ZOri3wm8Wnj9N_y'>
-                                <div classNameName='d3C8uAdJKNl1jzfE9ynq yM_AorRf2jSON3pDsdrz __9sbu0yrzdhGIkLWNXl OyABRrnTV_kvHV7dJ0uE'>
-                                    Roberta Casas
+                <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
+                    <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+                        <tr>
+                            <th scope='col' className='p-4'>
+                                <div className='flex items-center'>
+                                    <input
+                                        id='checkbox-all-search'
+                                        type='checkbox'
+                                        className='w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                                    />
+                                    <label
+                                        for='checkbox-all-search'
+                                        className='sr-only'
+                                    >
+                                        checkbox
+                                    </label>
                                 </div>
-                                <div classNameName='c8dCx6gnV43hTOLV6ks5 _43MO1gcdi2Y0RJW1uHL PeR2JZ9BZHYIH8Ea3F36 XIIs8ZOri3wm8Wnj9N_y'>
-                                    roberta.casas@flowbite.com
+                            </th>
+                            <th scope='col' className='py-3 px-6'>
+                                Name
+                            </th>
+                            <th scope='col' className='py-3 px-6'>
+                                Second name
+                            </th>
+                            <th scope='col' className='py-3 px-6'>
+                                Role
+                            </th>
+                            <th scope='col' className='py-3 px-6'>
+                                Email
+                            </th>
+                            <th scope='col' className='py-3 px-6'>
+                                Phone number
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
+                            <td className='p-4 w-4'>
+                                <div className='flex items-center'>
+                                    <input
+                                        id='checkbox-table-search-1'
+                                        type='checkbox'
+                                        className='w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                                    />
+                                    <label
+                                        for='checkbox-table-search-1'
+                                        className='sr-only'
+                                    >
+                                        checkbox
+                                    </label>
                                 </div>
-                            </div>
-                        </td>
-                        <td classNameName='_wYiJGbRZyFZeCc8y7Sf d3C8uAdJKNl1jzfE9ynq ezMFUVl744lvw6ht0lFe __9sbu0yrzdhGIkLWNXl BHrWGjM1Iab_fAz0_91H OyABRrnTV_kvHV7dJ0uE'>
-                            Designer
-                        </td>
-                        <td classNameName='_wYiJGbRZyFZeCc8y7Sf d3C8uAdJKNl1jzfE9ynq ezMFUVl744lvw6ht0lFe __9sbu0yrzdhGIkLWNXl BHrWGjM1Iab_fAz0_91H OyABRrnTV_kvHV7dJ0uE'>
-                            Spain
-                        </td>
-                        <td classNameName='_wYiJGbRZyFZeCc8y7Sf d3C8uAdJKNl1jzfE9ynq _43MO1gcdi2Y0RJW1uHL __9sbu0yrzdhGIkLWNXl BHrWGjM1Iab_fAz0_91H OyABRrnTV_kvHV7dJ0uE'>
-                            <div classNameName='YRrCJSr_j5nopfm4duUc Q_jg_EPdNf9eDMn1mLI2'>
-                                <div classNameName='LBw_xNY6RemSb6arrxbk ZCcDCx3VW8mhFqKa8r5J RpVwy4sO7Asb86CncKJ_ _8jNXfz935bbH_fAUIpN fhCwost7CSNRc2WSHLFW'></div>{' '}
-                                Active
-                            </div>
-                        </td>
-                        <td classNameName='_wYiJGbRZyFZeCc8y7Sf EU43bH15DCmsqkGyVBGj BHrWGjM1Iab_fAz0_91H'>
-                            <button
-                                type='button'
-                                data-modal-toggle='user-modal'
-                                classNameName='_k0lTW0vvzboctTxDi2R Q_jg_EPdNf9eDMn1mLI2 _Cj_M6jt2eLjDgkBBNgI b9aD6g2qw84oyZNsMO8j c8dCx6gnV43hTOLV6ks5 ezMFUVl744lvw6ht0lFe ijrOHNoSVGATsWYKl4Id y6GKdvUrd7vp_pxsFb57 g40_g3BQzYCOX5eZADgY mveJTCIb2WII7J4sY22F YoPCmQ0E_V5W0GGmSIdm _dylIDxYTN3qgvD4U597 KmgKPWh7pHX4ztLneO0T d8_fVOcgDmbt7UdpfeLK WuKugQzwTT7o1wwBck2R _ZsTMX_gz275093orLWM'
+                            </td>
+                            <th
+                                scope='row'
+                                className='py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white'
                             >
-                                <svg
-                                    classNameName='ADSeKHR1DvUUA48Chci_ rxe6apEJoEk8r75xaVNG fhCwost7CSNRc2WSHLFW'
-                                    fill='currentColor'
-                                    viewBox='0 0 20 20'
-                                    xmlns='http://www.w3.org/2000/svg'
+                                Apple MacBook Pro 17"
+                            </th>
+                            <td className='py-4 px-6'>Sliver</td>
+                            <td className='py-4 px-6'>Laptop</td>
+                            <td className='py-4 px-6'>$2999</td>
+                            <td className='py-4 px-6'>
+                                <a
+                                    href='#'
+                                    className='font-medium text-blue-600 dark:text-blue-500 hover:underline'
                                 >
-                                    <path d='M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z'></path>
-                                    <path
-                                        fill-rule='evenodd'
-                                        d='M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z'
-                                        clip-rule='evenodd'
-                                    ></path>
-                                </svg>
-                                Edit user
-                            </button>
-                            <button
-                                type='button'
-                                data-modal-toggle='delete-user-modal'
-                                classNameName='_k0lTW0vvzboctTxDi2R Q_jg_EPdNf9eDMn1mLI2 _Cj_M6jt2eLjDgkBBNgI b9aD6g2qw84oyZNsMO8j c8dCx6gnV43hTOLV6ks5 ezMFUVl744lvw6ht0lFe ijrOHNoSVGATsWYKl4Id y6GKdvUrd7vp_pxsFb57 SdPDrbResNmgnA0L4Iki mveJTCIb2WII7J4sY22F _hwGprpWFg861uOaLs98 _dylIDxYTN3qgvD4U597 wGCv_lBIef6dPW_LgqPQ g0psQAXAFirvUBcDyMSb'
-                            >
-                                <svg
-                                    classNameName='ADSeKHR1DvUUA48Chci_ rxe6apEJoEk8r75xaVNG fhCwost7CSNRc2WSHLFW'
-                                    fill='currentColor'
-                                    viewBox='0 0 20 20'
-                                    xmlns='http://www.w3.org/2000/svg'
-                                >
-                                    <path
-                                        fill-rule='evenodd'
-                                        d='M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z'
-                                        clip-rule='evenodd'
-                                    ></path>
-                                </svg>
-                                Delete user
-                            </button>
-                        </td>
-                    </tr>
-
-                    <tr classNameName='_7KA5gD55t2lxf9Jkj20 OPrb_iG5WDy_7F05BDOX'>
-                        <td classNameName='E9GV5sZJIbfO_GEQ_moc _wYiJGbRZyFZeCc8y7Sf'>
-                            <div classNameName='YRrCJSr_j5nopfm4duUc Q_jg_EPdNf9eDMn1mLI2'>
-                                {/* <input id="checkbox-3" aria-describedby="checkbox-1" type="checkbox" classNameName="E9GV5sZJIbfO_GEQ_moc _o2IXcpM0qnG3JPReKus vpDN1VEJLu5FmLkr5WCk Y3FxyuXtj2gecrGXvLEI jtAJHOc7mn7b4IKRO59D focus:ring-3 KmgKPWh7pHX4ztLneO0T BO8JrKgx4qkHG27c4wVR _GL8_lXmAgroY9ZBWGLH jqg6J89cvxmDiFpnV56r Mmx5lX7HVdrWCgh3EpTP"> */}
-                                <label
-                                    for='checkbox-3'
-                                    classNameName='_DVAfiyo21kM68EUVzEQ'
-                                >
-                                    checkbox
-                                </label>
-                            </div>
-                        </td>
-                        <td classNameName='YRrCJSr_j5nopfm4duUc Q_jg_EPdNf9eDMn1mLI2 _wYiJGbRZyFZeCc8y7Sf a6oNxeE2_RMYuJ3ruA_U e2hrZSYddULUFUtJ9wBR BHrWGjM1Iab_fAz0_91H bqENLAd5lw7DYVe46RFH'>
-                            {/* <img classNameName="hlT3pgfpx11BUFMWNdhc Mln3CkDzLcoVQAC3Uqsd RpVwy4sO7Asb86CncKJ_" src="https://flowbite.com/application-ui/demo/images/users/michael-gough.png" alt="Michael Gough avatar"> */}
-                            <div classNameName='c8dCx6gnV43hTOLV6ks5 _43MO1gcdi2Y0RJW1uHL PeR2JZ9BZHYIH8Ea3F36 XIIs8ZOri3wm8Wnj9N_y'>
-                                <div classNameName='d3C8uAdJKNl1jzfE9ynq yM_AorRf2jSON3pDsdrz __9sbu0yrzdhGIkLWNXl OyABRrnTV_kvHV7dJ0uE'>
-                                    Michael Gough
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                        <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
+                            <td className='p-4 w-4'>
+                                <div className='flex items-center'>
+                                    <input
+                                        id='checkbox-table-search-2'
+                                        type='checkbox'
+                                        className='w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                                    />
+                                    <label
+                                        for='checkbox-table-search-2'
+                                        className='sr-only'
+                                    >
+                                        checkbox
+                                    </label>
                                 </div>
-                                <div classNameName='c8dCx6gnV43hTOLV6ks5 _43MO1gcdi2Y0RJW1uHL PeR2JZ9BZHYIH8Ea3F36 XIIs8ZOri3wm8Wnj9N_y'>
-                                    michael.gough@flowbite.com
+                            </td>
+                            <th
+                                scope='row'
+                                className='py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white'
+                            >
+                                Microsoft Surface Pro
+                            </th>
+                            <td className='py-4 px-6'>White</td>
+                            <td className='py-4 px-6'>Laptop PC</td>
+                            <td className='py-4 px-6'>$1999</td>
+                            <td className='py-4 px-6'>
+                                <a
+                                    href='#'
+                                    className='font-medium text-blue-600 dark:text-blue-500 hover:underline'
+                                >
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                        <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
+                            <td className='p-4 w-4'>
+                                <div className='flex items-center'>
+                                    <input
+                                        id='checkbox-table-search-3'
+                                        type='checkbox'
+                                        className='w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                                    />
+                                    <label
+                                        for='checkbox-table-search-3'
+                                        className='sr-only'
+                                    >
+                                        checkbox
+                                    </label>
                                 </div>
-                            </div>
-                        </td>
-                        <td classNameName='_wYiJGbRZyFZeCc8y7Sf d3C8uAdJKNl1jzfE9ynq ezMFUVl744lvw6ht0lFe __9sbu0yrzdhGIkLWNXl BHrWGjM1Iab_fAz0_91H OyABRrnTV_kvHV7dJ0uE'>
-                            React developer
-                        </td>
-                        <td classNameName='_wYiJGbRZyFZeCc8y7Sf d3C8uAdJKNl1jzfE9ynq ezMFUVl744lvw6ht0lFe __9sbu0yrzdhGIkLWNXl BHrWGjM1Iab_fAz0_91H OyABRrnTV_kvHV7dJ0uE'>
-                            United Kingdom
-                        </td>
-                        <td classNameName='_wYiJGbRZyFZeCc8y7Sf d3C8uAdJKNl1jzfE9ynq _43MO1gcdi2Y0RJW1uHL __9sbu0yrzdhGIkLWNXl BHrWGjM1Iab_fAz0_91H OyABRrnTV_kvHV7dJ0uE'>
-                            <div classNameName='YRrCJSr_j5nopfm4duUc Q_jg_EPdNf9eDMn1mLI2'>
-                                <div classNameName='LBw_xNY6RemSb6arrxbk ZCcDCx3VW8mhFqKa8r5J RpVwy4sO7Asb86CncKJ_ _8jNXfz935bbH_fAUIpN fhCwost7CSNRc2WSHLFW'></div>{' '}
-                                Active
-                            </div>
-                        </td>
-                        <td classNameName='_wYiJGbRZyFZeCc8y7Sf EU43bH15DCmsqkGyVBGj BHrWGjM1Iab_fAz0_91H'>
-                            <button
-                                type='button'
-                                data-modal-toggle='user-modal'
-                                classNameName='_k0lTW0vvzboctTxDi2R Q_jg_EPdNf9eDMn1mLI2 _Cj_M6jt2eLjDgkBBNgI b9aD6g2qw84oyZNsMO8j c8dCx6gnV43hTOLV6ks5 ezMFUVl744lvw6ht0lFe ijrOHNoSVGATsWYKl4Id y6GKdvUrd7vp_pxsFb57 g40_g3BQzYCOX5eZADgY mveJTCIb2WII7J4sY22F YoPCmQ0E_V5W0GGmSIdm _dylIDxYTN3qgvD4U597 KmgKPWh7pHX4ztLneO0T d8_fVOcgDmbt7UdpfeLK WuKugQzwTT7o1wwBck2R _ZsTMX_gz275093orLWM'
+                            </td>
+                            <th
+                                scope='row'
+                                className='py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white'
                             >
-                                <svg
-                                    classNameName='ADSeKHR1DvUUA48Chci_ rxe6apEJoEk8r75xaVNG fhCwost7CSNRc2WSHLFW'
-                                    fill='currentColor'
-                                    viewBox='0 0 20 20'
-                                    xmlns='http://www.w3.org/2000/svg'
+                                Magic Mouse 2
+                            </th>
+                            <td className='py-4 px-6'>Black</td>
+                            <td className='py-4 px-6'>Accessories</td>
+                            <td className='py-4 px-6'>$99</td>
+                            <td className='py-4 px-6'>
+                                <a
+                                    href='#'
+                                    className='font-medium text-blue-600 dark:text-blue-500 hover:underline'
                                 >
-                                    <path d='M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z'></path>
-                                    <path
-                                        fill-rule='evenodd'
-                                        d='M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z'
-                                        clip-rule='evenodd'
-                                    ></path>
-                                </svg>
-                                Edit user
-                            </button>
-                            <button
-                                type='button'
-                                data-modal-toggle='delete-user-modal'
-                                classNameName='_k0lTW0vvzboctTxDi2R Q_jg_EPdNf9eDMn1mLI2 _Cj_M6jt2eLjDgkBBNgI b9aD6g2qw84oyZNsMO8j c8dCx6gnV43hTOLV6ks5 ezMFUVl744lvw6ht0lFe ijrOHNoSVGATsWYKl4Id y6GKdvUrd7vp_pxsFb57 SdPDrbResNmgnA0L4Iki mveJTCIb2WII7J4sY22F _hwGprpWFg861uOaLs98 _dylIDxYTN3qgvD4U597 wGCv_lBIef6dPW_LgqPQ g0psQAXAFirvUBcDyMSb'
-                            >
-                                <svg
-                                    classNameName='ADSeKHR1DvUUA48Chci_ rxe6apEJoEk8r75xaVNG fhCwost7CSNRc2WSHLFW'
-                                    fill='currentColor'
-                                    viewBox='0 0 20 20'
-                                    xmlns='http://www.w3.org/2000/svg'
-                                >
-                                    <path
-                                        fill-rule='evenodd'
-                                        d='M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z'
-                                        clip-rule='evenodd'
-                                    ></path>
-                                </svg>
-                                Delete user
-                            </button>
-                        </td>
-                    </tr>
-
-                    <tr classNameName='_7KA5gD55t2lxf9Jkj20 OPrb_iG5WDy_7F05BDOX'>
-                        <td classNameName='E9GV5sZJIbfO_GEQ_moc _wYiJGbRZyFZeCc8y7Sf'>
-                            <div classNameName='YRrCJSr_j5nopfm4duUc Q_jg_EPdNf9eDMn1mLI2'>
-                                {/* <input id="checkbox-4" aria-describedby="checkbox-1" type="checkbox" classNameName="E9GV5sZJIbfO_GEQ_moc _o2IXcpM0qnG3JPReKus vpDN1VEJLu5FmLkr5WCk Y3FxyuXtj2gecrGXvLEI jtAJHOc7mn7b4IKRO59D focus:ring-3 KmgKPWh7pHX4ztLneO0T BO8JrKgx4qkHG27c4wVR _GL8_lXmAgroY9ZBWGLH jqg6J89cvxmDiFpnV56r Mmx5lX7HVdrWCgh3EpTP"> */}
-                                <label
-                                    for='checkbox-4'
-                                    classNameName='_DVAfiyo21kM68EUVzEQ'
-                                >
-                                    checkbox
-                                </label>
-                            </div>
-                        </td>
-                        <td classNameName='YRrCJSr_j5nopfm4duUc Q_jg_EPdNf9eDMn1mLI2 _wYiJGbRZyFZeCc8y7Sf a6oNxeE2_RMYuJ3ruA_U e2hrZSYddULUFUtJ9wBR BHrWGjM1Iab_fAz0_91H bqENLAd5lw7DYVe46RFH'>
-                            {/* <img classNameName="hlT3pgfpx11BUFMWNdhc Mln3CkDzLcoVQAC3Uqsd RpVwy4sO7Asb86CncKJ_" src="https://flowbite.com/application-ui/demo/images/users/jese-leos.png" alt="Jese Leos avatar"> */}
-                            <div classNameName='c8dCx6gnV43hTOLV6ks5 _43MO1gcdi2Y0RJW1uHL PeR2JZ9BZHYIH8Ea3F36 XIIs8ZOri3wm8Wnj9N_y'>
-                                <div classNameName='d3C8uAdJKNl1jzfE9ynq yM_AorRf2jSON3pDsdrz __9sbu0yrzdhGIkLWNXl OyABRrnTV_kvHV7dJ0uE'>
-                                    Jese Leos
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                        <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
+                            <td className='p-4 w-4'>
+                                <div className='flex items-center'>
+                                    <input
+                                        id='checkbox-table-3'
+                                        type='checkbox'
+                                        className='w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                                    />
+                                    <label
+                                        for='checkbox-table-3'
+                                        className='sr-only'
+                                    >
+                                        checkbox
+                                    </label>
                                 </div>
-                                <div classNameName='c8dCx6gnV43hTOLV6ks5 _43MO1gcdi2Y0RJW1uHL PeR2JZ9BZHYIH8Ea3F36 XIIs8ZOri3wm8Wnj9N_y'>
-                                    jese.leos@flowbite.com
+                            </td>
+                            <th
+                                scope='row'
+                                className='py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white'
+                            >
+                                Apple Watch
+                            </th>
+                            <td className='py-4 px-6'>Silver</td>
+                            <td className='py-4 px-6'>Accessories</td>
+                            <td className='py-4 px-6'>$179</td>
+                            <td className='py-4 px-6'>
+                                <a
+                                    href='#'
+                                    className='font-medium text-blue-600 dark:text-blue-500 hover:underline'
+                                >
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                        <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
+                            <td className='p-4 w-4'>
+                                <div className='flex items-center'>
+                                    <input
+                                        id='checkbox-table-3'
+                                        type='checkbox'
+                                        className='w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                                    />
+                                    <label
+                                        for='checkbox-table-3'
+                                        className='sr-only'
+                                    >
+                                        checkbox
+                                    </label>
                                 </div>
-                            </div>
-                        </td>
-                        <td classNameName='_wYiJGbRZyFZeCc8y7Sf d3C8uAdJKNl1jzfE9ynq ezMFUVl744lvw6ht0lFe __9sbu0yrzdhGIkLWNXl BHrWGjM1Iab_fAz0_91H OyABRrnTV_kvHV7dJ0uE'>
-                            Marketing
-                        </td>
-                        <td classNameName='_wYiJGbRZyFZeCc8y7Sf d3C8uAdJKNl1jzfE9ynq ezMFUVl744lvw6ht0lFe __9sbu0yrzdhGIkLWNXl BHrWGjM1Iab_fAz0_91H OyABRrnTV_kvHV7dJ0uE'>
-                            United States
-                        </td>
-                        <td classNameName='_wYiJGbRZyFZeCc8y7Sf d3C8uAdJKNl1jzfE9ynq _43MO1gcdi2Y0RJW1uHL __9sbu0yrzdhGIkLWNXl BHrWGjM1Iab_fAz0_91H OyABRrnTV_kvHV7dJ0uE'>
-                            <div classNameName='YRrCJSr_j5nopfm4duUc Q_jg_EPdNf9eDMn1mLI2'>
-                                <div classNameName='LBw_xNY6RemSb6arrxbk ZCcDCx3VW8mhFqKa8r5J RpVwy4sO7Asb86CncKJ_ _8jNXfz935bbH_fAUIpN fhCwost7CSNRc2WSHLFW'></div>{' '}
-                                Active
-                            </div>
-                        </td>
-                        <td classNameName='_wYiJGbRZyFZeCc8y7Sf EU43bH15DCmsqkGyVBGj BHrWGjM1Iab_fAz0_91H'>
-                            <button
-                                type='button'
-                                data-modal-toggle='user-modal'
-                                classNameName='_k0lTW0vvzboctTxDi2R Q_jg_EPdNf9eDMn1mLI2 _Cj_M6jt2eLjDgkBBNgI b9aD6g2qw84oyZNsMO8j c8dCx6gnV43hTOLV6ks5 ezMFUVl744lvw6ht0lFe ijrOHNoSVGATsWYKl4Id y6GKdvUrd7vp_pxsFb57 g40_g3BQzYCOX5eZADgY mveJTCIb2WII7J4sY22F YoPCmQ0E_V5W0GGmSIdm _dylIDxYTN3qgvD4U597 KmgKPWh7pHX4ztLneO0T d8_fVOcgDmbt7UdpfeLK WuKugQzwTT7o1wwBck2R _ZsTMX_gz275093orLWM'
+                            </td>
+                            <th
+                                scope='row'
+                                className='py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white'
                             >
-                                <svg
-                                    classNameName='ADSeKHR1DvUUA48Chci_ rxe6apEJoEk8r75xaVNG fhCwost7CSNRc2WSHLFW'
-                                    fill='currentColor'
-                                    viewBox='0 0 20 20'
-                                    xmlns='http://www.w3.org/2000/svg'
+                                iPad
+                            </th>
+                            <td className='py-4 px-6'>Gold</td>
+                            <td className='py-4 px-6'>Tablet</td>
+                            <td className='py-4 px-6'>$699</td>
+                            <td className='py-4 px-6'>
+                                <a
+                                    href='#'
+                                    className='font-medium text-blue-600 dark:text-blue-500 hover:underline'
                                 >
-                                    <path d='M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z'></path>
-                                    <path
-                                        fill-rule='evenodd'
-                                        d='M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z'
-                                        clip-rule='evenodd'
-                                    ></path>
-                                </svg>
-                                Edit user
-                            </button>
-                            <button
-                                type='button'
-                                data-modal-toggle='delete-user-modal'
-                                classNameName='_k0lTW0vvzboctTxDi2R Q_jg_EPdNf9eDMn1mLI2 _Cj_M6jt2eLjDgkBBNgI b9aD6g2qw84oyZNsMO8j c8dCx6gnV43hTOLV6ks5 ezMFUVl744lvw6ht0lFe ijrOHNoSVGATsWYKl4Id y6GKdvUrd7vp_pxsFb57 SdPDrbResNmgnA0L4Iki mveJTCIb2WII7J4sY22F _hwGprpWFg861uOaLs98 _dylIDxYTN3qgvD4U597 wGCv_lBIef6dPW_LgqPQ g0psQAXAFirvUBcDyMSb'
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                        <tr className='bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600'>
+                            <td className='p-4 w-4'>
+                                <div className='flex items-center'>
+                                    <input
+                                        id='checkbox-table-3'
+                                        type='checkbox'
+                                        className='w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                                    />
+                                    <label
+                                        for='checkbox-table-3'
+                                        className='sr-only'
+                                    >
+                                        checkbox
+                                    </label>
+                                </div>
+                            </td>
+                            <th
+                                scope='row'
+                                className='py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white'
                             >
-                                <svg
-                                    classNameName='ADSeKHR1DvUUA48Chci_ rxe6apEJoEk8r75xaVNG fhCwost7CSNRc2WSHLFW'
-                                    fill='currentColor'
-                                    viewBox='0 0 20 20'
-                                    xmlns='http://www.w3.org/2000/svg'
+                                Apple iMac 27"
+                            </th>
+                            <td className='py-4 px-6'>Silver</td>
+                            <td className='py-4 px-6'>PC Desktop</td>
+                            <td className='py-4 px-6'>$3999</td>
+                            <td className='py-4 px-6'>
+                                <a
+                                    href='#'
+                                    className='font-medium text-blue-600 dark:text-blue-500 hover:underline'
                                 >
-                                    <path
-                                        fill-rule='evenodd'
-                                        d='M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z'
-                                        clip-rule='evenodd'
-                                    ></path>
-                                </svg>
-                                Delete user
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

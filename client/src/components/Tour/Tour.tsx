@@ -14,17 +14,13 @@ export const Tour = observer(() => {
     const { id } = useParams();
 
     useEffect(() => {
-        if (!TourStore.selectedTour) {
-            fetchTour(id).then((data) => {
-                TourStore.setSelected(data[0]);
-            });
-        }
+        fetchTour(id).then((data) => {
+            TourStore.setSelected(data[0]);
+        });
 
-        if (TourStore.selectedTourPoints.length === 0) {
-            fetchTourPoints(id).then((data) => {
-                TourStore.setSelectedTourPoints(data);
-            });
-        }
+        fetchTourPoints(id).then((data) => {
+            TourStore.setSelectedTourPoints(data);
+        });
     }, [id]);
 
     return (

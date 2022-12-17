@@ -10,10 +10,14 @@ interface IUser {
 class UserStore {
     _isAuth: boolean;
     user: IUser;
+    users: any;
+    editUser: any;
 
     constructor() {
         this._isAuth = false;
         this.user = { login: '', role: '', iat: 0, exp: 0 };
+        this.users = [];
+        this.editUser = {};
         makeAutoObservable(this);
     }
 
@@ -23,6 +27,14 @@ class UserStore {
 
     setUser(user: any) {
         this.user = user;
+    }
+
+    setUsers(users: any) {
+        this.users = [...users];
+    }
+
+    setEditableUser(user: any) {
+        this.editUser = {...user};
     }
 
     get isAuth() {

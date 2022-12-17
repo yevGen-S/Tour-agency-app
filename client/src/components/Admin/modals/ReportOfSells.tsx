@@ -33,8 +33,8 @@ export const ReportOfSells = observer(() => {
     };
 
     return (
-        <Container className='grid grid-cols-2'>
-            <div className='flex flex-row justify-items-center justify-center'>
+        <Container className='p-2'>
+            <div className='flex flex-row '>
                 <div className='pr-10 text-[30px]'>Report of sells</div>
                 <Button variant='outlined' onClick={handleClickOpen}>
                     Open form dialog

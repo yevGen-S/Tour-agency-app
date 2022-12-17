@@ -1,13 +1,15 @@
 export const queryGetAllUsers = `
     SELECT 
-        "User"."id", 
-        "User"."login", 
-        "User"."name", 
-        "User"."surname",
-        "Role"."type" as role
-    FROM "User"
-    JOIN "Role" 
-    on "User"."role_id" = "Role"."id"
+        u."id", 
+        u."name",
+        u."surname",
+        u."login", 
+        u."email",
+        u."telephone_number",
+        r."type" AS "role"
+    FROM "User" u
+    JOIN "Role" r ON
+    u.role_id = r.id 
 `;
 
 export const queryAddUser = `

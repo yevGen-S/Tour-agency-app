@@ -1,14 +1,15 @@
-import { useState } from 'react';
-import Button from '@mui/material/Button';
-// import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import { Container } from '@mui/material';
+import {
+    Button,
+    Container,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle,
+} from '@mui/material';
+import React, { useState } from 'react';
 
-export const CreateTour = () => {
+export const AddTourPoints = () => {
     const [open, setOpen] = useState(false);
 
     const handleClickOpen = () => {
@@ -18,12 +19,13 @@ export const CreateTour = () => {
     const handleClose = () => {
         setOpen(false);
     };
+
     return (
-        <Container className='grid grid-cols-2'>
-            <div className='flex flex-row justify-items-center justify-center'>
-                <div className='pr-10 text-[30px]'>Create tour</div>
+        <Container className='p-2'>
+            <div className='flex flex-row'>
+                <div className='pr-10 text-[30px]'>Add tour points</div>
                 <Button variant='outlined' onClick={handleClickOpen}>
-                    Create tour
+                    Open modal tour points
                 </Button>
             </div>
             <Dialog open={open} onClose={handleClose} fullWidth maxWidth='lg'>
@@ -35,8 +37,8 @@ export const CreateTour = () => {
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
+                    <Button onClick={handleClose}>Save</Button>
                     <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleClose}>Subscribe</Button>
                 </DialogActions>
             </Dialog>
         </Container>
