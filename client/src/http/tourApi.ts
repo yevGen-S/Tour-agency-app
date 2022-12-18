@@ -27,3 +27,23 @@ export const fetchSellsReport = async () => {
 
     return data.data;
 };
+
+export const createTour = async (
+    name: string | undefined,
+    number_of_places: number | undefined,
+    period_start: string | undefined,
+    period_end: string | undefined,
+    city_id: string | undefined,
+    hotel_id: string | undefined
+) => {
+    const { data } = await $authHost.post('/api/tour', {
+        name: name,
+        number_of_places: number_of_places,
+        period_start: period_start,
+        period_end: period_end,
+        city_id: city_id,
+        hotel_id: hotel_id,
+    });
+
+    return data;
+};

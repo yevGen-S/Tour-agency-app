@@ -1,7 +1,8 @@
+import { observer } from 'mobx-react-lite';
 import React from 'react';
 import UserStore from '../../store/UserStore';
 
-const EditableListItem = ({ setModalOpen, user }) => {
+const EditableListItem = observer(({ setModalOpen, user }) => {
     const handleOpenModal = () => {
         UserStore.setEditableUser(user);
         setModalOpen(true);
@@ -30,6 +31,7 @@ const EditableListItem = ({ setModalOpen, user }) => {
 
             <td className='py-4 px-6'>
                 {/* <!-- Modal toggle --> */}
+
                 <button
                     onClick={handleOpenModal}
                     data-modal-toggle='editUserModal'
@@ -40,6 +42,6 @@ const EditableListItem = ({ setModalOpen, user }) => {
             </td>
         </tr>
     );
-};
+});
 
 export default EditableListItem;

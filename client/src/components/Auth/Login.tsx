@@ -3,6 +3,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { LOGIN_PATH, REGISTRATION_PATH, TOURS_PATH } from '../../utils/consts';
 import { login } from '../../http/userApi';
 import UserStore from '../../store/UserStore';
+import { v4 as uuid } from 'uuid';
 
 const travelAgency = require('../../assets/images/travel-agency-auth-pic.png');
 
@@ -31,7 +32,7 @@ export const Login = () => {
                 UserStore.setUser(response);
                 navigate(TOURS_PATH);
             }
-        } catch (e:any) {
+        } catch (e: any) {
             alert(e.response.data.message);
         }
     };
@@ -54,7 +55,7 @@ export const Login = () => {
                                 <input
                                     type='text'
                                     className='form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
-                                    id='exampleFormControlInput2'
+                                    id={uuid()}
                                     placeholder='Email address'
                                     onChange={handleLoginOnChange}
                                 />
@@ -65,7 +66,7 @@ export const Login = () => {
                                 <input
                                     type='password'
                                     className='form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
-                                    id='exampleFormControlInput2'
+                                    id={uuid()}
                                     placeholder='Password'
                                     onChange={handlePasswordOnChange}
                                 />
@@ -76,7 +77,7 @@ export const Login = () => {
                                     <input
                                         type='checkbox'
                                         className='form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer'
-                                        id='exampleCheck2'
+                                        id={uuid()}
                                     />
                                 </div>
                                 <a href='#!' className='text-gray-800'>

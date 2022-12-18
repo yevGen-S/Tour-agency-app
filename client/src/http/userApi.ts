@@ -63,10 +63,33 @@ export const fetchAllUsers = async () => {
  * func to update user
  */
 export const updateUser = async (user: any) => {
-    const {data} = await $authHost.put(`/api/user/${user.id}`, user)
+    const { data } = await $authHost.put(`/api/user/${user.id}`, user);
     return data;
-}
+};
 
+export const addUser = async (
+    login: string,
+    password: string,
+    role: string,
+    name: string,
+    surname: string,
+    telephone_number: string,
+    email: string,
+    tour_subscription: boolean
+) => {
+    const { data } = await $authHost.post('api/user', {
+        login,
+        password,
+        role,
+        name,
+        surname,
+        telephone_number,
+        email,
+        tour_subscription,
+    });
+
+    return jwt_decode(data.token);
+};
 
 /**
  * pay tour

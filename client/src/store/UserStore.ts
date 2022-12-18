@@ -12,12 +12,18 @@ class UserStore {
     user: IUser;
     users: any;
     editUser: any;
+    newUser: any;
+    filteredListOfUsers: any;
+
+    userManipulationMode: any;
 
     constructor() {
         this._isAuth = false;
         this.user = { login: '', role: '', iat: 0, exp: 0 };
         this.users = [];
         this.editUser = {};
+        this.newUser = {};
+        this.filteredListOfUsers = []
         makeAutoObservable(this);
     }
 
@@ -34,7 +40,16 @@ class UserStore {
     }
 
     setEditableUser(user: any) {
-        this.editUser = {...user};
+        this.editUser = { ...user };
+    }
+
+    filterUsers(input: string) {
+        this.filteredListOfUsers = this.users.filter((user: any) => {
+            const concatString = Object.values(user).join("");
+            if (concatString.toLocaleLowerCase().includes(input.toLocaleLowerCase())) {
+                return user;
+            }
+        });
     }
 
     get isAuth() {

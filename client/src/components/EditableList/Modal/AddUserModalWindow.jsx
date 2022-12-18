@@ -1,48 +1,55 @@
 import { Autocomplete, Modal, TextField } from '@mui/material';
-import { registration, updateUser } from '../../../http/userApi';
+import { addUser } from '../../../http/userApi';
 import UserStore from '../../../store/UserStore';
 import ModalInput from './ModalInput';
 
-import React, { useState } from 'react';
+import React from 'react';
 
 const ModalWindow = ({ isModalOpen, setModalOpen, modalName }) => {
     const handleClose = () => {
+        UserStore.setEditableUser({});
         setModalOpen(false);
     };
-    const [loginInput, setLoginInput] = useState('');
-    const [passwordInput, setPasswordInput] = useState('');
-    const [nameInput, setNameInput] = useState('');
-    const [surnameInput, setSurnameInput] = useState('');
-    const [phonenumberInput, setPhonenumberInput] = useState('');
-    const [emailInput, setEmailInput] = useState('');
-    const [tourSubscrInput, setTourSubscrInput] = useState(false);
 
-    const handleCreateUser = async () => {
+    const handleChangeName = (e) => {
+        UserStore.newUser.name = e.target.value;
+    };
+    const handleChangeSurname = (e) => {
+        UserStore.newUser.surname = e.target.value;
+    };
+    const handleChangeLogin = (e) => {
+        UserStore.newUser.login = e.target.value;
+    };
+    const handleChangePhone = (e) => {
+        UserStore.newUser.telephone_number = e.target.value;
+    };
+    const handleChangeEmail = (e) => {
+        UserStore.newUser.email = e.target.value;
+    };
+    const handleChangeRole = (value) => {
+        UserStore.newUser.role = value;
+    };
+
+    const handleChangePasswrod = (e) => {
+        UserStore.newUser.password = e.target.value;
+    };
+
+    const handleAddUser = async () => {
         try {
-            if (
-                !(
-                    loginInput === '' ||
-                    passwordInput === '' ||
-                    nameInput === '' ||
-                    surnameInput === '' ||
-                    phonenumberInput === '' ||
-                    emailInput === ''
-                )
-            ) {
-                const response = await registration(
-                    loginInput,
-                    passwordInput,
-                    nameInput,
-                    surnameInput,
-                    phonenumberInput,
-                    emailInput,
-                    tourSubscrInput
-                );
-            } else {
-                alert('Some fields are empty');
-            }
+            addUser(
+                UserStore.newUser.login,
+                UserStore.newUser.password,
+                UserStore.newUser.role,
+                UserStore.newUser.name,
+                UserStore.newUser.surname,
+                UserStore.newUser.telephone_number,
+                UserStore.newUser.email,
+                false
+            ).then((data) => {
+                console.log(data);
+            });
         } catch (e) {
-            alert(`Can't register acount: ${e}`);
+            alert(e);
         }
     };
 
@@ -54,7 +61,7 @@ const ModalWindow = ({ isModalOpen, setModalOpen, modalName }) => {
             aria-describedby='modal-modal-description'
         >
             <div
-                id='editUserModal'
+                id='newUserModal'
                 tabIndex={-1}
                 aria-hidden='true'
                 className='flex overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center p-4 w-full md:inset-0 h-modal md:h-full'
@@ -73,121 +80,81 @@ const ModalWindow = ({ isModalOpen, setModalOpen, modalName }) => {
                         {/* <!-- Modal body --> */}
                         <div className='p-6 space-y-6 first-line:'>
                             <div className='grid grid-cols-3 gap-6'>
-                                {/* INSERT HERE */}
+                                <ModalInput
+                                    inputName={'Name'}
+                                    inputPlaceholder={UserStore.newUser.name}
+                                    inputType={'text'}
+                                    isRequired={true}
+                                    changeInput={handleChangeName}
+                                />
 
-                                <form>
-                                    {/* <!-- LOgin input --> */}
-                                    <div className='mb-6'>
-                                        <input
-                                            type='text'
-                                            className='form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
-                                            id='exampleFormControlInput2'
-                                            placeholder='Login'
-                                            onChange={(
-                                                e
-                                            ) => setLoginInput(e.target.value)}
+                                <ModalInput
+                                    inputName={'Surname'}
+                                    inputPlaceholder={UserStore.newUser.surname}
+                                    inputType={'surname'}
+                                    isRequired={true}
+                                    changeInput={handleChangeSurname}
+                                />
+
+                                <ModalInput
+                                    inputName={'Phone number'}
+                                    inputPlaceholder={
+                                        UserStore.newUser.telephone_number
+                                    }
+                                    inputType={'Phone number'}
+                                    isRequired={true}
+                                    inputValue={
+                                        UserStore.newUser.telephone_number
+                                    }
+                                    changeInput={handleChangePhone}
+                                />
+
+                                <ModalInput
+                                    inputName={'Login'}
+                                    inputPlaceholder={UserStore.newUser.login}
+                                    inputType={'Login'}
+                                    isRequired={true}
+                                    inputValue={UserStore.newUser.login}
+                                    changeInput={handleChangeLogin}
+                                />
+
+                                <ModalInput
+                                    inputName={'Email'}
+                                    inputPlaceholder={UserStore.newUser.email}
+                                    inputType={'email'}
+                                    isRequired={true}
+                                    inputValue={UserStore.newUser.email}
+                                    changeInput={handleChangeEmail}
+                                />
+
+                                <ModalInput
+                                    inputName={'Password'}
+                                    inputPlaceholder={UserStore.newUser.email}
+                                    inputType={'password'}
+                                    isRequired={true}
+                                    inputValue={UserStore.newUser.email}
+                                    changeInput={handleChangePasswrod}
+                                />
+
+                                <Autocomplete
+                                    disablePortal
+                                    id='Role'
+                                    options={[
+                                        { label: 'admin' },
+                                        { label: 'client' },
+                                        { label: 'service provider' },
+                                    ]}
+                                    sx={{ width: 300 }}
+                                    renderInput={(params) => (
+                                        <TextField
+                                            {...params}
+                                            placeholder={UserStore.newUser.role}
                                         />
-                                    </div>
-
-                                    {/* <!-- Password input --> */}
-                                    <div className='mb-6'>
-                                        <input
-                                            type='password'
-                                            className='form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
-                                            id='exampleFormControlInput2'
-                                            placeholder='Password'
-                                            onChange={(
-                                                e
-                                            ) =>
-                                                setPasswordInput(e.target.value)
-                                            }
-                                        />
-                                    </div>
-
-                                    {/* <!-- Name input --> */}
-                                    <div className='mb-6'>
-                                        <input
-                                            type='text'
-                                            className='form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
-                                            id='exampleFormControlInput2'
-                                            placeholder='Name'
-                                            onChange={(
-                                                e
-                                            ) => setNameInput(e.target.value)}
-                                        />
-                                    </div>
-
-                                    {/* <!-- Second name input --> */}
-                                    <div className='mb-6'>
-                                        <input
-                                            type='text'
-                                            className='form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
-                                            id='exampleFormControlInput2'
-                                            placeholder='Second name'
-                                            onChange={(
-                                                e
-                                            ) =>
-                                                setSurnameInput(e.target.value)
-                                            }
-                                        />
-                                    </div>
-
-                                    {/* <!-- telephone_number input --> */}
-                                    <div className='mb-6'>
-                                        <input
-                                            type='text'
-                                            className='form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
-                                            id='exampleFormControlInput2'
-                                            placeholder='Telephone number'
-                                            onChange={(
-                                                e
-                                            ) =>
-                                                setPhonenumberInput(
-                                                    e.target.value
-                                                )
-                                            }
-                                        />
-                                    </div>
-
-                                    {/* <!-- Email input --> */}
-                                    <div className='mb-6'>
-                                        <input
-                                            type='text'
-                                            className='form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
-                                            id='exampleFormControlInput2'
-                                            placeholder='Email address'
-                                            onChange={(
-                                                e
-                                            ) => setEmailInput(e.target.value)}
-                                        />
-                                    </div>
-
-                                    <div className='flex justify-between items-center mb-6'>
-                                        <div className='form-group form-check'>
-                                            <input
-                                                type='checkbox'
-                                                className='form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer'
-                                                id='exampleCheck2'
-                                                onChange={(e) =>
-                                                    setTourSubscrInput(
-                                                        e.target.checked
-                                                    )
-                                                }
-                                            />
-                                        </div>
-                                        Subscription to receive tours on mail.
-                                    </div>
-
-                                    <div className='text-center lg:text-left'>
-                                        <button
-                                            type='button'
-                                            className='inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out'
-                                            onClick={handleCreateUser}
-                                        >
-                                            ADD USER
-                                        </button>
-                                    </div>
-                                </form>
+                                    )}
+                                    onChange={(e, value) =>
+                                        handleChangeRole(value.label)
+                                    }
+                                />
                             </div>
                         </div>
                         {/* <!-- Modal footer --> */}
@@ -195,8 +162,9 @@ const ModalWindow = ({ isModalOpen, setModalOpen, modalName }) => {
                             <button
                                 type={'button'}
                                 className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+                                onClick={handleAddUser}
                             >
-                                Save all
+                                ADD NEW USER
                             </button>
                             <button
                                 type={'button'}
@@ -220,7 +188,7 @@ const CloseButton = (handleClose) => {
         <button
             type='button'
             className='text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white'
-            data-modal-toggle='editUserModal'
+            data-modal-toggle='newUserModal'
             onClick={handleClose}
         >
             <svg

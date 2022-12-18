@@ -1,4 +1,4 @@
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import ActionDropDown from './ActionDropDown';
 import EditableListItem from './EditableListItem';
 import ModalWindow from './Modal/ModalWindow';
@@ -11,10 +11,9 @@ import { observer } from 'mobx-react-lite';
 const EditableList = observer(() => {
     const [isModalOpen, setModalOpen] = useState(false);
 
-
     return (
         <>
-            <div className='overflow-x-auto relative shadow-md sm:rounded-lg'>
+            <div className='overflow-x-auto relative shadow-md sm:rounded-lg h-screen'>
                 <div className='flex justify-between items-center py-4 bg-white '>
                     <ActionDropDown />
                     <SearchInput />
@@ -24,7 +23,8 @@ const EditableList = observer(() => {
                         <EditableListHead />
                     </thead>
                     <tbody>
-                        {UserStore?.users.map((user) => {
+                        {UserStore.filteredListOfUsers.length === 0 ? 
+                        UserStore?.users.map((user) => {
                             return (
                                 <EditableListItem
                                     id={uuid()}
@@ -33,7 +33,18 @@ const EditableList = observer(() => {
                                     user={user}
                                 />
                             );
-                        })}
+                        }): 
+                        UserStore.filteredListOfUsers.map((user) => {
+                            return (
+                                <EditableListItem
+                                    id={uuid()}
+                                    key={uuid()}
+                                    setModalOpen={setModalOpen}
+                                    user={user}
+                                />
+                            );
+                        })
+                         }
                     </tbody>
                 </table>
             </div>

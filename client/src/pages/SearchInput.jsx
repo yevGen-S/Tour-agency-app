@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
-import UserStore from '../../store/UserStore';
 
-const SearchInput = () => {
+const SearchInput = ({ searchHandler }) => {
     const [action, isAction] = useState(true);
 
-    const handleSearch = (e) => {
-        UserStore.filterUsers(e.target.value);
-    };
-
     return (
-        <>
+        <div className='flex w-full justify-center'>
             <label htmlFor='table-search' className='sr-only'>
                 Search
             </label>
@@ -29,15 +24,16 @@ const SearchInput = () => {
                         ></path>
                     </svg>
                 </div>
+                <div className='text-[30px]'> Find tour: </div>
                 <input
                     type='text'
                     id='table-search-users'
-                    className='block p-2 pl-10 w-80 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                    placeholder='Search user'
-                    onChange={handleSearch}
+                    className='text-bold block p-5 pl-10 w-80 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                    placeholder='Find tour'
+                    onChange={searchHandler}
                 />
             </div>
-        </>
+        </div>
     );
 };
 

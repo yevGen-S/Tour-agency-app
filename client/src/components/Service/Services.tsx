@@ -1,18 +1,24 @@
-import { Container } from '@mui/material';
+import { CircularProgress, Container } from '@mui/material';
 import { observer } from 'mobx-react-lite';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fetchServices } from '../../http/serviceApi';
 import ServiceStore from '../../store/ServiceStore';
 import ServiceImages from './constants';
 
 export const Services = observer(() => {
+    const [isLoading, setIsLoading] = useState(true);
+
     useEffect(() => {
-        if (ServiceStore.services.length === 0) {
-            fetchServices().then((data) => {
+        fetchServices()
+            .then((data) => {
                 ServiceStore.setServices(data.data);
-            });
-        }
+            })
+            .finally(() => setIsLoading(false));
     }, []);
+
+    if (isLoading) {
+        return <CircularProgress />;
+    }
 
     return (
         <Container maxWidth='lg' color='cyan'>

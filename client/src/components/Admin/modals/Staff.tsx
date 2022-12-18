@@ -47,7 +47,7 @@ export const Staff = observer(() => {
     return (
         <Container className='p-2'>
             <div className='flex flex-row'>
-                <div className='pr-10 text-[30px]'>Staff</div>
+                <div className='pr-10 text-[25px]'>Staff</div>
                 <Button variant='outlined' onClick={handleClickOpen}>
                     Staff manipulations
                 </Button>
