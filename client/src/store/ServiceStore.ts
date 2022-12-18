@@ -12,7 +12,7 @@ class ServiceStore {
         makeAutoObservable(this);
         this.services = [];
         this.selectedServiceImage = {};
-        this.tourPoints = []
+        this.tourPoints = [];
     }
 
     setSelected(service: any) {
@@ -34,7 +34,7 @@ class ServiceStore {
 
     filteredServices = [];
 
-    filter(city: any) {
+    filter(city: string) {
         this.filteredServices = this.services.filter((service: any) => {
             if (service.city === city) {
                 return service;
@@ -42,7 +42,7 @@ class ServiceStore {
         });
     }
 
-    tourPoints: any
+    tourPoints: any;
 
     addTourPoints(newPoint: any) {
         this.tourPoints.push(newPoint);

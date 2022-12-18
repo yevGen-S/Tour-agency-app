@@ -8,7 +8,7 @@ import TourStore from '../../../../store/TourStore';
 import { SelectBox } from './SelectBox';
 import { fetchCities } from '../../../../http/cityApi';
 import { observer } from 'mobx-react-lite';
-import { createTour } from '../../../../http/tourApi';
+import { createTour, fetchTour, fetchTours } from '../../../../http/tourApi';
 import { fetchHotels } from '../../../../http/hotelsApi';
 
 export const CreateTour = observer(() => {
@@ -79,11 +79,13 @@ export const CreateTour = observer(() => {
                     TourStore.newTour.cityId,
                     TourStore.newTour.hotelId
                 )
-                    .then((data) => {
-                        console.log(data);
-                    })
                     .catch((e) => {
                         console.log(e);
+                    })
+                    .finally(() => {
+                        fetchTours().then((data) => {
+                            TourStore.setTours(data);
+                        });
                     });
             }
         } catch (e) {
@@ -114,7 +116,7 @@ export const CreateTour = observer(() => {
                         {CloseButton(handleClose)}
                     </div>
                     {/* <!-- Modal body --> */}
-                    <div className='p-6  grid grid-cols-2 gap-5'>
+                    <div className='p-6 grid grid-cols-2 gap-5'>
                         <ModalInput
                             inputName={'Tour name'}
                             inputPlaceholder={TourStore.newTour.name}

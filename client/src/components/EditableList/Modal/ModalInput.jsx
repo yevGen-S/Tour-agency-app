@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ModalInput = ({ inputType, isRequired, inputName, inputPlaceholder, changeInput }) => {
+const ModalInput = ({ inputType,inputValue, isRequired, inputName, inputPlaceholder, changeInput }) => {
     const handleChange = (e) => {
         changeInput(e);
     }
@@ -21,6 +21,7 @@ const ModalInput = ({ inputType, isRequired, inputName, inputPlaceholder, change
                 placeholder={inputPlaceholder}
                 required={isRequired}
                 onChange={handleChange}
+                defaultValue={inputValue}
             />
         </div>
     );

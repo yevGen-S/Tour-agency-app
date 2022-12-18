@@ -98,6 +98,17 @@ export const addUser = async (
 // /**
 //  * book a tour
 //  */
-// export const bookTour = async () => {
-//     const { data } = await $authHost.post('api/');
-// };
+export const bookTour = async (
+    user_id: string | undefined,
+    tour_id: string | undefined,
+    transport_id: string | undefined
+) => {
+    const { data } = await $authHost.post('api/tour/book', {
+        user_id,
+        tour_id,
+        status: 'booked',
+        transport_id,
+    });
+
+    return data;
+};

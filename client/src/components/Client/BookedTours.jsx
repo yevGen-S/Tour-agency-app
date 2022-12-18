@@ -3,7 +3,7 @@ import React from 'react';
 
 export const BookedTours = () => {
     return (
-        <Container>
+        <Container maxWidth='lg'>
             <div>BookedTours</div>
             
         </Container>

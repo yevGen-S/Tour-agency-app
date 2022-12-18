@@ -47,3 +47,16 @@ export const createTour = async (
 
     return data;
 };
+
+
+/**
+ * 
+ * function to add tour points for tour
+ */
+export const addTourPoints = async (tourPoints: any) => {
+    const { data } = await $authHost.post('/api/tour/points', {
+        tourPoints,
+    });
+
+    return data;
+};

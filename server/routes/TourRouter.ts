@@ -18,17 +18,18 @@ router.get('/most_commented', controller.getMostCommentedTours);
 /**
  * for client
  */
-router.post('/book_tour');
-router.post('/pay_tour');
+router.post('/book',roleMiddleware('client'), controller.bookTour);
+router.post('/pay',roleMiddleware('client'), controller.changeTourStatus);
 
-router.get('/booked_tours');
-router.get('/paid_tours');
+router.get('/booked', roleMiddleware('client'), controller.bookTour);
+router.get('/paid');
 
 /**
  * for admin
  */
 router.post('/', roleMiddleware('admin'), controller.addTour);
 router.post('/points', roleMiddleware('admin'), controller.addTourPoints);
+
 router.patch('/:id', roleMiddleware('admin'));
 router.put('/:id', roleMiddleware('admin'));
 router.put('/points/:id', roleMiddleware('admin'));
@@ -36,5 +37,6 @@ router.put('/points/:id', roleMiddleware('admin'));
 router.patch('/:id');
 router.delete('/:id');
 router.put('/:id');
+
 
 export { router };

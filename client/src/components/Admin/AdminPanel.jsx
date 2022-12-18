@@ -3,7 +3,7 @@ import React from 'react';
 import { Staff } from './modals/Staff';
 import { CreateTour } from './modals/CreateTour/CreateTour';
 import { ReportOfSells } from './modals/ReportOfSells';
-import { ChangeTourPoints } from './modals/CreateTour/ChangeTourPoints';
+import { AddTourPoints } from './modals/CreateTour/AddTourPoints';
 
 export const AdminPanel = () => {
     return (
@@ -14,7 +14,7 @@ export const AdminPanel = () => {
                 <Staff />
                 <ReportOfSells />
                 <CreateTour />
-                <ChangeTourPoints />
+                <AddTourPoints />
             </div>
         </Container>
     );

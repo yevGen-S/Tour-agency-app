@@ -27,13 +27,21 @@ export const SelectBox = ({ items, label, handler }) => {
                     label={label}
                     onChange={handleChange}
                 >
-                    {items?.map((item) => {
-                        return (
-                            <MenuItem value={item?.name} key={uuid()}>
-                                {item?.name}
-                            </MenuItem>
-                        );
-                    })}
+                    {label === 'Tour'
+                        ? items?.map((item) => {
+                              return (
+                                  <MenuItem value={item?.id} key={uuid()}>
+                                      {item?.Tour_name}, {item?.id}
+                                  </MenuItem>
+                              );
+                          })
+                        : items?.map((item) => {
+                              return (
+                                  <MenuItem value={item?.id} key={uuid()}>
+                                      {item?.name}
+                                  </MenuItem>
+                              );
+                          })}
                     ;
                 </Select>
             </FormControl>

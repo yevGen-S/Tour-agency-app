@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import controller from '../controllers/AuthController/AuthController.js';
-import userController from '../controllers/UserController/UserController.js';
 import authMiddleware from '../middleware/AuthMiddleware.js';
 import roleMiddleware from '../middleware/RoleMiddleware.js';
 

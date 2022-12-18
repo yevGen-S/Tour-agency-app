@@ -26,7 +26,7 @@ export const queryGetTourPoints: string = `
     WHERE t.id = $1
 `;
 
-export const queryAddTours: string = `
+export const queryAddTour: string = `
     INSERT INTO "Tour"
     VALUES(
         uuid_generate_v4(),
@@ -36,7 +36,7 @@ export const queryAddTours: string = `
         NULL,
         $3,
         $4,
-        getcityid($5),
+        $5,
         $6
     );
 `;
@@ -84,7 +84,6 @@ export const queryGetMostCommentedTours: string = `
     ORDER BY "Number of feedbacks" DESC;
 `;
 
-
 export const queryGetSellsReport: string = `
     SELECT 
         DISTINCT t."name" AS "Tour_name",
@@ -95,4 +94,41 @@ export const queryGetSellsReport: string = `
     INNER JOIN "Status" s ON ct.status_id = s.id
     WHERE s."type" = 'paid'
     GROUP BY t."name"
-`
+`;
+
+export const queryChangeTourPoints: string = `
+        
+`;
+
+export const queryBookTour: string = `
+    INSERT INTO clients_tours (user_id, tour_id, status_id, transport_id DEFAULT null)
+    VALUES ($1, $2, getStatusId($3), $4);
+`;
+
+export const queryChangeStatus: string = `
+    UPDATE clients_tours 
+    SET status_id  = getStatusId($1)
+    WHERE tour_id = $2 AND user_id = $3
+`;
+
+export const queryGetBookedTours: string = `
+    SELECT 
+        user_id,
+        u."name",
+        u.surname,
+        u.email,
+        u.login,
+        t.id AS "tour_id",
+        t."name" AS "tour",
+        t.price,
+        t.period_start,
+        t.period_end,
+        status."type" AS "order_status",
+        c."name" AS "city"
+    FROM clients_tours ct 
+    JOIN "User" u ON ct.user_id = u.id 
+    JOIN "Status" status ON ct.status_id = status.id 
+    JOIN "Tour" t ON ct.tour_id = t.id 
+    JOIN "City" c ON t.city_id = c.id 
+    WHERE ct.user_id  = $1
+`;

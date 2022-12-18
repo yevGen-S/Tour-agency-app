@@ -13,9 +13,12 @@ class TourStore {
     sellsReport: any;
 
     newTour: any;
+    newTourPoints: any;
 
     cities: any;
     hotels: any;
+
+    bookedTours: any;
 
     constructor() {
         makeAutoObservable(this);
@@ -26,6 +29,10 @@ class TourStore {
         this.cities = [];
         this.filteredListOfTours = [];
         this.hotels = [];
+        this.filteredHotels = [];
+        this.tourWithTourPoints = {};
+        this.bookedTours = [];
+        this.newTourPoints = []
     }
 
     setCities(data: any) {
@@ -36,6 +43,10 @@ class TourStore {
         this.hotels = [...data];
     }
 
+    setBookedTours(data: any) {
+        this.bookedTours = [...data];
+    }
+    
     setSelected(tour: any) {
         this.selectedTour = tour;
     }
@@ -74,6 +85,17 @@ class TourStore {
                     .includes(input.toLocaleLowerCase())
             ) {
                 return tour;
+            }
+        });
+    }
+
+    filteredHotels: any;
+    tourWithTourPoints: any;
+
+    filterHotels() {
+        this.filteredHotels = this.hotels.filter((hotel: any) => {
+            if (hotel.city === this.newTour.city.name) {
+                return hotel;
             }
         });
     }

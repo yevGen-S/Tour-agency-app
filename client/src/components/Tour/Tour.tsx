@@ -1,6 +1,6 @@
 import { Container } from '@mui/material';
 import { observer } from 'mobx-react-lite';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchTour, fetchTourPoints } from '../../http/tourApi';
 import TourStore from '../../store/TourStore';
@@ -23,6 +23,10 @@ export const Tour = observer(() => {
         });
     }, [id]);
 
+    const handleBookTour = async () => {
+        
+    };
+
     return (
         <div className='flex justify-center relative h-screen w-screen'>
             <img
@@ -35,7 +39,7 @@ export const Tour = observer(() => {
                 color='#fff'
                 className='items-center justify-center absolute top-[500px] bottom-0 '
             >
-                <div className='md:text-[20px] bg-black text-white w-full h-full '>
+                <div className='md:text-[20px] bg-black text-white w-full h-full flex-col '>
                     <h1 className='text-bold font-mono text-[50px] p-5'>
                         Tour: {TourStore?.selectedTour?.Tour_name}
                     </h1>
@@ -52,7 +56,7 @@ export const Tour = observer(() => {
                             {TourStore?.selectedTour?.number_of_places}
                         </h3>
                         <h3 className={styleTourDescription}>
-                            <div className='flex items-center'>
+                            <div className='flex items-center '>
                                 <svg
                                     aria-hidden='true'
                                     className='w-5 h-5 text-yellow-400'
@@ -72,6 +76,13 @@ export const Tour = observer(() => {
                                 </a>
                             </div>
                         </h3>
+                        <button
+                            onClick={handleBookTour}
+                            className='text-white border m-3 p-3 border-white hover:bg-slate-300 hover:text-slate-800 '
+                        >
+                            {' '}
+                            BOOK TOUR{' '}
+                        </button>
                     </div>
                 </div>
                 <div className='  w-full pt-[80px] columns-1'>
