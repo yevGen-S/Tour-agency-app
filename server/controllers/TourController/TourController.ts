@@ -145,9 +145,9 @@ class TourController {
         try {
             const { tourPoints } = req.body;
             let values = tourPoints.map((point: any) => {
-                return `(${Object.values(point)
+                return `(uuid_generate_v4(), ${Object.values(point)
                     .map((value, index) => {
-                        if (index === 4) {
+                        if (index === 3) {
                             return value;
                         } else {
                             return `'${value}'`;
@@ -158,8 +158,8 @@ class TourController {
             values = values.join(',');
 
             const data =
-                await pool.query(`INSERT INTO "Tour_points" VALUES(uuid_generate_v4(), tour_id, service_id, "date", "day", description  )
-                ${values}
+                await pool.query(`INSERT INTO "Tour_points"   (id, tour_id, service_id, "date", "day", description ) 
+                VALUES ${values}
             `);
 
             res.status(200).json({
@@ -167,7 +167,10 @@ class TourController {
                 data: data,
             });
         } catch (e) {
-            res.status(300).json({error: e, message: 'Error of adding tour points'});
+            res.status(300).json({
+                error: e,
+                message: 'Error of adding tour points',
+            });
         }
     }
 
@@ -182,11 +185,15 @@ class TourController {
             ]);
 
             res.status(400).json({
-                message: 'Successfull booking',
+                message: 'Successfully booked',
                 error: data,
             });
         } catch (e) {
-            res.status(200).json({ message: 'Error', error: e });
+            res.status(200).json({
+                message:
+                    'Error of booking.\n Check all fields and try one more time',
+                error: e,
+            });
         }
     }
 

@@ -36,18 +36,26 @@ const ModalWindow = ({ isModalOpen, setModalOpen, modalName }) => {
 
     const handleAddUser = async () => {
         try {
-            addUser(
-                UserStore.newUser.login,
-                UserStore.newUser.password,
-                UserStore.newUser.role,
-                UserStore.newUser.name,
-                UserStore.newUser.surname,
-                UserStore.newUser.telephone_number,
-                UserStore.newUser.email,
-                false
-            ).then((data) => {
-                console.log(data);
-            });
+            const form = document.getElementById('userListId');
+            if (!form.checkValidity()) {
+                const tmpSubmit = document.createElement('button');
+                form.appendChild(tmpSubmit);
+                tmpSubmit.click();
+                form.removeChild(tmpSubmit);
+            } else {
+                addUser(
+                    UserStore.newUser.login,
+                    UserStore.newUser.password,
+                    UserStore.newUser.role,
+                    UserStore.newUser.name,
+                    UserStore.newUser.surname,
+                    UserStore.newUser.telephone_number,
+                    UserStore.newUser.email,
+                    false
+                ).then((data) => {
+                    console.log(data);
+                });
+            }
         } catch (e) {
             alert(e);
         }
@@ -68,7 +76,10 @@ const ModalWindow = ({ isModalOpen, setModalOpen, modalName }) => {
             >
                 <div className='relative w-full max-w-2xl h-full md:h-auto'>
                     {/* <!-- Modal content --> */}
-                    <form className='relative bg-white rounded-lg shadow dark:bg-gray-700'>
+                    <form
+                        id='userListId'
+                        className='relative bg-white rounded-lg shadow dark:bg-gray-700'
+                    >
                         {/* <!-- Modal header --> */}
                         <div className='flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600'>
                             <h3 className='text-xl font-semibold text-gray-900 dark:text-white'>

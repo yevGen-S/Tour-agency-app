@@ -1,13 +1,15 @@
 import { Container } from '@mui/material';
 import { observer } from 'mobx-react-lite';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchTour, fetchTourPoints } from '../../http/tourApi';
 import TourStore from '../../store/TourStore';
 import ServiceImages from '../Service/constants';
+import { v4 as uuid } from 'uuid';
 
 const styleTourDescription = `
     text-[20px]
+    underlined 
 `;
 
 export const Tour = observer(() => {
@@ -23,9 +25,7 @@ export const Tour = observer(() => {
         });
     }, [id]);
 
-    const handleBookTour = async () => {
-        
-    };
+    const handleBookTour = async () => {};
 
     return (
         <div className='flex justify-center relative h-screen w-screen'>
@@ -72,7 +72,7 @@ export const Tour = observer(() => {
                                 </p>
                                 <span className='w-1 h-1 mx-1.5 bg-gray-500 rounded-full dark:bg-gray-400'></span>
                                 <a href='#' className={styleTourDescription}>
-                                    number of reviews
+                                    Number of reviews
                                 </a>
                             </div>
                         </h3>
@@ -93,11 +93,9 @@ export const Tour = observer(() => {
                     {TourStore?.selectedTourPoints?.map((service: any) => {
                         return (
                             <>
-                                <div
-                                    key={service.Service_id}
-                                    className='flex flex-row p-3'
-                                >
+                                <div key={uuid()} className='flex flex-row p-3'>
                                     <img
+                                        key={uuid()}
                                         src={ServiceImages.getRandImage(
                                             service.day,
                                             service.Service_type
@@ -105,10 +103,7 @@ export const Tour = observer(() => {
                                         alt='service'
                                         className='max-w-[450px]'
                                     />
-                                    <div
-                                        key={service.Service_id}
-                                        className='p-10'
-                                    >
+                                    <div key={uuid()} className='p-10'>
                                         <h1 className='text-bold text-[50px] font-sans'>
                                             Day: {service?.day}
                                         </h1>
@@ -122,9 +117,7 @@ export const Tour = observer(() => {
                                         </h1>
                                     </div>
                                 </div>
-                                <div className='h-[3px] bg-slate-300 my-5'>
-                                    {' '}
-                                </div>
+                                <div className='h-[3px] bg-slate-300 my-5' />
                             </>
                         );
                     })}

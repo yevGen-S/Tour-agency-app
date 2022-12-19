@@ -35,7 +35,7 @@ export const ReportOfSells = observer(() => {
     return (
         <Container className='p-2'>
             <div className='flex flex-row '>
-                <div className='pr-10 text-[25px]'>Report of sells</div>
+                <div className='pr-10 text-[25px] text-gray-200 '>Report of sells</div>
                 <Button variant='outlined' onClick={handleClickOpen}>
                     Open form dialog
                 </Button>

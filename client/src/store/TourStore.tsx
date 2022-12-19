@@ -32,7 +32,7 @@ class TourStore {
         this.filteredHotels = [];
         this.tourWithTourPoints = {};
         this.bookedTours = [];
-        this.newTourPoints = []
+        this.newTourPoints = [];
     }
 
     setCities(data: any) {
@@ -46,7 +46,7 @@ class TourStore {
     setBookedTours(data: any) {
         this.bookedTours = [...data];
     }
-    
+
     setSelected(tour: any) {
         this.selectedTour = tour;
     }

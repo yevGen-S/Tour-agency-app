@@ -10,6 +10,7 @@ import { fetchCities } from '../../../../http/cityApi';
 import { observer } from 'mobx-react-lite';
 import { createTour, fetchTour, fetchTours } from '../../../../http/tourApi';
 import { fetchHotels } from '../../../../http/hotelsApi';
+import { CloseButton } from '../CloseButton';
 
 export const CreateTour = observer(() => {
     const [open, setOpen] = useState(false);
@@ -96,7 +97,7 @@ export const CreateTour = observer(() => {
     return (
         <Container className='p-2'>
             <div className='flex flex-row'>
-                <div className='pr-10 text-[25px]'>Create tour</div>
+                <div className='pr-10 text-[25px] text-gray-200'>Create tour</div>
                 <Button variant='outlined' onClick={handleClickOpen}>
                     Create tour
                 </Button>
@@ -113,7 +114,7 @@ export const CreateTour = observer(() => {
                             Create tour
                         </h3>
 
-                        {CloseButton(handleClose)}
+                        <CloseButton handleClose={handleClose} />
                     </div>
                     {/* <!-- Modal body --> */}
                     <div className='p-6 grid grid-cols-2 gap-5'>
@@ -192,26 +193,3 @@ export const CreateTour = observer(() => {
     );
 });
 
-const CloseButton = (handleClose) => {
-    return (
-        <button
-            type='button'
-            className='text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white'
-            data-modal-toggle='newUserModal'
-            onClick={handleClose}
-        >
-            <svg
-                className='w-5 h-5'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                xmlns='http://www.w3.org/2000/svg'
-            >
-                <path
-                    fillRule='evenodd'
-                    d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
-                    clipRule='evenodd'
-                ></path>
-            </svg>
-        </button>
-    );
-};

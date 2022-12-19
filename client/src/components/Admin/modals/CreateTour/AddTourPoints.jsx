@@ -10,9 +10,10 @@ import {
 import { observer } from 'mobx-react-lite';
 import React, { useEffect, useState } from 'react';
 import { fetchServices } from '../../../../http/serviceApi';
-import { createTour, fetchTours } from '../../../../http/tourApi';
+import { addTourPoints, fetchTours } from '../../../../http/tourApi';
 import ServiceStore from '../../../../store/ServiceStore';
 import TourStore from '../../../../store/TourStore';
+import { CloseButton } from '../CloseButton';
 import { ListOfCheckboxes } from './ListOfCheckboxes';
 import { SelectBox } from './SelectBox';
 
@@ -50,9 +51,9 @@ export const AddTourPoints = observer(() => {
     };
 
     const handleAddTourPoints = async (e) => {
-        createTour(TourStore.newTourPoints.tour_id).then((data) => {
-
-        })
+        addTourPoints(TourStore.newTourPoints).then((data) => {
+            console.log(data);
+        });
     };
 
     const handleChangeTour = (e) => {
@@ -68,13 +69,19 @@ export const AddTourPoints = observer(() => {
     return (
         <Container className='p-2'>
             <div className='flex flex-row'>
-                <div className='pr-10 text-[25px]'>Add Tour Points</div>
+                <div className='pr-10 text-[25px] text-gray-200'>
+                    Add Tour Points
+                </div>
                 <Button variant='outlined' onClick={handleClickOpen}>
                     Open modal tour points
                 </Button>
             </div>
             <Dialog open={open} onClose={handleClose} fullWidth maxWidth='lg'>
-                <DialogTitle> Select tour and add tour points</DialogTitle>
+                <DialogTitle className='flex justify-between'>
+                    {' '}
+                    Select tour and add tour points{' '}
+                    <CloseButton handleClose={handleClose} />
+                </DialogTitle>
                 <DialogContent>
                     <div className='m-10'>
                         <SelectBox
@@ -101,7 +108,7 @@ export const AddTourPoints = observer(() => {
                     </div>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Add</Button>
+                    <Button onClick={handleAddTourPoints}>Add</Button>
                     <Button onClick={handleClose}>Cancel</Button>
                 </DialogActions>
             </Dialog>
