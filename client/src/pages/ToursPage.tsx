@@ -1,6 +1,6 @@
 import { Container } from '@mui/material';
 import { observer } from 'mobx-react-lite';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchTours } from '../http/tourApi';
 import TourStore from '../store/TourStore';

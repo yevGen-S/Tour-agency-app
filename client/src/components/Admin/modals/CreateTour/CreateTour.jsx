@@ -8,17 +8,21 @@ import TourStore from '../../../../store/TourStore';
 import { SelectBox } from './SelectBox';
 import { fetchCities } from '../../../../http/cityApi';
 import { observer } from 'mobx-react-lite';
-import { createTour, fetchTour, fetchTours } from '../../../../http/tourApi';
+import { createTour, fetchTours } from '../../../../http/tourApi';
 import { fetchHotels } from '../../../../http/hotelsApi';
 import { CloseButton } from '../CloseButton';
+import { SuccessMessage } from '../../../ActionMessage/SuccessMessage';
+import { ErrorMessage } from '../../../ActionMessage/ErrorMessage';
 
 export const CreateTour = observer(() => {
     const [open, setOpen] = useState(false);
+    const [isSuccess, setIsSuccessMessage] = useState(false);
+    const [isError, setIsErrorMessage] = useState(false);
+    const [message, setMessage] = useState('');
 
     useEffect(() => {
         fetchCities()
             .then((data) => {
-                console.log(data.rows);
                 TourStore.setCities(data.rows);
             })
             .catch((e) => {
@@ -27,7 +31,6 @@ export const CreateTour = observer(() => {
 
         fetchHotels()
             .then((data) => {
-                console.log(data);
                 TourStore.setHotels(data.rows);
             })
             .catch((e) => {
@@ -80,8 +83,14 @@ export const CreateTour = observer(() => {
                     TourStore.newTour.cityId,
                     TourStore.newTour.hotelId
                 )
+                    .then((data) => {
+                        setMessage(data.message);
+                        setIsSuccessMessage(true);
+                    })
                     .catch((e) => {
                         console.log(e);
+                        setIsErrorMessage(true);
+                        setMessage(e);
                     })
                     .finally(() => {
                         fetchTours().then((data) => {
@@ -97,7 +106,9 @@ export const CreateTour = observer(() => {
     return (
         <Container className='p-2'>
             <div className='flex flex-row'>
-                <div className='pr-10 text-[25px] text-gray-200'>Create tour</div>
+                <div className='pr-10 text-[25px] text-gray-200'>
+                    Create tour
+                </div>
                 <Button variant='outlined' onClick={handleClickOpen}>
                     Create tour
                 </Button>
@@ -117,6 +128,14 @@ export const CreateTour = observer(() => {
                         <CloseButton handleClose={handleClose} />
                     </div>
                     {/* <!-- Modal body --> */}
+                    {isSuccess && <SuccessMessage message={message} />}
+
+                    {isError && (
+                        <ErrorMessage
+                            message={`Tour points are not added: ${message}`}
+                        />
+                    )}
+
                     <div className='p-6 grid grid-cols-2 gap-5'>
                         <ModalInput
                             inputName={'Tour name'}
@@ -192,4 +211,3 @@ export const CreateTour = observer(() => {
         </Container>
     );
 });
-

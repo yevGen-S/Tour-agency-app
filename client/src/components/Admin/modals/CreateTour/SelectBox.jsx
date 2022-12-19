@@ -10,7 +10,6 @@ export const SelectBox = ({ items, label, handler }) => {
     const [value, setValue] = React.useState('');
 
     const handleChange = (e) => {
-        console.log(e.target.value);
         setValue(e.target.value);
         handler(e);
     };
@@ -31,14 +30,24 @@ export const SelectBox = ({ items, label, handler }) => {
                         ? items?.map((item) => {
                               return (
                                   <MenuItem value={item?.id} key={uuid()}>
-                                      {item?.Tour_name}, {item?.id}
+                                      <h1 className='font-bold w-full'>
+                                          {item?.Tour_name}
+                                      </h1>
+                                      <h1> {item?.id}</h1>
                                   </MenuItem>
                               );
                           })
                         : items?.map((item) => {
                               return (
-                                  <MenuItem value={item?.id} key={uuid()}>
-                                      {item?.name}
+                                  <MenuItem
+                                      value={item?.id}
+                                      key={uuid()}
+                                      className='mr-14'
+                                  >
+                                      <h1 className='font-bold  w-full'>
+                                          {item?.name}
+                                      </h1>
+                                      <h1> {item?.id}</h1>
                                   </MenuItem>
                               );
                           })}

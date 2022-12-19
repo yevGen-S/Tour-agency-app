@@ -13,12 +13,19 @@ import { fetchServices } from '../../../../http/serviceApi';
 import { addTourPoints, fetchTours } from '../../../../http/tourApi';
 import ServiceStore from '../../../../store/ServiceStore';
 import TourStore from '../../../../store/TourStore';
+
+import { SuccessMessage } from '../../../ActionMessage/SuccessMessage';
+import { ErrorMessage } from '../../../ActionMessage/ErrorMessage';
+
 import { CloseButton } from '../CloseButton';
 import { ListOfCheckboxes } from './ListOfCheckboxes';
 import { SelectBox } from './SelectBox';
 
 export const AddTourPoints = observer(() => {
     const [open, setOpen] = useState(false);
+    const [isSuccess, setIsSuccessMessage] = useState(false);
+    const [isError, setIsErrorMessage] = useState(false);
+    const [message, setMessage] = useState('');
 
     const [isLoading, setIsLoading] = useState(true);
 
@@ -48,12 +55,23 @@ export const AddTourPoints = observer(() => {
     const handleClose = () => {
         setOpen(false);
         TourStore.newTourPoints = [];
+        setIsSuccessMessage(false);
+        setIsErrorMessage(false);
+        setMessage('');
     };
 
     const handleAddTourPoints = async (e) => {
-        addTourPoints(TourStore.newTourPoints).then((data) => {
-            console.log(data);
-        });
+        addTourPoints(TourStore.newTourPoints)
+            .then((data) => {
+                console.log(data);
+                setMessage(data.message);
+                setIsSuccessMessage(true);
+            })
+            .catch((e) => {
+                console.log(e);
+                setMessage(e);
+                setIsErrorMessage(true);
+            });
     };
 
     const handleChangeTour = (e) => {
@@ -77,11 +95,22 @@ export const AddTourPoints = observer(() => {
                 </Button>
             </div>
             <Dialog open={open} onClose={handleClose} fullWidth maxWidth='lg'>
+                {/* Header */}
                 <DialogTitle className='flex justify-between'>
                     {' '}
                     Select tour and add tour points{' '}
                     <CloseButton handleClose={handleClose} />
                 </DialogTitle>
+
+                {isSuccess && <SuccessMessage message={message} />}
+
+                {isError && (
+                    <ErrorMessage
+                        message={`Tour points are not added: ${message}`}
+                    />
+                )}
+
+                {/* Main body */}
                 <DialogContent>
                     <div className='m-10'>
                         <SelectBox
@@ -107,6 +136,8 @@ export const AddTourPoints = observer(() => {
                         )}
                     </div>
                 </DialogContent>
+
+                {/* Footer buttons */}
                 <DialogActions>
                     <Button onClick={handleAddTourPoints}>Add</Button>
                     <Button onClick={handleClose}>Cancel</Button>

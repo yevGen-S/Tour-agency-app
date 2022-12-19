@@ -20,6 +20,10 @@ class TourStore {
 
     bookedTours: any;
 
+    searchInput: string;
+    filteredHotels: any;
+    tourWithTourPoints: any;
+
     constructor() {
         makeAutoObservable(this);
         this.tours = [];
@@ -33,7 +37,7 @@ class TourStore {
         this.tourWithTourPoints = {};
         this.bookedTours = [];
         this.newTourPoints = [];
-        this.searchInput = ''
+        this.searchInput = '';
     }
 
     setCities(data: any) {
@@ -77,8 +81,6 @@ class TourStore {
         this.sellsReport = [...report];
     }
 
-    searchInput: string;
-
     filterTours(input: string) {
         this.searchInput = input;
         this.filteredListOfTours = this.tours.filter((tour: any) => {
@@ -92,9 +94,6 @@ class TourStore {
             }
         });
     }
-
-    filteredHotels: any;
-    tourWithTourPoints: any;
 
     filterHotels() {
         this.filteredHotels = this.hotels.filter((hotel: any) => {
