@@ -33,6 +33,7 @@ class TourStore {
         this.tourWithTourPoints = {};
         this.bookedTours = [];
         this.newTourPoints = [];
+        this.searchInput = ''
     }
 
     setCities(data: any) {
@@ -76,7 +77,10 @@ class TourStore {
         this.sellsReport = [...report];
     }
 
+    searchInput: string;
+
     filterTours(input: string) {
+        this.searchInput = input;
         this.filteredListOfTours = this.tours.filter((tour: any) => {
             const concatString = Object.values(tour).join('');
             if (

@@ -1,6 +1,6 @@
 import { Container } from '@mui/material';
 import { observer } from 'mobx-react-lite';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchTours } from '../http/tourApi';
 import TourStore from '../store/TourStore';
@@ -36,7 +36,7 @@ export const ToursPage = observer(() => {
     return (
         <>
             <img src={ourToursPic} alt='Our tours' className='w-screen' />
-            <SearchInput searchHandler={searchHandler}  />
+            <SearchInput searchHandler={searchHandler} />
 
             <Container
                 maxWidth='lg'

@@ -58,7 +58,5 @@ export const addTourPoints = async (tourPoints: any) => {
         tourPoints,
     });
 
-    console.log(tourPoints);
-
     return data;
 };
