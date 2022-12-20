@@ -8,3 +8,21 @@ export const fetchServices = async () => {
 
     return data;
 };
+
+export const fetchService = async (id: string | undefined) => {
+    const { data } = await $host.get(`/api/service/${id}`);
+
+    return data.data;
+};
+
+export const fetchAllCommentsById = async (id: string | undefined) => {
+    const { data } = await $host.get('/api/service/feedback/:serviceid');
+
+    return data;
+};
+
+export const fetchAllResponsesById = async (id: string | undefined) => {
+    const { data } = await $host.get('/api/service/response/:serviceid');
+
+    return data;
+};

@@ -11,6 +11,9 @@ router.get('/:id', ServiceController.getService);
 router.get('/best_rated', ServiceController.getBestRatedServices);
 router.get('/most_commented', ServiceController.getMostCommentedServices);
 
+router.get('/feedback/:serviceid', ServiceController.getFeedbacksOnService);
+router.get('/response/:serviceid', ServiceController.getResponsesOnService);
+
 // router.patch('/:id');
 // router.delete('/:id');
 // router.put('/:id');

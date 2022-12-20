@@ -3,12 +3,21 @@ import { fetchAllUsers, updateUser } from '../../../http/userApi';
 import UserStore from '../../../store/UserStore';
 import ModalInput from './ModalInput';
 
-import React from 'react';
+import React, { useState } from 'react';
+import { SuccessMessage } from '../../ActionMessage/SuccessMessage';
+import { ErrorMessage } from '../../ActionMessage/ErrorMessage';
 
 const ModalWindow = ({ isModalOpen, setModalOpen, modalName }) => {
+    const [isSuccess, setIsSuccessMessage] = useState(false);
+    const [isError, setIsErrorMessage] = useState(false);
+    const [message, setMessage] = useState('');
+
     const handleClose = () => {
         UserStore.setEditableUser({});
         setModalOpen(false);
+        setIsSuccessMessage(false);
+        setIsErrorMessage(false);
+        setMessage('');
     };
 
     const handleUpdateData = async () => {
@@ -22,9 +31,12 @@ const ModalWindow = ({ isModalOpen, setModalOpen, modalName }) => {
             updateUser(UserStore.editUser)
                 .then((response) => {
                     console.log(response);
+                    setMessage(response.message);
+                    setIsSuccessMessage(true);
                 })
                 .catch((e) => {
-                    alert(e);
+                    setMessage(e);
+                    setIsErrorMessage(true);
                 })
                 .finally(() => {
                     fetchAllUsers().then((data) => {
@@ -68,6 +80,14 @@ const ModalWindow = ({ isModalOpen, setModalOpen, modalName }) => {
             >
                 <div className='relative w-full min-2-xl max-w-2xl h-full md:h-auto'>
                     {/* <!-- Modal content --> */}
+
+                    {isSuccess && <SuccessMessage message={message} />}
+
+                    {isError && (
+                        <ErrorMessage
+                            message={`Can't edit user: ${message}`}
+                        />
+                    )}
                     <form
                         id='userListId'
                         className='relative w-full bg-white rounded-lg shadow dark:bg-gray-700'

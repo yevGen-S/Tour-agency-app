@@ -24,6 +24,8 @@ export const queryGetServiceById: string = `
     SELECT * FROM "Service" s
     JOIN "Service_type" st
     ON s."service_type_id" = st."id"
+    JOIN "City" c 
+    ON s."city_id" = c.id
     where s.id = $1
 `;
 

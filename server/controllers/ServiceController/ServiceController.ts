@@ -87,6 +87,38 @@ class ServiceController {
             });
         }
     }
+
+    async getFeedbacksOnService(req: Request, res: Response) {
+        try {
+            const data = await pool.query(queryGetMostCommentedServices);
+
+            res.status(200).json({
+                message: 'Successful get most commented services',
+                data: data.rows,
+            });
+        } catch (e) {
+            res.status(400).json({
+                message: 'Error of getting best services',
+                error: e,
+            });
+        }
+    }
+
+    async getResponsesOnService(req: Request, res: Response) {
+        try {
+            const data = await pool.query(queryGetMostCommentedServices);
+
+            res.status(200).json({
+                message: 'Successful get most commented services',
+                data: data.rows,
+            });
+        } catch (e) {
+            res.status(400).json({
+                message: 'Error of getting best services',
+                error: e,
+            });
+        }
+    }
 }
 
 export default new ServiceController();

@@ -71,9 +71,6 @@ export const Tour = observer(() => {
                                     {TourStore?.selectedTour?.rating}
                                 </p>
                                 <span className='w-1 h-1 mx-1.5 bg-gray-500 rounded-full dark:bg-gray-400'></span>
-                                <a href='#' className={styleTourDescription}>
-                                    Number of reviews
-                                </a>
                             </div>
                         </h3>
                         <button

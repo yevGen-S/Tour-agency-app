@@ -11,12 +11,12 @@ class ServiceStore {
     constructor() {
         makeAutoObservable(this);
         this.services = [];
-        this.selectedServiceImage = {};
+        this.selectedServiceImage = '';
         this.tourPoints = [];
     }
 
     setSelected(service: any) {
-        this.selectedServiceImage = service;
+        this.selectedService = service;
     }
 
     setServices(services: any) {
@@ -46,6 +46,10 @@ class ServiceStore {
 
     addTourPoints(newPoint: any) {
         this.tourPoints.push(newPoint);
+    }
+
+    setSelectedServiceImage(image: any) {
+        this.selectedServiceImage = image;
     }
 }
 

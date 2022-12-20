@@ -17,13 +17,16 @@ class UserStore {
 
     userManipulationMode: any;
 
+    searchInput: string;
+
     constructor() {
         this._isAuth = false;
         this.user = { login: '', role: '', iat: 0, exp: 0 };
         this.users = [];
         this.editUser = {};
         this.newUser = {};
-        this.filteredListOfUsers = []
+        this.filteredListOfUsers = [];
+        this.searchInput = '';
         makeAutoObservable(this);
     }
 
@@ -44,9 +47,14 @@ class UserStore {
     }
 
     filterUsers(input: string) {
+        this.searchInput = input;
         this.filteredListOfUsers = this.users.filter((user: any) => {
-            const concatString = Object.values(user).join("");
-            if (concatString.toLocaleLowerCase().includes(input.toLocaleLowerCase())) {
+            const concatString = Object.values(user).join('');
+            if (
+                concatString
+                    .toLocaleLowerCase()
+                    .includes(input.toLocaleLowerCase())
+            ) {
                 return user;
             }
         });
