@@ -6,7 +6,7 @@ import {
     SERVICES_PATH,
     TOURS_PATH,
     TOUR_PATH,
-    BOOEKD_TOURS_PATH,
+    BOOKED_TOURS_PATH,
     SERVICE_PATH,
 } from './utils/consts';
 
@@ -18,7 +18,7 @@ import { Registration } from './components/Auth/Registration';
 import { BookedTours } from './components/Client/BookedTours';
 import { AdminPanel } from './components/Admin/AdminPanel';
 import { ServiceManagement } from './components/ServiceProvider/ServiceManagement';
-import { Service } from './components/Service/Service';
+import { Service } from './components/Service/Service.jsx';
 
 /**
  * Routes for authentication
@@ -33,9 +33,9 @@ export const authRoutes = [
         component: ServiceManagement,
     },
     {
-        path: BOOEKD_TOURS_PATH,
-        component: BookedTours
-    }
+        path: BOOKED_TOURS_PATH,
+        component: BookedTours,
+    },
 ];
 
 /**
@@ -60,10 +60,10 @@ export const publicRoutes = [
     },
     {
         path: SERVICES_PATH,
-        component: Services
+        component: Services,
     },
     {
         path: SERVICE_PATH,
-        component: Service
-    }
+        component: Service,
+    },
 ];

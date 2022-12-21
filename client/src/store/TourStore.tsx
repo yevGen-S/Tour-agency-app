@@ -23,6 +23,7 @@ class TourStore {
     searchInput: string;
     filteredHotels: any;
     tourWithTourPoints: any;
+   
 
     constructor() {
         makeAutoObservable(this);
@@ -38,6 +39,7 @@ class TourStore {
         this.bookedTours = [];
         this.newTourPoints = [];
         this.searchInput = '';
+        
     }
 
     setCities(data: any) {
@@ -102,6 +104,8 @@ class TourStore {
             }
         });
     }
+
+   
 }
 
 export default new TourStore();

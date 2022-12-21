@@ -1,11 +1,16 @@
 import { Request, Response } from 'express';
 import { pool } from '../../db.js';
 import {
+    getAllCommentsAndResponsesOnService,
     queryAddService,
     queryAllServices,
     queryGetBestRatedServices,
+    queryGetFeedbacksOnService,
     queryGetMostCommentedServices,
+    queryGetResponsesOnService,
     queryGetServiceById,
+    queryPostFeedback,
+    queryPostResponse,
 } from './ServiceQueries.js';
 
 class ServiceController {
@@ -82,23 +87,27 @@ class ServiceController {
             });
         } catch (e) {
             res.status(400).json({
-                message: 'Error of getting best services',
+                message: 'Error of getting most commented services',
                 error: e,
             });
         }
     }
 
-    async getFeedbacksOnService(req: Request, res: Response) {
+    async getFeedbacksAndResponsesOnService(req: Request, res: Response) {
         try {
-            const data = await pool.query(queryGetMostCommentedServices);
+            const { id } = req.params;
+
+            const data = await pool.query(getAllCommentsAndResponsesOnService, [
+                id,
+            ]);
 
             res.status(200).json({
-                message: 'Successful get most commented services',
+                message: 'Successful get  comments and responses on service',
                 data: data.rows,
             });
         } catch (e) {
             res.status(400).json({
-                message: 'Error of getting best services',
+                message: 'Error of getting comments and responses',
                 error: e,
             });
         }
@@ -106,15 +115,80 @@ class ServiceController {
 
     async getResponsesOnService(req: Request, res: Response) {
         try {
-            const data = await pool.query(queryGetMostCommentedServices);
+            const { id } = req.params;
+
+            const data = await pool.query(queryGetResponsesOnService, [id]);
 
             res.status(200).json({
-                message: 'Successful get most commented services',
+                message: 'Successful get responses on service',
                 data: data.rows,
             });
         } catch (e) {
             res.status(400).json({
-                message: 'Error of getting best services',
+                message: 'Error of getting responses on service',
+                error: e,
+            });
+        }
+    }
+
+    async getFeedbacksOnService(req: Request, res: Response) {
+        try {
+            const { id } = req.params;
+
+            const data = await pool.query(queryGetFeedbacksOnService, [id]);
+
+            res.status(200).json({
+                message: 'Successful get feedbacks on service',
+                data: data.rows,
+            });
+        } catch (e) {
+            res.status(400).json({
+                message: 'Error of getting feedbacks',
+                error: e,
+            });
+        }
+    }
+
+    async postFeedback(req: Request, res: Response) {
+        try {
+            const { rating, text, login, service_id } = req.body;
+
+            const data = await pool.query(queryPostFeedback, [
+                rating,
+                text,
+                login,
+                service_id,
+            ]);
+
+            res.status(200).json({
+                message: 'Successful post feedback on service',
+                data: data,
+            });
+        } catch (e) {
+            res.status(400).json({
+                message: 'Error of posting feedback',
+                error: e,
+            });
+        }
+    }
+
+    async postResponse(req: Request, res: Response) {
+        try {
+            const { login, text, feedback_id } = req.body;
+
+            const data = await pool.query(queryPostResponse, [
+                login,
+                text,
+                feedback_id,
+            ]);
+
+            res.status(200).json({
+                message: 'Successful post response on feedback',
+                data: data,
+            });
+        } catch (e) {
+            res.status(400).json({
+                message: 'Error of posting reponse',
                 error: e,
             });
         }

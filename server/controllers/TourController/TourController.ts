@@ -6,6 +6,7 @@ import {
     queryChangeStatus,
     queryChangeTourPoints,
     queryGetBestRatedTours,
+    queryGetBookedTours,
     queryGetMostCommentedTours,
     queryGetSellsReport,
     queryGetTourById,
@@ -233,7 +234,8 @@ class TourController {
 
     async getBookedTours(req: Request, res: Response) {
         try {
-            const bookedTours = await pool.query(queryGetSellsReport);
+            const { login } = req.params;
+            const bookedTours = await pool.query(queryGetBookedTours, [login]);
 
             res.status(200).json({
                 message: 'Successfully get booked tours',

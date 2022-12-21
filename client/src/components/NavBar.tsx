@@ -1,6 +1,8 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import ServiceStore from '../store/ServiceStore';
+import TourStore from '../store/TourStore';
 import UserStore from '../store/UserStore';
 import { LOGIN_PATH } from '../utils/consts';
 
@@ -34,6 +36,9 @@ export const NavBar = observer(() => {
         UserStore.setIsAuth(false);
         UserStore.setUser({});
         localStorage.removeItem('token');
+        TourStore.setBookedTours([]);
+        TourStore.searchInput = '';
+        ServiceStore.setServices([]);
     };
 
     return (
@@ -87,7 +92,7 @@ export const NavBar = observer(() => {
                             UserStore?.user?.role === 'client' && (
                                 <li draggable={false}>
                                     <NavLink
-                                        to='/tours/booked'
+                                        to={`/tours/booked/${UserStore.user.login}`}
                                         className={navlinkStyle}
                                         draggable={false}
                                     >

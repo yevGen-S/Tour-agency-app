@@ -101,14 +101,14 @@ export const queryChangeTourPoints: string = `
 `;
 
 export const queryBookTour: string = `
-    INSERT INTO clients_tours (user_id, tour_id, status_id, transport_id DEFAULT null)
-    VALUES ($1, $2, getStatusId($3), $4);
+    INSERT INTO clients_tours (user_id, tour_id, status_id, transport_id )
+    VALUES (getUserId($1), $2, getStatusId($3), $4 );
 `;
 
 export const queryChangeStatus: string = `
     UPDATE clients_tours 
     SET status_id  = getStatusId($1)
-    WHERE tour_id = $2 AND user_id = $3
+    WHERE tour_id = $2 AND user_id = getUserId($3)
 `;
 
 export const queryGetBookedTours: string = `
@@ -130,5 +130,5 @@ export const queryGetBookedTours: string = `
     JOIN "Status" status ON ct.status_id = status.id 
     JOIN "Tour" t ON ct.tour_id = t.id 
     JOIN "City" c ON t.city_id = c.id 
-    WHERE ct.user_id  = $1
+    WHERE ct.user_id  = getUserId($1)
 `;

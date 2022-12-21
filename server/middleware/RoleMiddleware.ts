@@ -1,7 +1,7 @@
 import { Response } from 'express';
 import jwt from 'jsonwebtoken';
 
-export default function (role: string) {
+export default function (roles: Array<string>) {
     return function (req: any, res: Response, next: Function) {
         if (req.method === 'OPTIONS') {
             next();
@@ -12,7 +12,7 @@ export default function (role: string) {
                 return res.status(401).json({ message: 'Не авторизован' });
             }
             const decoded: any = jwt.verify(token, process.env.SECRET_KEY);
-            if (decoded.role !== role) {
+            if (!roles.includes(decoded.role)) {
                 return res.status(403).json({ message: 'Нет доступа' });
             }
             req.user = decoded;

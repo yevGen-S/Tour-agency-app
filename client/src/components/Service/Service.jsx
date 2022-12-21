@@ -10,10 +10,13 @@ export const Service = observer(() => {
     const { id } = useParams();
 
     useEffect(() => {
-        fetchService(id).then((data) => {
-            ServiceStore.setSelected(data[0]);
-            console.log(data[0]);
-        });
+        fetchService(id)
+            .then((data) => {
+                ServiceStore.setSelected(data[0]);
+            })
+            .catch((e) => {
+                console.log(e);
+            });
     }, [id]);
 
     return (
@@ -29,20 +32,20 @@ export const Service = observer(() => {
                     className='max-w-[600px] mx-10'
                 />
                 <div className='flex flex-col'>
-                    <h1 className='text-[50px] font-extralight text-gray-900'>
+                    <div className='text-[50px] font-extralight text-gray-900'>
                         {' '}
                         Type{' '}
                         <h2 className='text-[20px] text-gray-700'>
                             {ServiceStore?.selectedService?.type}{' '}
                         </h2>
-                    </h1>
-                    <h1 className='text-[50px] font-extralight  text-gray-900'>
+                    </div>
+                    <div className='text-[50px] font-extralight  text-gray-900'>
                         {' '}
                         City
                         <h2 className='text-[20px] text-gray-700'>
                             {ServiceStore?.selectedService?.name}{' '}
                         </h2>
-                    </h1>
+                    </div>
                 </div>
             </div>
 

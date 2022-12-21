@@ -89,8 +89,8 @@ export const Tour = observer(() => {
 
                     {TourStore?.selectedTourPoints?.map((service: any) => {
                         return (
-                            <>
-                                <div key={uuid()} className='flex flex-row p-3'>
+                            <div key={uuid()}>
+                                <div className='flex flex-row p-3'>
                                     <img
                                         key={uuid()}
                                         src={ServiceImages.getRandImage(
@@ -115,7 +115,7 @@ export const Tour = observer(() => {
                                     </div>
                                 </div>
                                 <div className='h-[3px] bg-slate-300 my-5' />
-                            </>
+                            </div>
                         );
                     })}
                 </div>

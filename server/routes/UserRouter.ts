@@ -11,24 +11,12 @@ router.use(authRouter);
 /**
  * for admin
  */
-router.put('/:id', roleMiddleware('admin'), controller.editUserData);
+router.put('/:id', roleMiddleware(['admin']), controller.editUserData);
 router.post(
     '/',
-    roleMiddleware('admin'),
+    roleMiddleware(['admin']),
     authController.registration.bind(authController)
 );
-router.delete('/:id', roleMiddleware('admin'));
-
-/**
- * for service provider
- */
-router.post('/tranport', roleMiddleware('service provider'));
-router.post('/service', roleMiddleware('service provider'));
-
-router.put('/transport/:id', roleMiddleware('service provider'));
-router.put('/service/:id', roleMiddleware('service provider'));
-
-router.delete('/transport/:id'), roleMiddleware('service provider');
-router.delete('/service/:id', roleMiddleware('service provider'));
+router.delete('/:id', roleMiddleware(['admin']));
 
 export { router };

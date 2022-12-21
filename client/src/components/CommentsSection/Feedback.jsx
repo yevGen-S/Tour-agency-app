@@ -1,8 +1,39 @@
-import React from 'react';
+import { Rating } from '@mui/material';
+import React, { useState } from 'react';
+import { fetchResponsesByServiceId, postResponse } from '../../http/serviceApi';
+import ServiceStore from '../../store/ServiceStore';
+import UserStore from '../../store/UserStore';
+import ResponseModal from './ResponseModal';
 
-export const Feedback = ({ name, surname, login, text, date }) => {
+export const Feedback = ({
+    name,
+    surname,
+    login,
+    text,
+    date,
+    rating,
+    feedback_id,
+}) => {
+    const [isModalOpen, setModalOpen] = useState(false);
+
+    const handlePostResponse = async (text, feedback_id) => {
+        postResponse(text, UserStore.user.login, feedback_id)
+            .then((data) => {
+                console.log(data);
+                fetchResponsesByServiceId(ServiceStore.selectedService.id).then(
+                    (data) => {
+                        ServiceStore.setResponses(data.data);
+                    }
+                );
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    };
+
     return (
         <article className='p-6 mb-6 text-base bg-gray-150 rounded-lg dark:bg-gray-900 border '>
+            <Rating name='simple-controlled' defaultValue={rating} readOnly />
             <footer className='flex justify-between items-center mb-2'>
                 <div className='flex items-center'>
                     <p className='inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white'>
@@ -64,6 +95,7 @@ export const Feedback = ({ name, surname, login, text, date }) => {
                 <button
                     type='button'
                     className='flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400'
+                    onClick={() => setModalOpen(true)}
                 >
                     <svg
                         aria-hidden='true'
@@ -83,6 +115,14 @@ export const Feedback = ({ name, surname, login, text, date }) => {
                     Reply
                 </button>
             </div>
+            <ResponseModal
+                id={feedback_id}
+                isModalOpen={isModalOpen}
+                setModalOpen={setModalOpen}
+                handlePost={handlePostResponse}
+                text={text}
+                feedback_id={feedback_id}
+            />
         </article>
     );
 };

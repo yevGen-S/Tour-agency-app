@@ -5,9 +5,13 @@ import roleMiddleware from '../middleware/RoleMiddleware.js';
 const router = Router();
 
 router.get('/', controller.getHotels);
-router.post('/', controller.addHotel);
+router.post('/', roleMiddleware(['service provider']), controller.addHotel);
 
-router.get('/"id');
-router.delete('/:id', controller.deleteHotel);
+router.get('/:id');
+router.delete(
+    '/:id',
+    roleMiddleware(['service provider']),
+    controller.deleteHotel
+);
 
 export { router };

@@ -7,12 +7,18 @@ class ServiceStore {
      */
     selectedService: any;
     selectedServiceImage: any;
+    // commentsAndResponses: any;
+    responses: any;
+    feedbacks: any;
 
     constructor() {
         makeAutoObservable(this);
         this.services = [];
         this.selectedServiceImage = '';
         this.tourPoints = [];
+        // this.commentsAndResponses = [];
+        this.responses = [];
+        this.feedbacks = [];
     }
 
     setSelected(service: any) {
@@ -50,6 +56,18 @@ class ServiceStore {
 
     setSelectedServiceImage(image: any) {
         this.selectedServiceImage = image;
+    }
+
+    // setAllCommentsAndResponses(data: any) {
+    //     this.commentsAndResponses = [...data];
+    // }
+
+    setFeedbacks(data: any) {
+        this.feedbacks = [...data];
+    }
+
+    setResponses(data: any) {
+        this.responses = [...data];
     }
 }
 

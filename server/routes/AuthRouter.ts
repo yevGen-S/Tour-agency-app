@@ -9,6 +9,6 @@ router.post('/registration', controller.registration.bind(controller));
 router.post('/login', controller.login.bind(controller));
 router.get('/auth', authMiddleware, controller.auth);
 
-router.get('/', roleMiddleware('admin'), controller.getUsers);
+router.get('/', roleMiddleware(['admin']), controller.getUsers);
 
 export { router };

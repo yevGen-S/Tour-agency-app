@@ -2,10 +2,9 @@ import Router from 'express';
 
 const router = Router();
 
-router.get('/all');
-
-router.post('/:id');
 router.get('/');
+
+router.post('/');
 router.get('/:id');
 
 router.patch('/:id');

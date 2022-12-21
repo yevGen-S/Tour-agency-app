@@ -19,6 +19,8 @@ class UserStore {
 
     searchInput: string;
 
+    usersTours: any;
+
     constructor() {
         this._isAuth = false;
         this.user = { login: '', role: '', iat: 0, exp: 0 };
@@ -27,8 +29,30 @@ class UserStore {
         this.newUser = {};
         this.filteredListOfUsers = [];
         this.searchInput = '';
+        this.usersTours = [];
         makeAutoObservable(this);
     }
+
+    /**
+     * Booked tours
+     * --------------------------------------------------
+     */
+    setUsersTours(data: any) {
+        this.usersTours = [...data];
+    }
+
+    filterUserToursByStatus(status: string) {
+        if (this.usersTours.length > 0) {
+            return this.usersTours.filter((tour: any) => {
+                if (tour.order_status === status) {
+                    return tour;
+                }
+            });
+        }
+    }
+    /**
+     * --------------------------------------------------
+     */
 
     setIsAuth(isAuth: boolean) {
         this._isAuth = isAuth;
