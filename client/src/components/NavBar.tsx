@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import ServiceStore from '../store/ServiceStore';
 import TourStore from '../store/TourStore';
 import UserStore from '../store/UserStore';
-import { LOGIN_PATH } from '../utils/consts';
+import { LOGIN_PATH, SERVICEP_PATH } from '../utils/consts';
 
 const navlinkStyle = `
     text-xl font-bold
@@ -105,11 +105,11 @@ export const NavBar = observer(() => {
                             UserStore?.user?.role === 'service provider' && (
                                 <li draggable={false}>
                                     <NavLink
-                                        to='/servicepr'
+                                        to={SERVICEP_PATH}
                                         className={navlinkStyle}
                                         draggable={false}
                                     >
-                                        My tours
+                                        Service Management
                                     </NavLink>
                                 </li>
                             )}

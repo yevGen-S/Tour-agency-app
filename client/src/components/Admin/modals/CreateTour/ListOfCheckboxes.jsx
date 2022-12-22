@@ -50,6 +50,7 @@ export const ListOfCheckboxes = observer(({ listName, list }) => {
                 {list.map((element) => {
                     return (
                         <CheckBoxRow
+                            key={element.id}
                             element={element}
                             handleChange={handleChange}
                         />

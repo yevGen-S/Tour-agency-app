@@ -45,7 +45,6 @@ export const Tour = observer(() => {
                 });
         });
     };
-
     return (
         <div className='flex justify-center relative h-screen w-screen'>
             <img

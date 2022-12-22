@@ -39,13 +39,11 @@ export const CommentsSection = observer(({ id }) => {
     };
 
     const handlePostFeedback = async () => {
-        console.log(!!text);
-        console.log(rating, text, UserStore.user.login, id);
-
         if (!!text) {
             postFeedback(rating, text, UserStore.user.login, id)
                 .then((data) => {
                     setText('');
+                    setRating(0);
                     fetchFeedbackByServiceId(id)
                         .then((data) => {
                             ServiceStore.setFeedbacks(data.data);
