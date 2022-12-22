@@ -3,8 +3,8 @@ export const queryGetAllTransports: string = `
         t.id,
         tt."type" AS "Transport_type",
         tt.price,
-        c.name AS "From city",
-        c2.name AS "To city",
+        c.name AS "city_from",
+        c2.name AS "city_to",
         tt.number_of_places 
     FROM "Transport" t 
     JOIN "Transport_type" tt ON t.transport_type_id  = tt.id

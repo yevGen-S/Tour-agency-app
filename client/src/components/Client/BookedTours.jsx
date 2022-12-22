@@ -2,9 +2,8 @@ import { CircularProgress } from '@mui/material';
 import { Container } from '@mui/system';
 import { observer } from 'mobx-react-lite';
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { fetchUsersTours } from '../../http/tourApi';
-import TourStore from '../../store/TourStore';
 import UserStore from '../../store/UserStore';
 import { BookedTour } from './BookedTour';
 import { CanceledTour } from './CanceledTour';
@@ -12,7 +11,6 @@ import { PaidTour } from './PaidTour';
 
 export const BookedTours = observer(() => {
     const { id } = useParams();
-    const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {

@@ -3,7 +3,7 @@ import React from 'react';
 export const PaidTour = ({ tour }) => {
     return (
         <div className='shadow-sm shadow-gray-500 rounded-3xl p-3'>
-            <h1 className='w-full flex font-sans text-[30px] '>Booked tour</h1>
+            <h1 className='w-full flex font-sans text-[30px] '>Paid tour</h1>
 
             <div className='flex justify-between'>
                 <div className='w-full flex flex-row border-r-2 border-gray-600'>
@@ -51,6 +51,14 @@ export const PaidTour = ({ tour }) => {
                                 {tour.order_status}{' '}
                             </h2>
                         </div>
+                    </div>
+                </div>
+                <div className='flex flex-row'>
+                    <div className='m-3 w-[100px] text-[20px] font-extralight  text-gray-900'>
+                        Finally price
+                        <h2 className='text-[15px] text-gray-700'>
+                            {tour.price}{' '}
+                        </h2>
                     </div>
                 </div>
             </div>

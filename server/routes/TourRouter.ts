@@ -18,9 +18,13 @@ router.get('/most_commented', controller.getMostCommentedTours);
  * for client
  */
 router.post('/book', roleMiddleware(['client']), controller.bookTour);
-router.post('/pay', roleMiddleware(['client']), controller.changeTourStatus);
 
-router.post('/book', roleMiddleware(['client']), controller.bookTour);
+router.put(
+    '/order_status',
+    roleMiddleware(['client']),
+    controller.changeTourStatus
+);
+
 router.get(
     '/booked/:login',
     roleMiddleware(['client']),

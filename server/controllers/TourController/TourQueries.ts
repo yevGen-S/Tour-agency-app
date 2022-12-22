@@ -108,7 +108,7 @@ export const queryBookTour: string = `
 export const queryChangeStatus: string = `
     UPDATE clients_tours 
     SET status_id  = getStatusId($1)
-    WHERE tour_id = $2 AND user_id = getUserId($3)
+    WHERE tour_id = $2 AND user_id = $3
 `;
 
 export const queryGetBookedTours: string = `

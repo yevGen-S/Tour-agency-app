@@ -3,7 +3,9 @@ import React from 'react';
 export const CanceledTour = ({ tour }) => {
     return (
         <div className='shadow-sm shadow-gray-500 rounded-3xl p-3'>
-            <h1 className='w-full flex font-sans text-[30px] '>Booked tour</h1>
+            <h1 className='w-full flex font-sans text-[30px] '>
+                Canceled tour
+            </h1>
 
             <div className='flex justify-between'>
                 <div className='w-full flex flex-row border-r-2 border-gray-600'>

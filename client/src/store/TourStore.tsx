@@ -23,7 +23,6 @@ class TourStore {
     searchInput: string;
     filteredHotels: any;
     tourWithTourPoints: any;
-   
 
     constructor() {
         makeAutoObservable(this);
@@ -39,7 +38,6 @@ class TourStore {
         this.bookedTours = [];
         this.newTourPoints = [];
         this.searchInput = '';
-        
     }
 
     setCities(data: any) {
@@ -92,20 +90,20 @@ class TourStore {
                     .toLocaleLowerCase()
                     .includes(input.toLocaleLowerCase())
             ) {
-                return tour;
+                return true;
             }
+            return false;
         });
     }
 
     filterHotels() {
         this.filteredHotels = this.hotels.filter((hotel: any) => {
             if (hotel.city === this.newTour.city.name) {
-                return hotel;
+                return true;
             }
+            return false;
         });
     }
-
-   
 }
 
 export default new TourStore();

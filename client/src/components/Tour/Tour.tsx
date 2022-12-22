@@ -1,11 +1,18 @@
 import { Container } from '@mui/material';
 import { observer } from 'mobx-react-lite';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchTour, fetchTourPoints } from '../../http/tourApi';
+import {
+    fetchTour,
+    fetchTourPoints,
+    fetchUsersTours,
+} from '../../http/tourApi';
 import TourStore from '../../store/TourStore';
 import ServiceImages from '../Service/constants';
 import { v4 as uuid } from 'uuid';
+import { bookTour } from '../../http/userApi';
+import UserStore from '../../store/UserStore';
+import { ConfirmBooking } from './ConfirmBooking';
 
 const styleTourDescription = `
     text-[20px]
@@ -14,6 +21,7 @@ const styleTourDescription = `
 
 export const Tour = observer(() => {
     const { id } = useParams();
+    const [isOpen, setOpen] = useState(false);
 
     useEffect(() => {
         fetchTour(id).then((data) => {
@@ -25,7 +33,18 @@ export const Tour = observer(() => {
         });
     }, [id]);
 
-    const handleBookTour = async () => {};
+    const handleBookTour = async (tranport_id: string) => {
+        bookTour(UserStore.user.login, id, tranport_id).then((data) => {
+            console.log(data);
+            fetchUsersTours(UserStore.user.login)
+                .then((data) => {
+                    UserStore.setUsersTours(data.data);
+                })
+                .catch((e) => {
+                    console.log(e);
+                });
+        });
+    };
 
     return (
         <div className='flex justify-center relative h-screen w-screen'>
@@ -74,7 +93,7 @@ export const Tour = observer(() => {
                             </div>
                         </h3>
                         <button
-                            onClick={handleBookTour}
+                            onClick={() => setOpen(true)}
                             className='text-white border m-3 p-3 border-white hover:bg-slate-300 hover:text-slate-800 '
                         >
                             {' '}
@@ -118,6 +137,11 @@ export const Tour = observer(() => {
                             </div>
                         );
                     })}
+                    <ConfirmBooking
+                        isOpen={isOpen}
+                        setOpen={setOpen}
+                        handleConfirm={handleBookTour}
+                    />
                 </div>
             </Container>
         </div>

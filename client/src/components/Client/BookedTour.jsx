@@ -1,8 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { fetchUsersTours } from '../../http/tourApi';
+import { changeOrderStatus } from '../../http/userApi';
+import UserStore from '../../store/UserStore';
+import { ModalConfirmation } from './ModalConfirmation';
 
 export const BookedTour = ({ tour }) => {
-    const handleChangeOrderStatus = async (status) => {};
-    
+    const [isOpen, setOpen] = useState(false);
+    const [action, setAction] = useState();
+
+    const handleOpenModal = async (status) => {
+        setAction(status);
+        setOpen(true);
+    };
+
+    const handleChangeOrderStatus = async (status, tour) => {
+        changeOrderStatus(tour.user_id, tour.tour_id, status)
+            .then((data) => {
+                console.log(data);
+                fetchUsersTours(tour.login).then((data) => {
+                    UserStore.setUsersTours(data.data);
+                });
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    };
+
     return (
         <div className='shadow-sm shadow-gray-500 rounded-3xl p-3'>
             <h1 className='w-full flex font-sans text-[30px] '>Booked tour</h1>
@@ -66,19 +89,26 @@ export const BookedTour = ({ tour }) => {
                     <button
                         type={'button'}
                         className='text-white m-3 max-h-[50px] bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
-                        onClick={() => handleChangeOrderStatus('paid')}
+                        onClick={() => handleOpenModal('paid')}
                     >
                         Pay
                     </button>
                     <button
                         type={'button'}
                         className='text-white m-3 max-h-[50px] bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
-                        onClick={() => handleChangeOrderStatus('canceled')}
+                        onClick={() => handleOpenModal('canceled')}
                     >
                         Cancel
                     </button>
                 </div>
             </div>
+            <ModalConfirmation
+                action={action}
+                isOpen={isOpen}
+                setOpen={setOpen}
+                handleConfirmAction={handleChangeOrderStatus}
+                tour={tour}
+            />
         </div>
     );
 };

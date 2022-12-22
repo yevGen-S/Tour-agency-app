@@ -99,15 +99,29 @@ export const addUser = async (
 //  * book a tour
 //  */
 export const bookTour = async (
-    user_id: string | undefined,
+    login: string,
     tour_id: string | undefined,
     transport_id: string | undefined
 ) => {
     const { data } = await $authHost.post('api/tour/book', {
-        user_id,
+        login,
         tour_id,
         status: 'booked',
         transport_id,
+    });
+
+    return data;
+};
+
+export const changeOrderStatus = async (
+    user_id: string,
+    tour_id: string,
+    status: string
+) => {
+    const { data } = await $authHost.put('/api/tour/order_status', {
+        user_id,
+        tour_id,
+        status,
     });
 
     return data;

@@ -131,7 +131,7 @@ class TourController {
             const tourPoints = await pool.query(queryChangeTourPoints, [id]);
 
             res.status(200).json({
-                message: 'Success get tour points',
+                message: 'Success change of tour points',
                 data: tourPoints.rows,
             });
         } catch (e) {
@@ -177,20 +177,20 @@ class TourController {
 
     async bookTour(req: Request, res: Response) {
         try {
-            const { user_id, tour_id, status_id, transport_id } = req.body;
+            const { login, tour_id, status, transport_id } = req.body;
             const data = await pool.query(queryBookTour, [
-                user_id,
+                login,
                 tour_id,
-                status_id,
+                status,
                 transport_id,
             ]);
 
-            res.status(400).json({
+            res.status(200).json({
                 message: 'Successfully booked',
-                error: data,
+                error: data.rows,
             });
         } catch (e) {
-            res.status(200).json({
+            res.status(400).json({
                 message:
                     'Error of booking.\n Check all fields and try one more time',
                 error: e,
@@ -207,12 +207,12 @@ class TourController {
                 user_id,
             ]);
 
-            res.status(400).json({
-                message: 'Successfully paid',
+            res.status(200).json({
+                message: `Successfully ${status}`,
                 error: data,
             });
         } catch (e) {
-            res.status(200).json({ message: 'Error', error: e });
+            res.status(400).json({ message: 'Error', error: e });
         }
     }
 
