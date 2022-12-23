@@ -158,7 +158,7 @@ export const CreateTour = observer(() => {
                         <ModalInput
                             inputName={'period start'}
                             inputPlaceholder={
-                                TourStore.newTour.number_of_places
+                                TourStore.newTour.period_start
                             }
                             inputType={'date'}
                             isRequired={true}
@@ -168,7 +168,7 @@ export const CreateTour = observer(() => {
                         <ModalInput
                             inputName={'period end'}
                             inputPlaceholder={
-                                TourStore.newTour.number_of_places
+                                TourStore.newTour.period_end
                             }
                             inputType={'date'}
                             isRequired={true}

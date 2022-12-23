@@ -8,7 +8,8 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 import { CloseButton } from '../../../Admin/modals/CloseButton';
-import EditableList from '../../../EditableList/EditableList';
+import EditableList from '../../../UniversalList/EditableList';
+import { transportListConfig } from '../../../UniversalList/ListConfig/TransportListConfig';
 
 export const AddTransport = () => {
     const [open, setOpen] = useState(false);
@@ -21,11 +22,7 @@ export const AddTransport = () => {
         setOpen(false);
     };
 
-    const handleRefresh = () => {
-        // fetchAllUsers().then((data) => {
-        //     UserStore.setUsers(data);
-        // });
-    };
+    const handleRefresh = () => {};
 
     return (
         <Container className='p-2'>
@@ -44,11 +41,11 @@ export const AddTransport = () => {
                 maxWidth='lg'
             >
                 <DialogTitle className='flex justify-between'>
-                    Add/edit/remove services{' '}
+                    Add/edit transports{' '}
                     <CloseButton handleClose={handleClose} />
                 </DialogTitle>
                 <DialogContent>
-                    {/* <EditableList /> */}
+                    <EditableList config={transportListConfig} />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>

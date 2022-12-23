@@ -20,10 +20,10 @@ const EditableList = ({ config }) => {
         config
             .asyncGetItems()
             .then((data) => {
-                setListItems(data);
+                setListItems(data.data);
             })
             .finally(() => setIsLoading(false));
-    }, []);
+    }, [config]);
 
     if (isLoading) {
         return <CircularProgress />;
@@ -42,7 +42,7 @@ const EditableList = ({ config }) => {
                 asyncGetItems: config.asyncGetItems.bind(config),
             }}
         >
-            <div className='overflow-x-auto relative shadow-md sm:rounded-lg '>
+            <div className=' h-screen overflow-x-auto relative shadow-md sm:rounded-lg '>
                 <div className='flex justify-between items-center py-4 bg-white dark:bg-gray-800'>
                     <ActionDropDown />
                     <SearchInput
@@ -58,7 +58,8 @@ const EditableList = ({ config }) => {
                         />
                     </thead>
                     <tbody>
-                        {listItems.map((item) => {
+                        {console.log(listItems)}
+                        {listItems?.map((item) => {
                             if (
                                 config.searchConfig.searchBy(item, searchInput)
                             ) {

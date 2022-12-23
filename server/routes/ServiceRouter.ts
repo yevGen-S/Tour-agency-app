@@ -7,6 +7,7 @@ const router = Router();
 router.get('/', ServiceController.getAllServices);
 
 router.post('/', ServiceController.addService);
+router.put('/change', ServiceController.changeService)
 router.get('/:id', ServiceController.getService);
 
 router.get('/best_rated', ServiceController.getBestRatedServices);

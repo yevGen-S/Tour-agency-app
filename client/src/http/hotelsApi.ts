@@ -5,7 +5,7 @@ import { $host, $authHost } from '.';
  */
 export const fetchHotels = async () => {
     const { data } = await $host.get('/api/hotel');
-    return data.data;
+    return data;
 };
 
 export const addHotel = async (

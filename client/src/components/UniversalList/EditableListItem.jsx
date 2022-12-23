@@ -26,7 +26,11 @@ const EditableListItem = ({ setModalOpen, listRow, setModalItem }) => {
             </th>
 
             {listRow.tableItems.map((item) => {
-                return <td className='py-4 px-6'>{item || 'неизвестно'}</td>;
+                return (
+                    <td key={item.id} className='py-4 px-6'>
+                        {item || 'неизвестно'}
+                    </td>
+                );
             })}
 
             <td className='py-4 px-6'>

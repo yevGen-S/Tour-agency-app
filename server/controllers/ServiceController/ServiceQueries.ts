@@ -11,6 +11,10 @@ export const queryAllServices: string = `
     s.city_id = c.id
 `;
 
+
+
+
+
 export const queryAddService: string = `
     INSERT INTO "Service" VALUES(
         uuid_generate_v4(),
@@ -19,6 +23,16 @@ export const queryAddService: string = `
         $3
 )
 `;
+
+export const queryChangeService: string = `
+    UPDATE "Service"
+    SET
+       "price" = $2,
+       "city_id" = $3
+    WHERE "Service".id = $1
+`;
+
+
 
 export const queryGetServiceById: string = `
     SELECT * FROM "Service" s
@@ -121,3 +135,4 @@ export const queryPostResponse: string = `
     INSERT INTO "Response" (id, user_id, "text", feedback_id, "date")
     VALUES (uuid_generate_v4(), getUserId($1), $2, $3, CURRENT_DATE)
 `
+

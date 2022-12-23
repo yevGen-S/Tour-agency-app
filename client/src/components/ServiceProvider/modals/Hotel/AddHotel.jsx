@@ -9,8 +9,8 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import { CloseButton } from '../../../Admin/modals/CloseButton';
-import EditableList from '../../../EditableList/EditableList';
-
+import { hotelListConfig } from '../../../UniversalList/ListConfig/HotelListConfig';
+import EditableList from '../../../UniversalList/EditableList';
 
 export const AddHotel = () => {
     const [open, setOpen] = useState(false);
@@ -49,7 +49,9 @@ export const AddHotel = () => {
                     Add/edit/remove hotels{' '}
                     <CloseButton handleClose={handleClose} />
                 </DialogTitle>
-                <DialogContent>{/* <EditableList /> */}</DialogContent>
+                <DialogContent>
+                    <EditableList config={hotelListConfig} />
+                </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
                     <Button onClick={handleRefresh}>refresh</Button>

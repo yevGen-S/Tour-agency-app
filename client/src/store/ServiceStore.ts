@@ -11,6 +11,8 @@ class ServiceStore {
     responses: any;
     feedbacks: any;
 
+    cities: any;
+
     constructor() {
         makeAutoObservable(this);
         this.services = [];
@@ -19,8 +21,13 @@ class ServiceStore {
         // this.commentsAndResponses = [];
         this.responses = [];
         this.feedbacks = [];
+        this.cities = [];
     }
 
+    setCities(data: any) {
+        this.cities = [...data];
+    }
+    
     setSelected(service: any) {
         this.selectedService = service;
     }

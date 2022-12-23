@@ -65,3 +65,17 @@ export const postResponse = async (
 
     return data;
 };
+
+export const changeService = async (
+    id: string,
+    price: string,
+    city_id: string
+) => {
+    const { data } = await $authHost.put(`/api/service/change`, {
+        id,
+        price,
+        city_id,
+    });
+
+    return data;
+};

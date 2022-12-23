@@ -68,13 +68,13 @@ export const updateUser = async (user: any) => {
 };
 
 export const addUser = async (
-    login: string,
-    password: string,
-    role: string,
-    name: string,
-    surname: string,
-    telephone_number: string,
-    email: string,
+    login: string | undefined,
+    password: string | undefined,
+    role: string | undefined,
+    name: string | undefined,
+    surname: string | undefined,
+    telephone_number: string | undefined,
+    email: string | undefined,
     tour_subscription: boolean
 ) => {
     const { data } = await $authHost.post('api/user', {
@@ -87,6 +87,8 @@ export const addUser = async (
         email,
         tour_subscription,
     });
+
+    console.log(jwt_decode(data.token));
 
     return jwt_decode(data.token);
 };

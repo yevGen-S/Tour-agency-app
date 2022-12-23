@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 
 const ModalWindow = ({ isModalOpen, setModalOpen, modalConfig, modalItem }) => {
     const handleClose = () => setModalOpen(false);
+
+    console.log(modalConfig)
     return (
         <Modal
             open={isModalOpen}

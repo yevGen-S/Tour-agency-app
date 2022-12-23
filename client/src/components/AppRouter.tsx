@@ -21,6 +21,7 @@ export const AppRouter = observer(() => {
                 if (data) {
                     UserStore.setIsAuth(true);
                     UserStore.setUser(data);
+                    console.log(data);
                 }
             })
             .catch((e) => {

@@ -4,6 +4,7 @@ import {
     getAllCommentsAndResponsesOnService,
     queryAddService,
     queryAllServices,
+    queryChangeService,
     queryGetBestRatedServices,
     queryGetFeedbacksOnService,
     queryGetMostCommentedServices,
@@ -191,6 +192,31 @@ class ServiceController {
                 message: 'Error of posting reponse',
                 error: e,
             });
+        }
+    }
+
+    async changeService(req: Request, res: Response) {
+        try {
+            const { id, price, city_id } = req.body;
+
+            const data = await pool.query(queryChangeService, [
+                id,
+                price,
+                city_id,
+            ]);
+
+            res.status(200).json({
+                message: 'Successful change service',
+                data: data,
+            });
+        } catch (e) {
+            console.log(e);
+            
+            res.status(400).json({
+                message: 'Error of changing service',
+                error: e,
+            });
+            
         }
     }
 }

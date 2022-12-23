@@ -43,34 +43,10 @@ const ActionDropDown = () => {
                             href='#'
                             className='block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
                         >
-                            Reward
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href='#'
-                            className='block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
-                        >
-                            Promote
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href='#'
-                            className='block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
-                        >
-                            Activate account
+                            delete
                         </a>
                     </li>
                 </ul>
-                <div className='py-1'>
-                    <a
-                        href='#'
-                        className='block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white'
-                    >
-                        Delete User
-                    </a>
-                </div>
             </div>
         </div>
     );

@@ -8,7 +8,8 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 import { CloseButton } from '../../../Admin/modals/CloseButton';
-import EditableList from '../../../EditableList/EditableList';
+import EditableList from '../../../UniversalList/EditableList';
+import { serviceListConfig } from '../../../UniversalList/ListConfig/ServiceListConfig';
 
 export const AddService = () => {
     const [open, setOpen] = useState(false);
@@ -44,11 +45,11 @@ export const AddService = () => {
                 maxWidth='lg'
             >
                 <DialogTitle className='flex justify-between'>
-                    Add/edit/remove services{' '}
+                    Add/edit services
                     <CloseButton handleClose={handleClose} />
                 </DialogTitle>
                 <DialogContent>
-                    {/* <EditableList /> */}
+                    <EditableList config={serviceListConfig} />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
