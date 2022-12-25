@@ -34,11 +34,14 @@ export const ConfirmBooking = ({ isOpen, setOpen, handleConfirm }) => {
     const [transportId, setTransportId] = useState('');
 
     const handleBook = async () => {
-        setOpen(false);
         if (!!transportId) {
-            await handleConfirm(transportId);
+            await handleConfirm(transportId).then((data) => {
+                setIsSuccessMessage(true);
+            });
         } else {
-            await handleConfirm();
+            await handleConfirm().then((data) => {
+                setIsSuccessMessage(true);
+            });
         }
     };
 

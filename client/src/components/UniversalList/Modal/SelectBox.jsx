@@ -15,32 +15,36 @@ export const SelectBox = ({ items, label, handler }) => {
     };
 
     return (
-        <Box sx={{ minWidth: 120 }}>
-            <FormControl fullWidth>
-                <InputLabel id='demo-simple-select-label'>{label}</InputLabel>
+        <div className=''>
+            <Box sx={{ minWidth: 120 }}>
+                <FormControl fullWidth>
+                    <InputLabel id='demo-simple-select-label'>
+                        {label}
+                    </InputLabel>
 
-                <Select
-                    labelId='demo-simple-select-label'
-                    id='demo-simple-select'
-                    value={value}
-                    label={label}
-                    onChange={handleChange}
-                >
-                    {items?.map((item) => {
-                        return (
-                            <MenuItem
-                                value={item?.id}
-                                key={uuid()}
-                                className='mr-14'
-                            >
-                                <h1 className='font-bold  w-full'>
-                                    {item.name}
-                                </h1>
-                            </MenuItem>
-                        );
-                    })}
-                </Select>
-            </FormControl>
-        </Box>
+                    <Select
+                        labelId='demo-simple-select-label'
+                        id='demo-simple-select'
+                        value={value}
+                        label={label}
+                        onChange={handleChange}
+                    >
+                        {items?.map((item) => {
+                            return (
+                                <MenuItem
+                                    value={item?.id}
+                                    key={uuid()}
+                                    className='mr-14'
+                                >
+                                    <h1 className='font-bold  w-full'>
+                                        {item.name}
+                                    </h1>
+                                </MenuItem>
+                            );
+                        })}
+                    </Select>
+                </FormControl>
+            </Box>
+        </div>
     );
 };

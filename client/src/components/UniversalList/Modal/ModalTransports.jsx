@@ -4,8 +4,6 @@ import ModalInput from './ModalInput';
 
 const ModalTransports = ({ transport, handleClose }) => {
     const [type, setType] = useState(transport.Transport_type);
-    const [cityFrom, setCityFrom] = useState(transport.city_from);
-    const [cityTo, setCityTo] = useState(transport.city_to);
     const [places, setPlaces] = useState(transport.number_of_places);
 
     const [price, setPrice] = useState(transport.price);
@@ -43,22 +41,6 @@ const ModalTransports = ({ transport, handleClose }) => {
                         isRequired={true}
                         inputValue={type}
                         onChangeSet={setType}
-                    />
-                    <ModalInput
-                        inputName={'City from'}
-                        inputPlaceholder={'city from'}
-                        inputType={'text'}
-                        isRequired={true}
-                        inputValue={cityFrom}
-                        onChangeSet={setCityFrom}
-                    />
-                    <ModalInput
-                        inputName={'City to'}
-                        inputPlaceholder={'city to'}
-                        inputType={'text'}
-                        isRequired={true}
-                        inputValue={cityTo}
-                        onChangeSet={setCityTo}
                     />
                     <ModalInput
                         inputName={'Number of places'}

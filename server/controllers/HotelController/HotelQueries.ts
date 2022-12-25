@@ -21,13 +21,15 @@ export const queryDeleteHotel: string = `
     WHERE id = $1
 `;
 
-
+/**
+ * query to change hotel
+ */
 export const queryChangeHotel: string = `
-UPDATE "Hotel"
-SET
-      "name" = $2,
-      "city_id" = $3,
-      "food" = $4,
-      price_for_nignt =$5
-WHERE "Hotel".id = $1
+    UPDATE "Hotel"
+    SET
+        "name" = $2,
+        "city_id" = $3,
+        "food" = $4,
+        price_for_nignt = $5
+    WHERE "Hotel".id = $1
 `;

@@ -11,6 +11,7 @@ import { useState } from 'react';
 import { CloseButton } from '../../../Admin/modals/CloseButton';
 import { hotelListConfig } from '../../../UniversalList/ListConfig/HotelListConfig';
 import EditableList from '../../../UniversalList/EditableList';
+import { fetchHotels } from '../../../../http/hotelsApi';
 
 export const AddHotel = () => {
     const [open, setOpen] = useState(false);
@@ -24,9 +25,7 @@ export const AddHotel = () => {
     };
 
     const handleRefresh = () => {
-        // fetchAllUsers().then((data) => {
-        //     UserStore.setUsers(data);
-        // });
+        // fetchHotels().then((data) => {});
     };
 
     return (

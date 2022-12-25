@@ -30,7 +30,6 @@ const EditableList = ({ config }) => {
     }
 
     if (!listItems) {
-        console.log(listItems);
         return <div>Ошибка загрузики данных</div>;
     }
 
@@ -58,7 +57,6 @@ const EditableList = ({ config }) => {
                         />
                     </thead>
                     <tbody>
-                        {console.log(listItems)}
                         {listItems?.map((item) => {
                             if (
                                 config.searchConfig.searchBy(item, searchInput)

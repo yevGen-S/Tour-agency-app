@@ -1,7 +1,7 @@
-import { Container } from '@mui/material';
+import { CircularProgress, Container } from '@mui/material';
 import { observer } from 'mobx-react-lite';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
     fetchTour,
     fetchTourPoints,
@@ -9,10 +9,10 @@ import {
 } from '../../http/tourApi';
 import TourStore from '../../store/TourStore';
 import ServiceImages from '../Service/constants';
-import { v4 as uuid } from 'uuid';
 import { bookTour } from '../../http/userApi';
 import UserStore from '../../store/UserStore';
 import { ConfirmBooking } from './ConfirmBooking';
+import ServiceStore from '../../store/ServiceStore';
 
 const styleTourDescription = `
     text-[20px]
@@ -21,21 +21,30 @@ const styleTourDescription = `
 
 export const Tour = observer(() => {
     const { id } = useParams();
+
     const [isOpen, setOpen] = useState(false);
+    const [loading, setLoading] = useState(true);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchTour(id).then((data) => {
             TourStore.setSelected(data[0]);
         });
 
-        fetchTourPoints(id).then((data) => {
-            TourStore.setSelectedTourPoints(data);
-        });
+        fetchTourPoints(id)
+            .then((data) => {
+                TourStore.setSelectedTourPoints(data);
+            })
+            .finally(() => setLoading(false));
     }, [id]);
+
+    if (loading) {
+        return <CircularProgress />;
+    }
 
     const handleBookTour = async (tranport_id: string) => {
         bookTour(UserStore.user.login, id, tranport_id).then((data) => {
-            console.log(data);
             fetchUsersTours(UserStore.user.login)
                 .then((data) => {
                     UserStore.setUsersTours(data.data);
@@ -45,6 +54,12 @@ export const Tour = observer(() => {
                 });
         });
     };
+
+    const handleOnClick = (serviceId: string, image: string) => {
+        ServiceStore.setSelectedServiceImage(image);
+        navigate(`/service/${serviceId}`);
+    };
+
     return (
         <div className='flex justify-center relative h-screen w-screen'>
             <img
@@ -106,19 +121,25 @@ export const Tour = observer(() => {
                     </h1>
 
                     {TourStore?.selectedTourPoints?.map((service: any) => {
+                        const image = ServiceImages.getRandImage(
+                            service.day,
+                            service.Service_type
+                        );
                         return (
-                            <div key={uuid()}>
+                            <div key={service.Service_id}>
                                 <div className='flex flex-row p-3'>
                                     <img
-                                        key={uuid()}
-                                        src={ServiceImages.getRandImage(
-                                            service.day,
-                                            service.Service_type
-                                        )}
+                                        src={image}
+                                        onClick={() =>
+                                            handleOnClick(
+                                                service.Service_id,
+                                                image
+                                            )
+                                        }
                                         alt='service'
-                                        className='max-w-[450px]'
+                                        className='max-w-[450px] cursor-pointer'
                                     />
-                                    <div key={uuid()} className='p-10'>
+                                    <div className='p-10'>
                                         <h1 className='text-bold text-[50px] font-sans'>
                                             Day: {service?.day}
                                         </h1>

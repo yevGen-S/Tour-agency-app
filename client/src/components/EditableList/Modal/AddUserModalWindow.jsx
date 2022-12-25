@@ -3,12 +3,21 @@ import { addUser } from '../../../http/userApi';
 import UserStore from '../../../store/UserStore';
 import ModalInput from './ModalInput';
 
-import React from 'react';
+import React, { useState } from 'react';
+import { SuccessMessage } from '../../ActionMessage/SuccessMessage';
+import { ErrorMessage } from '../../ActionMessage/ErrorMessage';
 
 const ModalWindow = ({ isModalOpen, setModalOpen, modalName }) => {
+    const [isSuccess, setIsSuccessMessage] = useState(false);
+    const [isError, setIsErrorMessage] = useState(false);
+    const [message, setMessage] = useState('');
+
     const handleClose = () => {
         UserStore.setEditableUser({});
         setModalOpen(false);
+        setIsSuccessMessage(false);
+        setMessage('');
+        setIsErrorMessage(false);
     };
 
     const handleChangeName = (e) => {
@@ -53,10 +62,11 @@ const ModalWindow = ({ isModalOpen, setModalOpen, modalName }) => {
                     UserStore.newUser.email,
                     false
                 ).then((data) => {
-                    console.log(data);
+                    setIsSuccessMessage(true);
                 });
             }
         } catch (e) {
+            setIsErrorMessage(true);
             alert(e);
         }
     };
@@ -76,6 +86,13 @@ const ModalWindow = ({ isModalOpen, setModalOpen, modalName }) => {
             >
                 <div className='relative w-full max-w-2xl h-full md:h-auto'>
                     {/* <!-- Modal content --> */}
+                    {isSuccess && <SuccessMessage message={message} />}
+
+                    {isError && (
+                        <ErrorMessage
+                            message={`Tour points are not added: ${message}`}
+                        />
+                    )}
                     <form
                         id='userListId'
                         className='relative bg-white rounded-lg shadow dark:bg-gray-700'

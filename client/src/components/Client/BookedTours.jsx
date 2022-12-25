@@ -8,6 +8,7 @@ import UserStore from '../../store/UserStore';
 import { BookedTour } from './BookedTour';
 import { CanceledTour } from './CanceledTour';
 import { PaidTour } from './PaidTour';
+import { v4 as uuid } from 'uuid';
 
 export const BookedTours = observer(() => {
     const { id } = useParams();
@@ -42,12 +43,7 @@ export const BookedTours = observer(() => {
                     <div>
                         {UserStore?.filterUserToursByStatus('booked')?.map(
                             (tour) => {
-                                return (
-                                    <BookedTour
-                                        key={tour.tour_id}
-                                        tour={tour}
-                                    />
-                                );
+                                return <BookedTour key={uuid()} tour={tour} />;
                             }
                         )}
                     </div>
@@ -56,9 +52,7 @@ export const BookedTours = observer(() => {
                     <div>
                         {UserStore?.filterUserToursByStatus('paid')?.map(
                             (tour) => {
-                                return (
-                                    <PaidTour key={tour.tour_id} tour={tour} />
-                                );
+                                return <PaidTour key={uuid()} tour={tour} />;
                             }
                         )}
                     </div>
@@ -68,10 +62,7 @@ export const BookedTours = observer(() => {
                         {UserStore?.filterUserToursByStatus('canceled')?.map(
                             (tour) => {
                                 return (
-                                    <CanceledTour
-                                        key={tour.tour_id}
-                                        tour={tour}
-                                    />
+                                    <CanceledTour key={uuid()} tour={tour} />
                                 );
                             }
                         )}

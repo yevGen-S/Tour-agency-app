@@ -15,7 +15,6 @@ class TransportStore {
     filterByCityTo(city: string) {
         return this.tranports.filter((transport: any) => {
             if (transport.city_to === city) {
-                console.log(transport.city_to);
                 return true;
             }
             return false;

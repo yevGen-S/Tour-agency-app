@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { fetchCities } from '../../../http/cityApi';
 import { changeService } from '../../../http/serviceApi';
-import ServiceStore from '../../../store/ServiceStore';
 import { EditableListContext } from '../EditableList';
 import ModalInput from './ModalInput';
 import { SelectBox } from './SelectBox';
@@ -17,8 +16,7 @@ const ModalServices = ({ service, handleClose }) => {
 
     useEffect(() => {
         fetchCities().then((data) => {
-            console.log(data.data.rows);
-            setCities(data.data.rows);
+            setCities(data.data);
         });
     }, []);
 

@@ -6,7 +6,7 @@ class CityController {
     async getCities(req, res) {
         try {
             const data = await pool.query(queryGetAllCities);
-            res.status(200).json({ message: 'Success', data: data });
+            res.status(200).json({ message: 'Success', data: data.rows });
         } catch (e) {
             res.status(400).json({ message: 'Error', error: e });
         }

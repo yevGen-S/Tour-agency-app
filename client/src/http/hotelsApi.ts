@@ -29,3 +29,21 @@ export const deleteHotel = async (id: string) => {
     const { data } = await $authHost.post('/api/hotel/:id', id);
     return data;
 };
+
+export const changeHotel = async (
+    name: string,
+    city_id: string,
+    food: boolean,
+    price: string,
+    id: string
+) => {
+    const { data } = await $authHost.put(`/api/hotel/change`, {
+        name,
+        city_id,
+        food,
+        price,
+        id,
+    });
+
+    return data;
+};

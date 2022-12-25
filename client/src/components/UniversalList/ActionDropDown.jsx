@@ -39,12 +39,12 @@ const ActionDropDown = () => {
                     aria-labelledby='dropdownActionButton'
                 >
                     <li>
-                        <a
-                            href='#'
-                            className='block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
-                        >
+                        <button className='block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'>
                             delete
-                        </a>
+                        </button>
+                        <button className='block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'>
+                            add
+                        </button>
                     </li>
                 </ul>
             </div>

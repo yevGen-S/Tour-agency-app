@@ -44,14 +44,14 @@ class HotelController {
 
     async changeHotel(req: Request, res: Response) {
         try {
-            const { name, city_id, food, price_for_nignt, id } = req.body;
+            const { name, city_id, food, price, id } = req.body;
 
             const data = await pool.query(queryChangeHotel, [
                 id,
                 name,
                 city_id,
                 food,
-                price_for_nignt,
+                price,
             ]);
 
             res.status(200).json({
@@ -59,6 +59,8 @@ class HotelController {
                 data: data,
             });
         } catch (e) {
+            console.log(e);
+
             res.status(400).json({
                 message: 'Error of chaging hotel',
                 error: e,

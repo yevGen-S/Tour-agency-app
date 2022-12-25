@@ -1,40 +1,52 @@
-import React, { useContext, useState } from 'react';
+import { Checkbox } from '@mui/material';
+import React, { useContext, useEffect, useState } from 'react';
+import { fetchCities } from '../../../http/cityApi';
+import { changeHotel } from '../../../http/hotelsApi';
 import { EditableListContext } from '../EditableList';
 import ModalInput from './ModalInput';
+import { SelectBox } from './SelectBox';
 
 const ModalHotels = ({ hotel, handleClose }) => {
     const [name, setName] = useState(hotel.name);
     const [food, setFood] = useState(hotel.food);
     const [city, setCity] = useState(hotel.city);
 
+    const [cities, setCities] = useState();
+
     const [price, setPrice] = useState(hotel.price_for_night);
 
     const { setListItems, setIsLoading, asyncGetItems } =
         useContext(EditableListContext);
 
+    useEffect(() => {
+        fetchCities().then((data) => {
+            setCities(data.data);
+        });
+    }, []);
+
     const handleOnClick = async () => {
-        const form = document.getElementById('dura');
-        if (!form.checkValidity()) {
-            const tmpSubmit = document.createElement('button');
-            form.appendChild(tmpSubmit);
-            tmpSubmit.click();
-            form.removeChild(tmpSubmit);
-        } else {
-            handleClose();
-            // await updateStudent(type, city, price);
-            // setIsLoading(true);
-            // await asyncGetItems()
-            //     .then((data) => {
-            //         setListItems(data);
-            //     })
-            //     .finally(() => setIsLoading(false));
-        }
+        handleClose();
+        await changeHotel(name, city, food, price, hotel.id);
+        setIsLoading(true);
+        await asyncGetItems()
+            .then((data) => {
+                setListItems(data.data);
+            })
+            .finally(() => setIsLoading(false));
+    };
+
+    const handleOnChange = (e) => {
+        setCity(e.target.value);
+    };
+
+    const handleSetFood = (e) => {
+        setFood(e.target.checked);
     };
 
     return (
         <>
             <div className='p-6 space-y-6'>
-                <div className='grid grid-cols-6 gap-6'>
+                <div className='grid grid-cols-5 gap-3'>
                     <ModalInput
                         inputName={'hotel name'}
                         inputPlaceholder={'Hotel name'}
@@ -43,26 +55,19 @@ const ModalHotels = ({ hotel, handleClose }) => {
                         inputValue={name}
                         onChangeSet={setName}
                     />
-                    <ModalInput
-                        inputName={'Food'}
-                        inputPlaceholder={'food'}
-                        inputType={'checkbox'}
-                        isRequired={true}
-                        inputValue={food}
-                        onChangeSet={setFood}
-                    />
-                    <ModalInput
-                        inputName={'city'}
-                        inputPlaceholder={'city to'}
-                        inputType={'text'}
-                        isRequired={true}
-                        inputValue={city}
-                        onChangeSet={setCity}
+                    <div>
+                        Food included
+                        <Checkbox onClick={handleSetFood} />
+                    </div>
+                    <SelectBox
+                        items={cities}
+                        label={'city'}
+                        handler={handleOnChange}
                     />
                     <ModalInput
                         inputName={'price'}
                         inputPlaceholder={'price'}
-                        inputType={'text'}
+                        inputType={'number'}
                         isRequired={true}
                         inputValue={price}
                         onChangeSet={setPrice}

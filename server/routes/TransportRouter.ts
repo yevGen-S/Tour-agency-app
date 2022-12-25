@@ -14,6 +14,6 @@ router.get(
 );
 
 router.delete('/:id', roleMiddleware(['service provider']));
-router.put('/:id', roleMiddleware(['service provider']));
+router.put('/', roleMiddleware(['service provider']));
 
 export { router };

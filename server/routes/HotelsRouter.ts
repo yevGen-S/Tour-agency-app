@@ -6,7 +6,7 @@ const router = Router();
 
 router.get('/', controller.getHotels);
 router.post('/', roleMiddleware(['service provider']), controller.addHotel);
-router.put('/', roleMiddleware(['service provider']), controller.changeHotel);
+router.put('/change', roleMiddleware(['service provider']), controller.changeHotel);
 
 router.get('/:id');
 router.delete(
