@@ -76,7 +76,7 @@ There is an admin panel for admin in navbar.
 ![image](https://user-images.githubusercontent.com/63201619/226677775-916cdbd7-12c9-43ea-9efc-e42c2f326f49.png)
 
 ### The last role is service maker. He manages services.
-![image](https://user-images.githubusercontent.com/63201619/226678120-da71f051-ba14-45d1-83e1-b2cb1be158c6.png)
+![image](https://user-images.githubusercontent.com/63201619/226682106-4c4783f0-f2af-4870-9311-5ae3ac50d3c6.png)
 
 ### Service maker panel page
 ![image](https://user-images.githubusercontent.com/63201619/226678386-780dfcc3-679a-4002-a2c8-ea527e185c98.png)
